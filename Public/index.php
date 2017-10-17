@@ -10,26 +10,25 @@ require '../Modele/Entity/Articles.php';
 require '../Modele/Manager/ManagerDonnees.php';
 require '../Modele/Manager/ManagerArticles.php';
 require '../Vue/Core/Vue.php';
-use Vue\Core\Vue;
+require '../Controlleur/Routeur/Routeur.php';
+require '../Controlleur/ControlleurAccueil.php';
+use Controlleur\Routeur\Routeur;
+use Modele\Manager\ManagerArticles;
 
-if(isset($_GET['page'])){
-    $pages = $_GET['page'];
-}else{
-    $pages = 'accueil';
-}
-$test = new Vue('accueil');
-$test->genererPages();
+$siteWeb = new Routeur();
+$siteWeb->start();
 
 /*
-ob_start();
-if($pages === 'acceuil'){
-    require '../Vue/Pages/accueil.php';
-}elseif ($pages=== 'articles'){
-    require '../Vue/Pages/articles.php';
-}else{
-    echo 'Un problème est survenu losr du choix des pages - Voir Index.php';
-}
-$contenu = ob_get_clean();
-require '../Vue/Gabarit/gabarit.php';*/
+$articles = new ManagerArticles();
+$donnees = $articles->readAll();
+var_dump($donnees);
+
+
+/*
+$bdd = new PDO('mysql:host=localhost;dbname=JFR', 'root', '');
+var_dump($bdd);
+$req = $bdd->query('SELECT * FROM articles');
+$donnes = $req->fetchAll();
+var_dump($donnes);*/
 
 

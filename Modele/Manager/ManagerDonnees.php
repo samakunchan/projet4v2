@@ -24,7 +24,6 @@ class ManagerDonnees extends App
     public function prepare($phraseSql, $selectionDeId, $nomClass, $one = false, $read = false)
     {
         if($read){
-            var_dump($selectionDeId);
             $req = $this->connection()->prepare($phraseSql);
             $req->execute($selectionDeId);
             $req->setFetchMode(PDO::FETCH_CLASS, $nomClass);
@@ -38,7 +37,6 @@ class ManagerDonnees extends App
             $req = $this->connection()->prepare($phraseSql);
             $req->setFetchMode(PDO::FETCH_CLASS, $nomClass);
             $req->execute($selectionDeId);
-            var_dump($_GET['id']);
         }
 
     }

@@ -16,27 +16,21 @@ class Vue
 
     public function __construct($page)
     {
-
         $this->fichier = '../Vue/Pages/'. $page .'.php';
         $this->gabarit = '../Vue/Gabarit/gabarit.php';
     }
 
-    public function genererPages()
+    public function genererPages($donnees)
     {
         if (file_exists($this->fichier)){
             ob_start();
+            extract($donnees);
             require $this->fichier;
             $contenu = ob_get_clean();
             require $this->gabarit;
         }else{
-            throw new Exception("Fichier '$this->fichier' introuvable");
+            echo 'Fichier ' . $this->fichier . ' introuvable';
         }
-        /*
-        ob_start();
-        //var_dump($this->fichier);
-        require $this->fichier;
-        $contenu = ob_get_clean();
-        require $this->gabarit;*/
     }
 
 

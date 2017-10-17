@@ -21,13 +21,15 @@ class ManagerArticles extends ManagerDonnees
 
     public function read($id)
     {
-        $this->prepare('SELECT * FROM articles WHERE id=?',[$id],
+        $lecture = $this->prepare('SELECT * FROM articles WHERE id=?',[$id],
             'Modele\Entity\Articles', true, true);
+        return $lecture;
     }
 
     public function readAll()
     {
-        $this->query('SELECT * FROM articles', 'Modele\Entity\Articles');
+        $lecture = $this->query('SELECT * FROM articles', 'Modele\Entity\Articles');
+        return $lecture;
     }
 
     public function update($valeurs)
