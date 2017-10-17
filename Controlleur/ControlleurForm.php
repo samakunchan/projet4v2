@@ -9,12 +9,12 @@
 namespace Controlleur;
 
 use Vue\Core\Vue;
-use Modele\Manager\ManagerArticles;
+
 class ControlleurForm
 {
     public function formulaire()
     {
-        $accueil = new Vue('form');
-        $accueil->genererPages();
+        $formulaire = new Vue('form');
+        $formulaire->genererPages();
     }
 }

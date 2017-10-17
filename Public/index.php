@@ -13,23 +13,11 @@ require '../Vue/Core/Vue.php';
 require '../Controlleur/Routeur/Routeur.php';
 require '../Controlleur/ControlleurAccueil.php';
 require '../Controlleur/ControlleurForm.php';
+require '../Controlleur/ControlleurContact.php';
 use Controlleur\Routeur\Routeur;
-use Modele\Manager\ManagerArticles;
 
 $siteWeb = new Routeur();
 $siteWeb->start();
 
-/*
-$articles = new ManagerArticles();
-$donnees = $articles->readAll();
-var_dump($donnees);
-
-
-/*
-$bdd = new PDO('mysql:host=localhost;dbname=JFR', 'root', '');
-var_dump($bdd);
-$req = $bdd->query('SELECT * FROM articles');
-$donnes = $req->fetchAll();
-var_dump($donnes);*/
 
 

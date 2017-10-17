@@ -11,6 +11,7 @@ namespace Controlleur\Routeur;
 
 use Controlleur\ControlleurAccueil;
 use Controlleur\ControlleurForm;
+use Controlleur\ControlleurContact;
 
 class Routeur
 {
@@ -31,6 +32,15 @@ class Routeur
         $site->accueil();
         }elseif ($pages=== 'form'){
         $site = new ControlleurForm();
+        $site->formulaire();
+        }elseif ($pages=== 'biographie'){
+        //$site = new ControlleurForm();
+        //$site->formulaire();
+        }elseif ($pages=== 'chapitres'){
+        //$site = new ControlleurForm();
+        //$site->formulaire();
+        }elseif ($pages=== 'contact'){
+        $site = new ControlleurContact();
         $site->formulaire();
         }else{
             echo 'Un problème est survenu losr du choix des pages - Voir Index.php';

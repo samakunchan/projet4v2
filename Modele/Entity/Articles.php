@@ -16,18 +16,6 @@ class Articles
     private $contenu;
     private $date_creation;
 
-    /**
-     * @param mixed $id
-     * @return Articles
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-        return $this;
-    }
-
-
-
 
     /**
      * @param mixed $titre

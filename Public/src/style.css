@@ -154,8 +154,9 @@ button{
 
 article{
     margin-top: 20px;
-    background-color: yellow;
+    background-color: rgba(255, 255, 255, 0.8);
     text-align: center;
+    padding: 80px;
 }
 article p{
     margin-top: 20px;

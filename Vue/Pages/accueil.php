@@ -1,7 +1,7 @@
-<h1>Voici la Home page</h1>
 <p>
     <a href="index.php?page=form">S'inscrire/Se connecter</a>
 </p>
+
 <div class="row">
     <div class="col-lg-8">
         <ul>
