@@ -5,19 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Starter Template for Bootstrap</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="src/bootstrap-3.3.7-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="src/style.css">
+    <title>JFR2</title>
 </head>
 
 <body>
 
-<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-</nav>
+<header class="navbar navbar-inverse ">
+    <div class="navbar-header navbar-nav col-lg-12">
+        <div class="col-xs-4 col-sm-5 col-md-5 col-lg-6"><a href="index.php">Blog de Jean Forte-Roche</a></div>
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-1 "><a href="index.php">Accueil</a> </div>
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-1"><a href="#articles"> Biographie</a></div>
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-1"><a href="index.php?id=chap"> Chapitres</a></div>
+        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"><a href="index.php?id=deco">Contact</a></div>
+    </div>
+</header>
 
 <div class="container" style="padding-top: 100px;">
 

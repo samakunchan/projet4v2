@@ -1,5 +1,7 @@
 <h1>Voici la Home page</h1>
-
+<p>
+    <a href="index.php?page=form">S'inscrire/Se connecter</a>
+</p>
 <div class="row">
     <div class="col-lg-8">
         <ul>
@@ -9,8 +11,8 @@
                         <?php echo $donnee->getTitre(); ?>
                     </a>
                 </h2>
+                <p><?php echo $donnee->getContenu();?> </p>
             <?php endforeach; ?>
         </ul>
     </div>
-
 </div>

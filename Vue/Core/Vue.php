@@ -20,17 +20,25 @@ class Vue
         $this->gabarit = '../Vue/Gabarit/gabarit.php';
     }
 
-    public function genererPages($donnees)
+    public function genererPages($donnees = false)
     {
-        if (file_exists($this->fichier)){
+        if ($donnees){
+            if (file_exists($this->fichier)){
+                ob_start();
+                extract($donnees);
+                require $this->fichier;
+                $contenu = ob_get_clean();
+                require $this->gabarit;
+            }else{
+                echo 'Fichier ' . $this->fichier . ' introuvable';
+            }
+        }else{
             ob_start();
-            extract($donnees);
             require $this->fichier;
             $contenu = ob_get_clean();
             require $this->gabarit;
-        }else{
-            echo 'Fichier ' . $this->fichier . ' introuvable';
         }
+
     }
 
 

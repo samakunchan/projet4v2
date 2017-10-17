@@ -11,11 +11,14 @@ namespace Modele\Manager;
 use Modele\Entity\Articles;
 class ManagerArticles extends ManagerDonnees
 {
-    public function create(Articles $valeurs)
+    public function create($valeurs)
     {
         $this->prepare('INSERT INTO articles(titre, contenu, date_creation) 
         VALUES (:titre,:contenu, now() )',
-            ['titre'=> $valeurs->getTitre(), 'contenu'=> $valeurs->getContenu()],
+            [
+                'titre' => $valeurs->getTitre(),
+                'contenu' => $valeurs->getContenu()
+            ],
             'Modele\Entity\Articles', true);
     }
 
@@ -37,9 +40,9 @@ class ManagerArticles extends ManagerDonnees
         $this->prepare('UPDATE articles SET titre = :titre, contenu = :contenu, 
         date_creation = now() WHERE id= :id',
             [
-                'titre'=> $valeurs->getTitre(),
-                'contenu'=> $valeurs->getContenu(),
-                'id'=>$_GET['id']
+                'titre' => $valeurs->getTitre(),
+                'contenu' => $valeurs->getContenu(),
+                'id' => $_GET['id']
             ],
             'Modele\Entity\Articles', true);
     }
@@ -48,7 +51,7 @@ class ManagerArticles extends ManagerDonnees
     {
         $this->prepare('DELETE FROM articles WHERE id = :id',
             [
-                'id'=>$_GET['id']
+                'id' => $_GET['id']
             ],
             'Modele\Entity\Articles', true);
     }

@@ -10,6 +10,7 @@ namespace Controlleur\Routeur;
 
 
 use Controlleur\ControlleurAccueil;
+use Controlleur\ControlleurForm;
 
 class Routeur
 {
@@ -28,9 +29,9 @@ class Routeur
         if($pages === 'accueil'){
         $site = new ControlleurAccueil();
         $site->accueil();
-        }elseif ($pages=== 'articles'){
-        $site = new ControlleurArticles();
-        $site->accueil();
+        }elseif ($pages=== 'form'){
+        $site = new ControlleurForm();
+        $site->formulaire();
         }else{
             echo 'Un problème est survenu losr du choix des pages - Voir Index.php';
         }

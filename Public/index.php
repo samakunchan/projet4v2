@@ -12,6 +12,7 @@ require '../Modele/Manager/ManagerArticles.php';
 require '../Vue/Core/Vue.php';
 require '../Controlleur/Routeur/Routeur.php';
 require '../Controlleur/ControlleurAccueil.php';
+require '../Controlleur/ControlleurForm.php';
 use Controlleur\Routeur\Routeur;
 use Modele\Manager\ManagerArticles;
 
