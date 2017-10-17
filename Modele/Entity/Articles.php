@@ -15,16 +15,20 @@ class Articles
     private $titre;
     private $contenu;
     private $date_creation;
-/*
-    public function hydrate(array $donnees){
-        foreach ($donnees as $key => $value)
-        {
-            $method = 'set'.ucfirst($key);
-            $this->$method($value);
-            var_dump($method);
-        }
+
+    /**
+     * @param mixed $id
+     * @return Articles
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+        return $this;
     }
-*/
+
+
+
+
     /**
      * @param mixed $titre
      * @return Articles

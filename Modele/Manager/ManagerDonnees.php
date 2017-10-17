@@ -21,16 +21,25 @@ class ManagerDonnees extends App
         return $donnees;
     }
 
-    public function prepare($phraseSql, $selectionDeId, $nomClass, $one = false)
+    public function prepare($phraseSql, $selectionDeId, $nomClass, $one = false, $read = false)
     {
-        $req = $this->connection()->prepare($phraseSql);
-        $req->execute($selectionDeId);
-        $req->setFetchMode(PDO::FETCH_CLASS, $nomClass);
-        if ($one){
-            $donnees= $req->fetch();
+        if($read){
+            var_dump($selectionDeId);
+            $req = $this->connection()->prepare($phraseSql);
+            $req->execute($selectionDeId);
+            $req->setFetchMode(PDO::FETCH_CLASS, $nomClass);
+            if ($one){
+                $donnees= $req->fetch();
+            }else{
+                $donnees = $req->fetchAll();
+            }
+            return $donnees;
         }else{
-            $donnees = $req->fetchAll();
+            $req = $this->connection()->prepare($phraseSql);
+            $req->setFetchMode(PDO::FETCH_CLASS, $nomClass);
+            $req->execute($selectionDeId);
+            var_dump($_GET['id']);
         }
-        return $donnees;
+
     }
 }

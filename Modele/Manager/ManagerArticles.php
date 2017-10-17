@@ -13,34 +13,41 @@ class ManagerArticles extends ManagerDonnees
 {
     public function create(Articles $valeurs)
     {
-        var_dump($valeurs->getTitre());
-        $res = $this->prepare('
-INSERT INTO articles(titre, contenu, date_creation) 
-VALUES (?,?, now() )',
-            [$valeurs->getTitre()], 'Modele\Entity\Articles' );
-
+        $this->prepare('INSERT INTO articles(titre, contenu, date_creation) 
+        VALUES (:titre,:contenu, now() )',
+            ['titre'=> $valeurs->getTitre(), 'contenu'=> $valeurs->getContenu()],
+            'Modele\Entity\Articles', true);
     }
 
     public function read($id)
     {
-        $res = $this->prepare('SELECT * FROM articles WHERE id=?',[$id],
-            'Modele\Entity\Articles', true);
-        var_dump($res);
+        $this->prepare('SELECT * FROM articles WHERE id=?',[$id],
+            'Modele\Entity\Articles', true, true);
     }
 
     public function readAll()
     {
-        $res = $this->query('SELECT * FROM articles', 'Modele\Entity\Articles');
-        var_dump($res);
+        $this->query('SELECT * FROM articles', 'Modele\Entity\Articles');
     }
 
-    public function update()
+    public function update($valeurs)
     {
-
+        $this->prepare('UPDATE articles SET titre = :titre, contenu = :contenu, 
+        date_creation = now() WHERE id= :id',
+            [
+                'titre'=> $valeurs->getTitre(),
+                'contenu'=> $valeurs->getContenu(),
+                'id'=>$_GET['id']
+            ],
+            'Modele\Entity\Articles', true);
     }
 
     public function delete()
     {
-
+        $this->prepare('DELETE FROM articles WHERE id = :id',
+            [
+                'id'=>$_GET['id']
+            ],
+            'Modele\Entity\Articles', true);
     }
 }
