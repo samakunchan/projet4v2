@@ -7,8 +7,10 @@
  */
 require '../Modele/App/App.php';
 require '../Modele/Entity/Articles.php';
+require '../Modele/Entity/Contact.php';
 require '../Modele/Manager/ManagerDonnees.php';
 require '../Modele/Manager/ManagerArticles.php';
+require '../Modele/Manager/ManagerContact.php';
 require '../Vue/Core/Vue.php';
 require '../Controlleur/Routeur/Routeur.php';
 require '../Controlleur/ControlleurAccueil.php';

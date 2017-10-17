@@ -29,6 +29,13 @@ class ManagerArticles extends ManagerDonnees
         return $lecture;
     }
 
+    public function readLastOne()
+    {
+        $lecture =$this->query('SELECT * FROM articles ORDER BY id DESC LIMIT 1',
+            'Modele\Entity\Articles');
+        return $lecture;
+    }
+
     public function readAll()
     {
         $lecture = $this->query('SELECT * FROM articles', 'Modele\Entity\Articles');

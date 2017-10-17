@@ -6,11 +6,11 @@
     <div class="col-lg-8">
         <ul>
             <?php foreach ($donnees as $donnee) : ?>
-                <h2>
+                <h1>
                     <a href="">
                         <?php echo $donnee->getTitre(); ?>
                     </a>
-                </h2>
+                </h1>
                 <p><?php echo $donnee->getContenu();?> </p>
             <?php endforeach; ?>
         </ul>

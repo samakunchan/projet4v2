@@ -17,7 +17,7 @@ class ManagerContact extends ManagerDonnees
             [
                 'nom' => $valeurs->getNom(),
                 'email' => $valeurs->getEmail(),
-                'titre_message' => $valeurs->getTitre(),
+                'titre_message' => $valeurs->getTitreMessage(),
                 'contenu' => $valeurs->getContenu()
             ],
             'Modele\Entity\Contact', true);
@@ -41,7 +41,7 @@ class ManagerContact extends ManagerDonnees
         $this->prepare('UPDATE contact SET titre = :titre, contenu = :contenu, 
         date_creation = now() WHERE id= :id',
             [
-                'titre' => $valeurs->getTitre(),
+                'titre' => $valeurs->getTitreMessage(),
                 'contenu' => $valeurs->getContenu(),
                 'id' => $_GET['id']
             ],

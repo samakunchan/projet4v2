@@ -8,16 +8,15 @@
 
 namespace Controlleur;
 
-
-use Vue\Core\Vue;
 use Modele\Manager\ManagerArticles;
+use Vue\Core\Vue;
 
 class ControlleurAccueil
 {
     public function accueil()
     {
         $articles = new ManagerArticles();
-        $donnees = $articles->readAll();
+        $donnees = $articles->readLastOne();
         $accueil = new Vue('accueil');
         $accueil->genererPages($donnees);
     }
