@@ -15,6 +15,7 @@ class Articles
     private $titre;
     private $contenu;
     private $date_creation;
+    private $extrait;
 
 
     /**
@@ -75,6 +76,23 @@ class Articles
             echo 'Probleme avec ID -GetContenu Articles';
         }
         return $this->contenu;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDateCreation()
+    {
+        return $this->date_creation;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getExtrait()
+    {
+        $this->extrait = substr($this->contenu, 0,150);
+        return $this->extrait;
     }
 
 }

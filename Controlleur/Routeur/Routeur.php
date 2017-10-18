@@ -42,8 +42,11 @@ class Routeur
         }elseif ($pages=== 'contact'){
         $site = new ControlleurContact();
         $site->formulaire();
+        }elseif ($pages=== 'articles'){
+        $site = new ControlleurArticles();
+        $site->publicationArticles();
         }else{
-            echo 'Un problème est survenu losr du choix des pages - Voir Index.php';
+            echo 'Un problème est survenu lors du choix des pages - Voir Index.php';
         }
     }
 }

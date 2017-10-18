@@ -6,12 +6,15 @@
     <div class="col-lg-8">
         <ul>
             <?php foreach ($donnees as $donnee) : ?>
-                <h1>
+                <h2>
                     <a href="">
                         <?php echo $donnee->getTitre(); ?>
                     </a>
-                </h1>
-                <p><?php echo $donnee->getContenu();?> </p>
+                </h2>
+                <p>
+                    <?php echo $donnee->getExtrait();?>
+                    <a href="index.php?page=articles&id= <?php echo $donnee->getId();?>">Voir la suite</a>
+                </p>
             <?php endforeach; ?>
         </ul>
     </div>
