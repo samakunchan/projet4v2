@@ -89,6 +89,12 @@ body{
 .articles{
     margin-top: 50px;
 }
+.chapitres h1{
+    margin-bottom: 0;
+}
+.chapitres li span{
+    font-size: 15px;
+}
 ul{
     background-color: rgba(255, 255, 255, 0.6);
 }
