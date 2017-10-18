@@ -1,7 +1,15 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: Samakunchan
- * Date: 17/10/2017
- * Time: 15:56
- */
+
+<div class="row articles">
+    <div class="col-lg-12">
+        <ul>
+            <?php foreach ($donnees as $donnee) :; ?>
+                <h2 class="col-lg-offset-4">
+                        <?php echo $donnee->getTitre(); ?>
+                </h2>
+                <p>
+                    <?php echo $donnee->getContenu();?>
+                </p>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+</div>

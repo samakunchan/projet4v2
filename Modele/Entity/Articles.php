@@ -50,10 +50,7 @@ class Articles
      */
     public function getId()
     {
-        if (!is_int($this->id)){
-            echo 'Probleme avec ID -GetId Articles';
-        }
-        return $this->id;
+        return (int) $this->id;
     }
 
     /**
@@ -64,7 +61,7 @@ class Articles
         if(!is_string($this->titre)){
             echo 'Probleme avec titre -GetTitre Articles';
         }
-        return $this->titre;
+        return (string) htmlspecialchars($this->titre);
     }
 
     /**
@@ -75,7 +72,7 @@ class Articles
         if (!is_string($this->contenu)){
             echo 'Probleme avec ID -GetContenu Articles';
         }
-        return $this->contenu;
+        return (string) htmlspecialchars($this->contenu);
     }
 
     /**
@@ -92,7 +89,7 @@ class Articles
     public function getExtrait()
     {
         $this->extrait = substr($this->contenu, 0,150);
-        return $this->extrait;
+        return htmlspecialchars($this->extrait);
     }
 
 }

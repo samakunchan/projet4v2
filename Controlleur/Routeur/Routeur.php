@@ -10,8 +10,13 @@ namespace Controlleur\Routeur;
 
 
 use Controlleur\ControlleurAccueil;
+use Controlleur\ControlleurBiographie;
+use Controlleur\ControlleurChapitres;
 use Controlleur\ControlleurForm;
+use Controlleur\ControlleurArticles;
+use Controlleur\ControlleurCommentaires;
 use Controlleur\ControlleurContact;
+use Controlleur\ControlleurAdmin;
 
 class Routeur
 {
@@ -34,11 +39,11 @@ class Routeur
         $site = new ControlleurForm();
         $site->formulaire();
         }elseif ($pages=== 'biographie'){
-        //$site = new ControlleurForm();
-        //$site->formulaire();
+        $site = new ControlleurBiographie();
+        $site->publicationBiographie();
         }elseif ($pages=== 'chapitres'){
-        //$site = new ControlleurForm();
-        //$site->formulaire();
+        $site = new ControlleurChapitres();
+        $site->listeChaptitres();
         }elseif ($pages=== 'contact'){
         $site = new ControlleurContact();
         $site->formulaire();

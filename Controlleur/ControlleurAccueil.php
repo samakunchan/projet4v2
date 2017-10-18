@@ -17,7 +17,8 @@ class ControlleurAccueil
     {
         $articles = new ManagerArticles();
         $donnees = $articles->readLastOne();
-        $accueil = new Vue('accueil');
-        $accueil->genererPages($donnees);
+        var_dump($donnees);
+        $pages = new Vue('accueil');
+        $pages->genererPages($donnees);
     }
 }

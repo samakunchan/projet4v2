@@ -5,15 +5,13 @@
 <div class="row">
     <div class="col-lg-8">
         <ul>
-            <?php foreach ($donnees as $donnee) : ?>
+            <?php foreach ($donnees as $donnee) :; ?>
                 <h2>
-                    <a href="">
-                        <?php echo $donnee->getTitre(); ?>
-                    </a>
+                    <?php echo $donnee->getTitre(); ?>
                 </h2>
                 <p>
                     <?php echo $donnee->getExtrait();?>
-                    <a href="index.php?page=articles&id= <?php echo $donnee->getId();?>">Voir la suite</a>
+                    <a href="index.php?page=articles&id= <?php echo $donnee->getId(); ?>">Voir la suite</a>
                 </p>
             <?php endforeach; ?>
         </ul>
