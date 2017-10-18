@@ -86,6 +86,9 @@ body{
     background-color: bisque;
     width: 40%;
 }
+.accueil a{
+    color: #2aabd2;
+}
 .articles{
     margin-top: 50px;
 }

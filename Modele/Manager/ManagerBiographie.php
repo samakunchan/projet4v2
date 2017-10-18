@@ -2,18 +2,18 @@
 /**
  * Created by PhpStorm.
  * User: Samakunchan
- * Date: 16/10/2017
- * Time: 18:48
+ * Date: 18/10/2017
+ * Time: 13:55
  */
 
 namespace Modele\Manager;
 
 
-class ManagerArticles extends ManagerDonnees
+class ManagerBiographie extends ManagerDonnees
 {
     public function create($valeurs)
     {
-        $this->prepare('INSERT INTO articles(titre, contenu, date_creation) 
+        $this->prepare('INSERT INTO biographie(titre, contenu, date_creation) 
         VALUES (:titre,:contenu, now() )',
             [
                 'titre' => $valeurs->getTitre(),
@@ -22,29 +22,15 @@ class ManagerArticles extends ManagerDonnees
             'Modele\Entity\Articles', true);
     }
 
-    public function read($id)
+    public function read()
     {
-        $lecture = $this->prepare('SELECT * FROM articles WHERE id=?',[$id],
-            'Modele\Entity\Articles', true, true);
-        return $lecture;
-    }
-
-    public function readLastOne()
-    {
-        $lecture =$this->query('SELECT * FROM articles ORDER BY id DESC LIMIT 1',
-            'Modele\Entity\Articles');
-        return $lecture;
-    }
-
-    public function readAll()
-    {
-        $lecture = $this->query('SELECT * FROM articles ORDER BY id DESC', 'Modele\Entity\Articles');
+        $lecture = $this->query('SELECT * FROM biographie ORDER BY id DESC', 'Modele\Entity\Articles');
         return $lecture;
     }
 
     public function update($valeurs)
     {
-        $this->prepare('UPDATE articles SET titre = :titre, contenu = :contenu, 
+        $this->prepare('UPDATE biographie SET titre = :titre, contenu = :contenu, 
         date_creation = now() WHERE id= :id',
             [
                 'titre' => $valeurs->getTitre(),
@@ -56,7 +42,7 @@ class ManagerArticles extends ManagerDonnees
 
     public function delete()
     {
-        $this->prepare('DELETE FROM articles WHERE id = :id',
+        $this->prepare('DELETE FROM biographie WHERE id = :id',
             [
                 'id' => $_GET['id']
             ],

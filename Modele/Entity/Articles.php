@@ -89,7 +89,7 @@ class Articles
     public function getExtrait()
     {
         $this->extrait = substr($this->contenu, 0,150);
-        return htmlspecialchars($this->extrait);
+        return htmlspecialchars($this->extrait.'...');
     }
 
 }

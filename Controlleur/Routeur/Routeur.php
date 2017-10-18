@@ -17,6 +17,7 @@ use Controlleur\ControlleurArticles;
 use Controlleur\ControlleurCommentaires;
 use Controlleur\ControlleurContact;
 use Controlleur\ControlleurAdmin;
+use Controlleur\ControlleurUtilisateur;
 
 class Routeur
 {
@@ -50,6 +51,9 @@ class Routeur
         }elseif ($pages=== 'articles'){
         $site = new ControlleurArticles();
         $site->publicationArticles();
+        }elseif ($pages=== 'admin'){
+        $site = new ControlleurUtilisateur();
+        $site->gestionUtilisateur();
         }else{
             echo 'Un problème est survenu lors du choix des pages - Voir Index.php';
         }

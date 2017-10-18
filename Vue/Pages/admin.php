@@ -1,7 +1,2 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: Samakunchan
- * Date: 18/10/2017
- * Time: 12:06
- */
+<?php var_dump($_POST); ?>
+<h1>Ceci est la page admin</h1>

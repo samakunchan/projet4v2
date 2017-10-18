@@ -8,8 +8,16 @@
 
 namespace Controlleur;
 
-
+use Modele\Manager\ManagerArticles;
+use Modele\Manager\ManagerBiographie;
+use Vue\Core\Vue;
 class ControlleurBiographie
 {
-
+    public function publicationBiographie()
+    {
+        $biographies = new ManagerBiographie();
+        $donnees = $biographies->read();
+        $pages = new Vue('biographie');
+        $pages->genererPages($donnees);
+    }
 }

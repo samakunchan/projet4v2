@@ -31,8 +31,6 @@
 
 </div>
 <script src="../Public/src/js/generate_form.js"></script>
-<footer>
-    <p>Samakunchan &COPY;</p>
-</footer>
+
 </body>
 </html>
