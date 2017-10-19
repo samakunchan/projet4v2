@@ -30,12 +30,17 @@ require '../Controlleur/ControlleurChapitres.php';
 require '../Controlleur/ControlleurCommentaires.php';
 require '../Controlleur/ControlleurContact.php';
 require '../Controlleur/ControlleurForm.php';
+require '../Controlleur/ControlleurAdmin.php';
+require '../Controlleur/ControlleurAuthentification.php';
+require '../Controlleur/ControlleurError.php';
 require '../Controlleur/Routeur/Routeur.php';
 
 use Controlleur\Routeur\Routeur;
 
 $siteWeb = new Routeur();
 $siteWeb->start();
+//session_start();
+//session_destroy();
 
 
 

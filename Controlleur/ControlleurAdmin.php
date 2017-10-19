@@ -8,20 +8,25 @@
 
 namespace Controlleur;
 
-use Modele\Manager\ManagerMembres;
+
+use Controlleur\Routeur\Routeur;
 use Vue\Core\Vue;
 class ControlleurAdmin
 {
+    private $vue;
+
+    public function __construct()
+    {
+        $this->vue = new Vue('admin');
+    }
+
     public function administration()
     {
-        if(empty($_POST) && !isset($_POST)){
-            header('Location : index.php');
+        session_start();
+        if ($_SESSION){
+            $this->vue->genererPages();
         }else{
-
-            $admin = new ManagerMembres();
-            //$donnees = $admin->
-            $pages = new Vue('admin');
-            $pages->genererPages();
+            ControlleurError::accesInterdit();
         }
     }
 }

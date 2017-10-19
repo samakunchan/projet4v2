@@ -1,3 +1,4 @@
+<?php session_start(); var_dump($_SESSION); ?>
 <div class="row biographie">
     <h1>Il était une fois..Jean ForteRoche</h1>
     <div class="col-lg-12">

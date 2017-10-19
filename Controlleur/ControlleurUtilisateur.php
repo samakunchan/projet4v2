@@ -54,6 +54,5 @@ class ControlleurUtilisateur
             $pages = new Vue('admin');
             $pages->genererPages();
         }
-
     }
 }

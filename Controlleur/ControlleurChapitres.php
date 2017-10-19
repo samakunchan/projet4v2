@@ -12,11 +12,18 @@ use Modele\Manager\ManagerArticles;
 use Vue\Core\Vue;
 class ControlleurChapitres
 {
+    private $chapitres;
+    private $vue;
+
+    public function __construct()
+    {
+        $this->chapitres = new ManagerArticles();
+        $this->vue = new Vue('chapitres');
+    }
+
     public function listeChaptitres()
     {
-        $chapitres = new ManagerArticles();
-        $donnees = $chapitres->readAll();
-        $pages = new Vue('chapitres');
-        $pages->genererPages($donnees);
+        $donnees = $this->chapitres->readAll();
+        $this->vue->genererPages($donnees);
     }
 }

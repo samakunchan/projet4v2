@@ -13,11 +13,18 @@ use Vue\Core\Vue;
 
 class ControlleurArticles
 {
+    private $articles;
+    private $vue;
+
+    public function __construct()
+    {
+        $this->articles = new ManagerArticles();
+        $this->vue = new Vue('articles');
+    }
+
     public function publicationArticles()
     {
-        $articles = new ManagerArticles();
-        $donnees = $articles->read($_GET['id']);
-        $pages = new Vue('articles');
-        $pages->genererPages([$donnees]);
+        $donnees = $this->articles->read($_GET['id']);
+        $this->vue->genererPages([$donnees]);
     }
 }

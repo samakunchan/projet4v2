@@ -13,23 +13,31 @@ use Modele\Entity\Contact;
 use Vue\Core\Vue;
 class ControlleurContact
 {
+    private $vue;
+    private $contact;
+    private $manager;
+
+    public function __construct()
+    {
+        $this->vue = new Vue('contact');
+        $this->contact = new Contact();
+        $this->manager = new ManagerContact();
+    }
+
     public function formulaire()
     {
-        $formulaire = new Vue('contact');
-        $formulaire->genererPages();
+        $this->vue->genererPages();
         $this->gestionDonnees();
     }
 
     public function gestionDonnees()
     {
         if ($_POST){
-            $contact = new Contact();
-            $contact->setNom($_POST['nom']);
-            $contact->setEmail($_POST['email']);
-            $contact->setTitreMessage($_POST['titre']);
-            $contact->setContenu($_POST['message']);
-            $manager = new ManagerContact();
-            $manager->create($contact);
+            $this->contact->setNom($_POST['nom']);
+            $this->contact->setEmail($_POST['email']);
+            $this->contact->setTitreMessage($_POST['titre']);
+            $this->contact->setContenu($_POST['message']);
+            $this->manager->create($this->contact);
         }
     }
 }

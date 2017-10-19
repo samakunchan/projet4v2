@@ -10,6 +10,7 @@ namespace Controlleur\Routeur;
 
 
 use Controlleur\ControlleurAccueil;
+use Controlleur\ControlleurAuthentification;
 use Controlleur\ControlleurBiographie;
 use Controlleur\ControlleurChapitres;
 use Controlleur\ControlleurForm;
@@ -18,9 +19,34 @@ use Controlleur\ControlleurCommentaires;
 use Controlleur\ControlleurContact;
 use Controlleur\ControlleurAdmin;
 use Controlleur\ControlleurUtilisateur;
+use Controlleur\ControlleurError;
 
 class Routeur
 {
+    private $acceuil;
+    private $form;
+    private $biographie;
+    private $chapitres;
+    private $contact;
+    private $articles;
+    private $admin;
+    private $errors;
+    //private $
+   // private $
+   // private $
+
+    public function __construct()
+    {
+        $this->acceuil = new ControlleurAccueil();
+        $this->form = new ControlleurForm();
+        $this->biographie= new ControlleurBiographie();
+        $this->chapitres = new ControlleurChapitres();
+        $this->contact = new ControlleurContact();
+        $this->articles = new ControlleurArticles();
+        $this->admin = new ControlleurAdmin();
+        $this->errors = new ControlleurError();
+    }
+
     public function start()
     {
         if(isset($_GET['page'])){
@@ -34,28 +60,29 @@ class Routeur
     public function gestionPages($pages)
     {
         if($pages === 'accueil'){
-        $site = new ControlleurAccueil();
-        $site->accueil();
+        $this->acceuil->accueil();
         }elseif ($pages=== 'form'){
-        $site = new ControlleurForm();
-        $site->formulaire();
+        $this->form->formulaire();
         }elseif ($pages=== 'biographie'){
-        $site = new ControlleurBiographie();
-        $site->publicationBiographie();
+        $this->biographie->publicationBiographie();
         }elseif ($pages=== 'chapitres'){
-        $site = new ControlleurChapitres();
-        $site->listeChaptitres();
+        $this->chapitres->listeChaptitres();
         }elseif ($pages=== 'contact'){
-        $site = new ControlleurContact();
-        $site->formulaire();
+        $this->contact->formulaire();
         }elseif ($pages=== 'articles'){
-        $site = new ControlleurArticles();
-        $site->publicationArticles();
+        $this->articles->publicationArticles();
         }elseif ($pages=== 'admin'){
-        $site = new ControlleurUtilisateur();
-        $site->gestionUtilisateur();
+        $this->admin->administration();
+
         }else{
-            echo 'Un problème est survenu lors du choix des pages - Voir Index.php';
+            echo 'Un problème est survenu lors du choix des pages - Voir Le Routeur';
         }
     }
+
+
+    public static function redirection($pages)
+    {
+        return header('Location: index.php?page='. $pages .' ');
+    }
+
 }

@@ -8,13 +8,32 @@
 
 namespace Controlleur;
 
+use Controlleur\Routeur\Routeur;
+use Modele\App\App;
 use Vue\Core\Vue;
 
 class ControlleurForm
 {
+    private $control;
+    private $vue;
+
+    public function __construct()
+    {
+        $this->control = new ControlleurAuthentification();
+        $this->vue = new Vue('form');
+    }
+
     public function formulaire()
     {
-        $formulaire = new Vue('form');
-        $formulaire->genererPages();
+        $this->controlDesDonnees();
+        $this->vue->genererPages();
+
+    }
+
+    public function controlDesDonnees()
+    {
+        if ($_POST){
+            $this->control->login($_POST['pseudo'], $_POST['password']);
+        }
     }
 }

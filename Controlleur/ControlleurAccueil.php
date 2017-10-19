@@ -9,14 +9,21 @@
 namespace Controlleur;
 
 use Modele\Manager\ManagerArticles;
+use Modele\Manager\ManagerMembres;
 use Vue\Core\Vue;
 
 class ControlleurAccueil
 {
+    private $articles;
+
+    public function __construct()
+    {
+        $this->articles = new ManagerArticles();
+    }
+
     public function accueil()
     {
-        $articles = new ManagerArticles();
-        $donnees = $articles->readLastOne();
+        $donnees = $this->articles->readLastOne();
         $pages = new Vue('accueil');
         $pages->genererPages($donnees);
     }

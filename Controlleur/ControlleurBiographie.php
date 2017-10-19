@@ -13,11 +13,18 @@ use Modele\Manager\ManagerBiographie;
 use Vue\Core\Vue;
 class ControlleurBiographie
 {
+    private $biographie;
+    private $vue;
+
+    public function __construct()
+    {
+        $this->biographie = new ManagerBiographie();
+        $this->vue = new Vue('biographie');
+    }
+
     public function publicationBiographie()
     {
-        $biographies = new ManagerBiographie();
-        $donnees = $biographies->read();
-        $pages = new Vue('biographie');
-        $pages->genererPages($donnees);
+        $donnees = $this->biographie->read();
+        $this->vue->genererPages($donnees);
     }
 }
