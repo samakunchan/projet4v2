@@ -1,3 +1,7 @@
+<?php
+session_start();
+\Controlleur\ControlleurAuthentification::controlSession();
+?>
 <p>
     <a href="index.php?page=form">S'inscrire/Se connecter</a>
 </p>

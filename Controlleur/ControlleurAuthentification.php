@@ -37,8 +37,13 @@ class ControlleurAuthentification
         }
     }
 
-    public static function logged()
+    public static function controlSession()
     {
-        return isset($_SESSION['pseudo']);
+        if ($_SESSION){
+            if($_SESSION['pseudo']==='admin'){
+                echo '<button class="col-lg-6"> Blog</button>';
+                echo '<button class="col-lg-6"> Tableau de bord</button>';
+            }
+        }
     }
 }

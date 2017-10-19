@@ -1,4 +1,7 @@
-<?php session_start(); var_dump($_SESSION); ?>
+<?php
+session_start();
+\Controlleur\ControlleurAuthentification::controlSession();
+?>
 <div class="row chapitres">
     <h1>Liste de tout les chapitres</h1>
     <div class="col-lg-12">
