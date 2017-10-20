@@ -37,13 +37,15 @@ class ControlleurAuthentification
         }
     }
 
-    public static function controlSession()
+    public static function controlSession($acceuil = false)
     {
         if ($_SESSION){
             if($_SESSION['pseudo']==='admin'){
-                echo '<button class="col-lg-6"> Blog</button>';
-                echo '<button class="col-lg-6"> Tableau de bord</button>';
+                echo '<p class="col-lg-8"> <a href="index.php?page=admin">Tableau de bord</a></p>';
+                echo '<p class="col-lg-2"> <a href="index.php?page=deco">Déconnection</a></p>';
             }
+        }elseif ($acceuil){
+            echo '<p><a href="index.php?page=form">S\'inscrire/Se connecter</a></p>';
         }
     }
 }

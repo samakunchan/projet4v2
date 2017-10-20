@@ -73,7 +73,10 @@ class Routeur
         $this->articles->publicationArticles();
         }elseif ($pages=== 'admin'){
         $this->admin->administration();
-
+        }elseif ($pages=== 'deco'){
+            session_start();
+            session_destroy();
+            Routeur::redirection('accueil');
         }else{
             echo 'Un problème est survenu lors du choix des pages - Voir Le Routeur';
         }

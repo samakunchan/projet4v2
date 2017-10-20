@@ -1,11 +1,7 @@
 <?php
 session_start();
-\Controlleur\ControlleurAuthentification::controlSession();
+\Controlleur\ControlleurAuthentification::controlSession(true);
 ?>
-<p>
-    <a href="index.php?page=form">S'inscrire/Se connecter</a>
-</p>
-
 <div class="row accueil">
     <div class="col-lg-8">
         <ul>
