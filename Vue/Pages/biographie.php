@@ -3,7 +3,7 @@ session_start();
 \Controlleur\ControlleurAuthentification::controlSession();
 ?>
 <div class="row biographie">
-    <h1>Il était une fois..Jean ForteRoche</h1>
+    <h1 class="col-lg-12">Il était une fois..Jean ForteRoche</h1>
     <div class="col-lg-12">
         <ul>
             <?php foreach ($donnees as $donnee) :; ?>

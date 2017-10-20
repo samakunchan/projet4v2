@@ -23,7 +23,6 @@ require '../Modele/Manager/ManagerCommentaires.php';
 require '../Modele/Manager/ManagerBiographie.php';
 
 require '../Controlleur/ControlleurAccueil.php';
-require '../Controlleur/ControlleurUtilisateur.php';
 require '../Controlleur/ControlleurArticles.php';
 require '../Controlleur/ControlleurBiographie.php';
 require '../Controlleur/ControlleurChapitres.php';

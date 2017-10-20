@@ -26,4 +26,11 @@ class ControlleurChapitres
         $donnees = $this->chapitres->readAll();
         $this->vue->genererPages($donnees);
     }
+
+    public static function total()
+    {
+        $donnees = new ManagerArticles();
+        $res = $donnees->readAll();
+        echo count($res);
+    }
 }

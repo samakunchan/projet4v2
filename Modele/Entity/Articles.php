@@ -16,6 +16,7 @@ class Articles
     private $contenu;
     private $date_creation;
     private $extrait;
+    private $com_id;
 
 
     /**

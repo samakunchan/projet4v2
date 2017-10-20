@@ -40,4 +40,11 @@ class ControlleurContact
             $this->manager->create($this->contact);
         }
     }
+
+    public static function total()
+    {
+        $contact = new ManagerContact();
+        $res = $contact->readAll();
+        echo count($res);
+    }
 }
