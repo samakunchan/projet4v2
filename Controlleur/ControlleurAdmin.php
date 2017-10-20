@@ -19,14 +19,14 @@ class ControlleurAdmin
     private $vue;
     private $manager;
     private $articles;
-    private $biographie;
+    private $managerBio;
 
     public function __construct()
     {
         $this->vue = new Vue('admin');
         $this->articles =new Articles();
         $this->manager = new ManagerArticles();
-        $this->biographie = new ManagerBiographie();
+        $this->managerBio = new ManagerBiographie();
     }
 
     public function administration()
@@ -34,7 +34,8 @@ class ControlleurAdmin
         session_start();
         if ($_SESSION){
             $donnees = $this->manager->readAll();
-            if (isset($_POST)){
+            var_dump($_POST);
+            if ($_POST){
                 if ($_POST['art']==='art'){
                     $this->creerArticles();
                 }elseif ($_POST['bio']==='bio'){
@@ -50,12 +51,14 @@ class ControlleurAdmin
     public function creerArticles()
     {
         $this->articles->setTitre($_POST['titre']);
-        $this->articles->setTitre($_POST['contenu']);
+        $this->articles->setContenu($_POST['contenu']);
         $this->manager->create($this->articles);
     }
 
     public function gererBiographie()
     {
-
+        $this->articles->setTitre($_POST['titre']);
+        $this->articles->setContenu($_POST['contenu']);
+        $this->managerBio->create($this->articles);
     }
 }

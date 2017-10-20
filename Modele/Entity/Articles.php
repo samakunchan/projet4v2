@@ -71,7 +71,7 @@ class Articles
     public function getContenu()
     {
         if (!is_string($this->contenu)){
-            echo 'Probleme avec ID -GetContenu Articles';
+            echo 'Probleme avec contenu -GetContenu Articles';
         }
         return (string) htmlspecialchars($this->contenu);
     }
