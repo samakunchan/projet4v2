@@ -9,9 +9,9 @@ session_start();
                 <h2 class="col-lg-offset-4">
                         <?php echo $donnee->getTitre(); ?>
                 </h2>
-                <p>
+
                     <?php echo $donnee->getContenu();?>
-                </p>
+
             <?php endforeach; ?>
         </ul>
     </div>

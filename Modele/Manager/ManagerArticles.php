@@ -54,11 +54,11 @@ class ManagerArticles extends ManagerDonnees
             'Modele\Entity\Articles', true);
     }
 
-    public function delete()
+    public function delete($id)
     {
         $this->prepare('DELETE FROM articles WHERE id = :id',
             [
-                'id' => $_GET['id']
+                'id' => $id
             ],
             'Modele\Entity\Articles', true);
     }

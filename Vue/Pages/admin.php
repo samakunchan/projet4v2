@@ -19,7 +19,7 @@
                         <?php echo $donnee->getTitre();?>
                     </a>
                     <a href="">--Modifier</a>
-                    <a href="">--Supprimer</a>
+                    <a href="index.php?page=admin&action=delete&id=<?php echo $donnee->getId()?>">--Supprimer</a>
                 </p>
 
             </li>

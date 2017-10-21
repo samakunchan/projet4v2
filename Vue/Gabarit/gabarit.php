@@ -7,7 +7,7 @@
     <meta name="author" content="">
     <link rel="stylesheet" href="src/bootstrap-3.3.7-dist/css/bootstrap.css">
     <link rel="stylesheet" href="src/style.css">
-    <script src="../Public/src/js/outils.js"></script>
+    <script src="../Public/src/js/formulaire/outils.js"></script>
     <title>JFR2</title>
 </head>
 
@@ -30,7 +30,9 @@
     </div>
 
 </div>
-<script src="../Public/src/js/generate_form.js"></script>
+<script src="../Public/src/js/formulaire/generate_form.js"></script>
+<script src='../Public/src/js/tinymce/tinymce.min.js'></script>
+<script src="../Public/src/js/formulaire/configTiny"></script>
 
 </body>
 </html>

@@ -73,7 +73,7 @@ class Articles
         if (!is_string($this->contenu)){
             echo 'Probleme avec contenu -GetContenu Articles';
         }
-        return (string) htmlspecialchars($this->contenu);
+        return $this->contenu;
     }
 
     /**
@@ -90,7 +90,7 @@ class Articles
     public function getExtrait()
     {
         $this->extrait = substr($this->contenu, 0,150);
-        return htmlspecialchars($this->extrait.'...');
+        return $this->extrait.'...';
     }
 
 }

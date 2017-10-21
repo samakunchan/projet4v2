@@ -34,14 +34,16 @@ class ControlleurAdmin
         session_start();
         if ($_SESSION){
             $donnees = $this->manager->readAll();
-            var_dump($_POST);
             if ($_POST){
                 if ($_POST['art']==='art'){
                     $this->creerArticles();
                 }elseif ($_POST['bio']==='bio'){
                     $this->gererBiographie();
                 }
-            }
+            }/*
+            if ($_GET['action']==='delete'){
+                $this->manager->delete($_GET['id']);
+            }*/
             $this->vue->genererPages($donnees);
         }else{
             ControlleurError::accesInterdit();
