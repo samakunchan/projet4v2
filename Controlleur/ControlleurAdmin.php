@@ -41,11 +41,15 @@ class ControlleurAdmin
                 }elseif ($_POST['bio']==='bio'){
                     $this->gererBiographie();
                 }
-            }/*
+            }
             if ($_GET['action']==='delete'){
                 $this->manager->delete($_GET['id']);
                 Routeur::redirection('admin');
-            }*/
+            }elseif ($_GET['action']=== 'modif'){
+                $test = $this->manager->update($_GET['id']);
+                $affiche = new Vue('modif');
+                $affiche->sousPage($test);
+            }
             $this->vue->genererPages($donnees);
         }else{
             ControlleurError::accesInterdit();

@@ -42,7 +42,12 @@ class Vue
 
     public function sousPage($donnees = false)
     {
-
+        if ($donnees){
+            ob_start();
+            require $this->fichier;
+            $contenu = ob_get_clean();
+            require $this->gabarit;
+        }
     }
 
 
