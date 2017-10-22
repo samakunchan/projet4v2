@@ -38,6 +38,10 @@ class Vue
             $contenu = ob_get_clean();
             require $this->gabarit;
         }
+    }
+
+    public function sousPage($donnees = false)
+    {
 
     }
 

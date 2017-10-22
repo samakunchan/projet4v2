@@ -29,3 +29,4 @@
         <input type="submit" value="S'inscrire" id="pseudo">
     </form>
 </article>
+<script src="../Public/src/js/formulaire/generate_form.js"></script>

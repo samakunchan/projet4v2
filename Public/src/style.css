@@ -31,9 +31,7 @@ footer, header, hgroup, menu, nav, section {
 body {
     line-height: 1;
 }
-ol, ul {
-    list-style: none;
-}
+
 blockquote, q {
     quotes: none;
 }
@@ -90,7 +88,7 @@ body{
 .chapitres h1{
     margin-bottom: 0;
 }
-ul{
+ol{
     background-color: rgba(255, 255, 255, 0.6);
 }
 footer{
@@ -185,6 +183,7 @@ color: black;
     margin-top: 20px;
     margin-right: 0;
 }
+
 .admin button{
     background-color: rgba(255, 255, 255, 0.6);
     box-shadow: 3px 3px 3px rgba(1, 1, 1, 0.6);
@@ -196,5 +195,9 @@ color: black;
     margin-right: 0;
     margin-left: 0;
 }
+#sectionAdmin li span{
+    margin-left: 16px;
+}
+
 
 

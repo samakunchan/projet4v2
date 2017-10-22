@@ -5,7 +5,7 @@ session_start();
 <div class="row chapitres">
     <h1>Liste de tout les chapitres</h1>
     <div class="col-lg-12">
-        <ul>
+        <ol>
             <?php foreach ($donnees as $donnee) :; ?>
                 <li>
                     <p>
@@ -20,6 +20,6 @@ session_start();
                 </li>
 
             <?php endforeach; ?>
-        </ul>
+        </ol>
     </div>
 </div>

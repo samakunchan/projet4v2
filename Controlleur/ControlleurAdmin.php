@@ -10,6 +10,7 @@ namespace Controlleur;
 
 
 use Controlleur\Routeur\Routeur;
+use Modele\App\App;
 use Modele\Entity\Articles;
 use Modele\Manager\ManagerArticles;
 use Modele\Manager\ManagerBiographie;
@@ -43,6 +44,7 @@ class ControlleurAdmin
             }/*
             if ($_GET['action']==='delete'){
                 $this->manager->delete($_GET['id']);
+                Routeur::redirection('admin');
             }*/
             $this->vue->genererPages($donnees);
         }else{

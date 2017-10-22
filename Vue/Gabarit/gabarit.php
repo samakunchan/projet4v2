@@ -30,7 +30,7 @@
     </div>
 
 </div>
-<script src="../Public/src/js/formulaire/generate_form.js"></script>
+
 <script src='../Public/src/js/tinymce/tinymce.min.js'></script>
 <script src="../Public/src/js/formulaire/configTiny"></script>
 
