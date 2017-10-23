@@ -35,6 +35,7 @@ class Vue
         }else{
             ob_start();
             require $this->fichier;
+            $donnees= '';
             $contenu = ob_get_clean();
             require $this->gabarit;
         }

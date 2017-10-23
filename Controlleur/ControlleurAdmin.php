@@ -54,11 +54,4 @@ class ControlleurAdmin
         $this->articles->setContenu($_POST['contenu']);
         $this->manager->create($this->articles);
     }
-
-    public function gererBiographie()
-    {
-        $this->articles->setTitre($_POST['titre']);
-        $this->articles->setContenu($_POST['contenu']);
-        $this->managerBio->create($this->articles);
-    }
 }

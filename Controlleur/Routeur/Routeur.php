@@ -64,17 +64,23 @@ class Routeur
         }elseif ($pages=== 'form'){
         $this->form->formulaire();
         }elseif ($pages=== 'biographie'){
-        $this->biographie->publicationBiographie();
+            if ($_GET['action']){
+                $this->biographie->edit();
+            }else{
+                $this->biographie->publicationBiographie();
+            }
         }elseif ($pages=== 'chapitres'){
         $this->chapitres->listeChaptitres();
         }elseif ($pages=== 'contact'){
         $this->contact->formulaire();
         }elseif ($pages=== 'articles'){
-        $this->articles->publicationArticles();
+            if ($_GET['action']){
+                $this->articles->traitement($_GET['action']);
+            }else{
+                $this->articles->publicationArticles();
+            }
         }elseif ($pages=== 'admin'){
         $this->admin->administration();
-        }elseif ($pages=== 'traitement'){
-            $this->articles->traitement();
         }elseif ($pages=== 'deco'){
             session_start();
             session_destroy();

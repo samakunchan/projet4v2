@@ -1,19 +1,26 @@
 <?php
 session_start();
 \Controlleur\ControlleurAuthentification::controlSession();
+
+if ($donnees){
+    foreach ($donnees as $donnee){
+        $titre = $donnee->getTitre();
+        $contenu = $donnee->getContenu();
+    }
+}else{
+    $titre = '';
+    $contenu = '';
+}
+//var_dump($donnees);
 ?>
 <div class="row articles">
     <div class="col-lg-12">
-        <ul>
-            <?php foreach ($donnees as $donnee) :; ?>
-                <form method="post">
-                    <input type="text" name="titre" value="<?php echo $donnee->getTitre(); ?>">
-                    <textarea name="contenu" id="contenu" cols="30" rows="10">
-                        <?php echo $donnee->getContenu();?>
-                    </textarea>
-                    <input type="submit" value="Modifier">
-                </form>
-            <?php endforeach; ?>
-        </ul>
+        <form method="post">
+            <label for="titre">Titre</label>
+            <input type="text" name="titre" id="titre" value="<?php echo $titre;?>">
+            <label for="contenu">Contenu</label>
+            <textarea name="contenu" id="contenu" cols="30" rows="10"><?php echo $contenu;?></textarea>
+            <input type="submit" value="Publier">
+        </form>
     </div>
 </div>
