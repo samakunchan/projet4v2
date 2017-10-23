@@ -15,16 +15,25 @@ class ControlleurArticles
 {
     private $articles;
     private $vue;
+    private $traitement;
 
     public function __construct()
     {
         $this->articles = new ManagerArticles();
         $this->vue = new Vue('articles');
+        $this->traitement = new Vue('traitement');
     }
 
     public function publicationArticles()
     {
         $donnees = $this->articles->read($_GET['id']);
         $this->vue->genererPages([$donnees]);
+    }
+
+    public function traitement()
+    {
+        $donnees = $this->articles->read($_GET['id']);
+        $this->traitement->genererPages([$donnees]);
+        $maj = $this->articles->update($_GET['id']);
     }
 }

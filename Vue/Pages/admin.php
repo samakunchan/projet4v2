@@ -19,8 +19,8 @@
                             <a href="index.php?page=articles&id=<?php echo $donnee->getId();?>">
                                 <?php echo $donnee->getTitre();?>
                             </a>
-                            <span><a href="index.php?page=admin&action=modif&id=<?php echo $donnee->getId()?>">Modifier</a></span>
-                            <span><a href="index.php?page=admin&action=delete&id=<?php echo $donnee->getId()?>">Supprimer</a></span>
+                            <span><a href="index.php?page=traitement&id=<?php echo $donnee->getId()?>">Modifier</a></span>
+                            <span><a href="index.php?page=traitement">Supprimer</a></span>
                         </p>
 
                     </li>

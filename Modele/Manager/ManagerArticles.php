@@ -47,9 +47,9 @@ class ManagerArticles extends ManagerDonnees
         $this->prepare('UPDATE articles SET titre = :titre, contenu = :contenu, 
         date_creation = now() WHERE id= :id',
             [
+                'id' => $_GET['id'],
                 'titre' => $valeurs->getTitre(),
-                'contenu' => $valeurs->getContenu(),
-                'id' => $_GET['id']
+                'contenu' => $valeurs->getContenu()
             ],
             'Modele\Entity\Articles', true);
     }

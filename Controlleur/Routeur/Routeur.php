@@ -73,6 +73,8 @@ class Routeur
         $this->articles->publicationArticles();
         }elseif ($pages=== 'admin'){
         $this->admin->administration();
+        }elseif ($pages=== 'traitement'){
+            $this->articles->traitement();
         }elseif ($pages=== 'deco'){
             session_start();
             session_destroy();

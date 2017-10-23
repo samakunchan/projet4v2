@@ -38,8 +38,6 @@ use Controlleur\Routeur\Routeur;
 
 $siteWeb = new Routeur();
 $siteWeb->start();
-//session_start();
-//session_destroy();
 
 
 
