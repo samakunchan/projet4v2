@@ -24,20 +24,19 @@ class ManagerBiographie extends ManagerDonnees
 
     public function read()
     {
-        $lecture = $this->query('SELECT * FROM biographie ORDER BY id DESC', 'Modele\Entity\Articles');
+        $lecture = $this->query('SELECT * FROM biographie', 'Modele\Entity\Biographie');
         return $lecture;
     }
 
     public function update($valeurs)
     {
         $this->prepare('UPDATE biographie SET titre = :titre, contenu = :contenu, 
-        date_creation = now() WHERE id= :id',
+        date_creation = now() ',
             [
                 'titre' => $valeurs->getTitre(),
-                'contenu' => $valeurs->getContenu(),
-                'id' => $_GET['id']
+                'contenu' => $valeurs->getContenu()
             ],
-            'Modele\Entity\Articles', true);
+            'Modele\Entity\Biographie', true);
     }
 
     public function delete()
@@ -46,6 +45,6 @@ class ManagerBiographie extends ManagerDonnees
             [
                 'id' => $_GET['id']
             ],
-            'Modele\Entity\Articles', true);
+            'Modele\Entity\Biographie', true);
     }
 }

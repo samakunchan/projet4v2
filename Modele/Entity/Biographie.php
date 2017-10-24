@@ -21,7 +21,7 @@ class Biographie
 
     /**
      * @param mixed $titre
-     * @return Articles
+     * @return Biographie
      */
     public function setTitre($titre)
     {
@@ -34,7 +34,7 @@ class Biographie
 
     /**
      * @param mixed $contenu
-     * @return Articles
+     * @return Biographie
      */
     public function setContenu($contenu)
     {
@@ -60,7 +60,7 @@ class Biographie
     public function getTitre()
     {
         if(!is_string($this->titre)){
-            echo 'Probleme avec titre -GetTitre Articles';
+            echo 'Probleme avec titre -GetTitre Biographie';
         }
         return (string) htmlspecialchars($this->titre);
     }
@@ -71,7 +71,7 @@ class Biographie
     public function getContenu()
     {
         if (!is_string($this->contenu)){
-            echo 'Probleme avec contenu -GetContenu Articles';
+            echo 'Probleme avec contenu -GetContenu Biographie';
         }
         return $this->contenu;
     }

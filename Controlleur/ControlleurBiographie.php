@@ -8,7 +8,7 @@
 
 namespace Controlleur;
 
-use Modele\Manager\ManagerArticles;
+use Controlleur\Routeur\Routeur;
 use Modele\Manager\ManagerBiographie;
 use Modele\Entity\Biographie;
 use Vue\Core\Vue;
@@ -35,25 +35,21 @@ class ControlleurBiographie
 
     public function edit($action)
     {
-        if ($action==='create'){
-            $this->creerArticles();
-        }elseif ($action==='modif'){
-            $donnees = $this->manager->read($_GET['id']);
-            $this->majArticles($donnees);
+        if ($action==='edit'){
+            $donnees = $this->manager->read();
+            $this->majBio($donnees);
         }elseif ($action==='delete'){
             $this->delete();
         }
     }
 
-
     public function majBio($donnees)
     {
-        $this->traitement->genererPages([$donnees]);
+        $this->traitement->genererPages($donnees);
         if ($_POST){
             $this->biographie->setTitre($_POST['titre']);
             $this->biographie->setContenu($_POST['contenu']);
             $this->manager->update($this->biographie);
-            Routeur::redirection('admin');
         }
     }
     public function creerBio()
@@ -65,5 +61,11 @@ class ControlleurBiographie
             $this->manager->create($this->biographie);
             Routeur::redirection('admin');
         }
+    }
+
+    public function delete()
+    {
+        $this->manager->delete();
+        Routeur::redirection('admin');
     }
 }

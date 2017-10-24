@@ -31,7 +31,7 @@
         <div class="col-lg-5">
             <h2>Le blog possède une biographie</h2>
             <div>
-                <a href="index.php?pages=biographie&action=edit">Voir/Editer la biographie</a>
+                <a href="index.php?page=biographie&action=edit">Voir/Editer la biographie</a>
             </div>
         </div>
     </nav>

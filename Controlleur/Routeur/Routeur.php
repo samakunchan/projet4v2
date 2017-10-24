@@ -64,8 +64,8 @@ class Routeur
         }elseif ($pages=== 'form'){
         $this->form->formulaire();
         }elseif ($pages=== 'biographie'){
-            if ($_GET['action']){
-                $this->biographie->edit();
+            if (isset($_GET['action'])){
+                $this->biographie->edit($_GET['action']);
             }else{
                 $this->biographie->publicationBiographie();
             }

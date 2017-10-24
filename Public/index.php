@@ -14,6 +14,7 @@ require '../Modele/Entity/Articles.php';
 require '../Modele/Entity/Contact.php';
 require '../Modele/Entity/Commentaires.php';
 require '../Modele/Entity/Membres.php';
+require '../Modele/Entity/Biographie.php';
 
 require '../Modele/Manager/ManagerDonnees.php';
 require '../Modele/Manager/ManagerArticles.php';
