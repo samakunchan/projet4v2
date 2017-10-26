@@ -75,7 +75,7 @@ $config = array(
 	| with start and final /
 	|
 	*/
-	'upload_dir' => '/TINY/source/',
+	'upload_dir' => '/projet4v2/Public/src/source/',
 	/*
 	|--------------------------------------------------------------------------
 	| relative path from filemanager folder to upload folder
@@ -95,7 +95,7 @@ $config = array(
 	| DO NOT put inside upload folder
 	|
 	*/
-	'thumbs_base_path' => '../TINY/thumbs/',
+	'thumbs_base_path' => '../projet4v2/Public/src/thumbs/',
 
 
 	/*

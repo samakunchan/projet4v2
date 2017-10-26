@@ -43,6 +43,7 @@ class ControlleurAuthentification
 
     public static function controlSession($acceuil = false)
     {
+        //session_start();
         if ($_SESSION){
             if($_SESSION['pseudo']==='admin'){
                 echo '<p class="col-lg-8"> <a href="index.php?page=admin&action">Tableau de bord</a></p>';

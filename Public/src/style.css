@@ -125,11 +125,14 @@ a{
 }
 a:hover{
     text-decoration: none;
-    color: #a4cbff;
+    color: blue;
+}
+td:hover{
+    background-color: #8bc5ab;
 }
 section{
     margin-right: 0;
-    margin-bottom: 400px;
+    margin-bottom: 50px;
 }
 span{
     font-weight: bold;

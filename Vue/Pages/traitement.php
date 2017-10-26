@@ -11,7 +11,7 @@ if ($donnees){
     $titre = '';
     $contenu = '';
 }
-//var_dump($donnees);
+
 ?>
 <div class="row articles">
     <div class="col-lg-12">
