@@ -1,13 +1,31 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="stylesheet" href="src/bootstrap-3.3.7-dist/css/bootstrap.css">
-    <link rel="stylesheet" href="src/style.css">
-    <script src="../Public/src/js/formulaire/outils.js"></script>
+    <meta
+            charset="utf-8">
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta
+            name="description"
+            content="">
+    <meta
+            name="author"
+            content="">
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.js"
+            integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+            crossorigin="anonymous"></script>
+    <link
+            rel="stylesheet"
+            href="src/bootstrap-3.3.7-dist/css/bootstrap.css">
+    <link
+            rel="stylesheet"
+            href="src/style.css">
+    <script
+            src="../Public/src/js/formulaire/outils.js">
+
+    </script>
     <title>JFR2</title>
 </head>
 
@@ -31,8 +49,8 @@
 
 </div>
 
-<script src='../Public/src/js/tinymce/tinymce.min.js'></script>
-<script src="../Public/src/js/formulaire/configTiny"></script>
+<script type="text/javascript" src='../Public/src/js/tinymce/tinymce.min.js'></script>
+<script type="text/javascript" src="../Public/src/js/global.js"></script>
 
 </body>
 </html>

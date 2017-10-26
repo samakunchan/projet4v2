@@ -28,7 +28,11 @@ class ControlleurAuthentification
             if ($users->getPassword()=== sha1($password)){
                 session_start();
                 $_SESSION['pseudo']= $users->getPseudo();
-                Routeur::redirection('admin&action');
+                if($users->getPseudo()=== 'admin'){
+                    Routeur::redirection('admin&action');
+                }elseif ($users->getPseudo()!== 'admin'){
+                    Routeur::redirection('users&action');
+                }
                 return true;
             }else{
                 ControlleurError::identifiantIncorrect();
@@ -42,6 +46,9 @@ class ControlleurAuthentification
         if ($_SESSION){
             if($_SESSION['pseudo']==='admin'){
                 echo '<p class="col-lg-8"> <a href="index.php?page=admin&action">Tableau de bord</a></p>';
+                echo '<p class="col-lg-2"> <a href="index.php?page=deco">Déconnection</a></p>';
+            }elseif ($_SESSION['pseudo']!=='admin'){
+                echo '<p class="col-lg-8"> <a href="index.php?page=users&action">Tableau de bord</a></p>';
                 echo '<p class="col-lg-2"> <a href="index.php?page=deco">Déconnection</a></p>';
             }
         }elseif ($acceuil){

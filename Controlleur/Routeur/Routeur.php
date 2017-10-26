@@ -18,6 +18,7 @@ use Controlleur\ControlleurArticles;
 use Controlleur\ControlleurCommentaires;
 use Controlleur\ControlleurContact;
 use Controlleur\ControlleurAdmin;
+use Controlleur\ControlleurUsers;
 use Controlleur\ControlleurUtilisateur;
 use Controlleur\ControlleurError;
 
@@ -31,7 +32,7 @@ class Routeur
     private $articles;
     private $admin;
     private $errors;
-    //private $
+    private $users;
    // private $
    // private $
 
@@ -45,6 +46,7 @@ class Routeur
         $this->articles = new ControlleurArticles();
         $this->admin = new ControlleurAdmin();
         $this->errors = new ControlleurError();
+        $this->users = new ControlleurUsers();
     }
 
     public function start()
@@ -79,8 +81,10 @@ class Routeur
             }else{
                 $this->articles->publicationArticles();
             }
-        }elseif ($pages=== 'admin'){
-        $this->admin->administration();
+        }elseif ($pages=== 'admin') {
+            $this->admin->administration();
+        }elseif ($pages=== 'users'){
+            $this->users->administration();
         }elseif ($pages=== 'deco'){
             session_start();
             session_destroy();

@@ -31,6 +31,7 @@ require '../Controlleur/ControlleurCommentaires.php';
 require '../Controlleur/ControlleurContact.php';
 require '../Controlleur/ControlleurForm.php';
 require '../Controlleur/ControlleurAdmin.php';
+require '../Controlleur/ControlleurUsers.php';
 require '../Controlleur/ControlleurAuthentification.php';
 require '../Controlleur/ControlleurError.php';
 require '../Controlleur/Routeur/Routeur.php';
