@@ -40,6 +40,7 @@ use Controlleur\Routeur\Routeur;
 
 $siteWeb = new Routeur();
 $siteWeb->start();
+//var_dump($_SESSION);
 
 
 

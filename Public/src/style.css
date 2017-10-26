@@ -88,8 +88,13 @@ body{
 .chapitres h1{
     margin-bottom: 0;
 }
-ol{
+table{
     background-color: rgba(255, 255, 255, 0.6);
+
+}
+td{
+    padding: 15px;
+    box-shadow: 1px 1px 1px black;
 }
 footer{
     position: relative;

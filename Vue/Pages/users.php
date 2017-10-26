@@ -1,7 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Samakunchan
- * Date: 26/10/2017
- * Time: 18:36
- */
+session_start();
+\Controlleur\ControlleurAuthentification::controlSession();
+?>
+
+<p class="col-lg-12">Bienvenu <?php echo $_SESSION['pseudo'];?></p>

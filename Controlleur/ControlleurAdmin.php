@@ -34,12 +34,16 @@ class ControlleurAdmin
     {
         session_start();
         if ($_SESSION){
-            $donnees = $this->manager->readAll();
-            if ($_POST){
-                if ($_POST['art']==='art'){
-                    $this->creerArticles();
-                }elseif ($_POST['bio']==='bio'){
-                    $this->gererBiographie();
+            if ($_SESSION['pseudo'] !=='admin'){
+                ControlleurError::accesInterdit();
+            }else{
+                $donnees = $this->manager->readAll();
+                if ($_POST){
+                    if ($_POST['art']==='art'){
+                        $this->creerArticles();
+                    }elseif ($_POST['bio']==='bio'){
+                        $this->gererBiographie();
+                    }
                 }
             }
             $this->vue->genererPages($donnees);
