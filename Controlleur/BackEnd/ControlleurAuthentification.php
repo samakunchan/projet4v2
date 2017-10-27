@@ -8,6 +8,7 @@
 
 namespace Controlleur\BackEnd;
 
+use Controlleur\ControlleurError;
 use Controlleur\Routeur\Routeur;
 use Modele\App\App;
 use Modele\Manager\ManagerMembres;
