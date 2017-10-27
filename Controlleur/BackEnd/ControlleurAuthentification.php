@@ -11,20 +11,23 @@ namespace Controlleur\BackEnd;
 use Controlleur\ControlleurError;
 use Controlleur\Routeur\Routeur;
 use Modele\App\App;
+use Modele\Entity\Membres;
 use Modele\Manager\ManagerMembres;
 use Vue\Core\Vue;
 class ControlleurAuthentification
 {
     private $membres;
+    private $manager;
 
     public function __construct()
     {
-        $this->membres = new ManagerMembres();
+        $this->manager = new ManagerMembres();
+        $this->membres = new Membres();
     }
 
     public function login($pseudo, $password)
     {
-        $users = $this->membres->read($pseudo);
+        $users = $this->manager->read($pseudo);
         if($users){
             if ($users->getPassword()=== sha1($password)){
                 session_start();
@@ -40,6 +43,25 @@ class ControlleurAuthentification
                 ControlleurError::identifiantIncorrect();
                 return false;
             }
+        }
+    }
+
+    public function inscription($pseudo, $email, $password, $passwordConf)
+    {
+        $newbie = $this->manager->read($pseudo);
+        if ($newbie){
+            Routeur::redirection('form');
+            return false;
+        }else{
+            $this->membres->setPseudo($pseudo);
+            $this->membres->setEmail($email);
+            if ($password === $passwordConf){
+                $this->membres->setPassword($password);
+            }else{
+                echo 'Les mots de passe doivent etre identiques';
+                return false;
+            }
+            $this->manager->create($this->membres);
         }
     }
 

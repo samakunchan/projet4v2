@@ -51,7 +51,6 @@ class ManagerMembres extends ManagerDonnees
                 'pseudo' => $valeurs->getPseudo(),
                 'password' => $valeurs->getPassword(),
                 'email' => $valeurs->getEmail(),
-                //'id' => $_GET['id'] // a voir si je le fait avec Id ou pseudo
             ],
             'Modele\Entity\Membres', true);
     }
