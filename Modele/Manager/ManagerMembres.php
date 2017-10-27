@@ -46,12 +46,12 @@ class ManagerMembres extends ManagerDonnees
     public function update($valeurs)
     {
         $this->prepare('UPDATE membres SET pseudo = :pseudo, password = :password, email = :email, 
-        date_inscription = now() WHERE id= :id',
+        date_inscription = now() WHERE pseudo= :pseudo',
             [
                 'pseudo' => $valeurs->getPseudo(),
                 'password' => $valeurs->getPassword(),
                 'email' => $valeurs->getEmail(),
-                'id' => $_GET['id'] // a voir si je le fait avec Id ou pseudo
+                //'id' => $_GET['id'] // a voir si je le fait avec Id ou pseudo
             ],
             'Modele\Entity\Membres', true);
     }
