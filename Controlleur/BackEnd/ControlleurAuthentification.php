@@ -50,6 +50,7 @@ class ControlleurAuthentification
     {
         $newbie = $this->manager->read($pseudo);
         if ($newbie){
+            //echo 'Utilisateur déja existant'; Message d'erreur à revoir
             Routeur::redirection('form');
             return false;
         }else{

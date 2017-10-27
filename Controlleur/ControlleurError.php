@@ -27,4 +27,9 @@ class ControlleurError
     {
         echo '<div class="alert alert-danger">'. 'Identifiant incorrect' .'</div>';
     }
+
+    public function donneesMAJ()
+    {
+        //pour plus tard
+    }
 }
