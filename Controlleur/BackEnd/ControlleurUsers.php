@@ -6,11 +6,11 @@
  * Time: 18:40
  */
 
-namespace Controlleur;
+namespace Controlleur\BackEnd;
 
 
 use Vue\Core\Vue;
-
+use Controlleur\ControlleurCommentaires;
 class ControlleurUsers
 {
     private $vue;

@@ -11,6 +11,7 @@ namespace Controlleur;
 use Controlleur\Routeur\Routeur;
 use Modele\App\App;
 use Vue\Core\Vue;
+use Controlleur\BackEnd\ControlleurAuthentification;
 
 class ControlleurForm
 {

@@ -30,9 +30,10 @@ require '../Controlleur/ControlleurChapitres.php';
 require '../Controlleur/ControlleurCommentaires.php';
 require '../Controlleur/ControlleurContact.php';
 require '../Controlleur/ControlleurForm.php';
-require '../Controlleur/ControlleurAdmin.php';
-require '../Controlleur/ControlleurUsers.php';
-require '../Controlleur/ControlleurAuthentification.php';
+require '../Controlleur/BackEnd/ControlleurAdmin.php';
+require '../Controlleur/BackEnd/ControlleurUsers.php';
+require '../Controlleur/BackEnd/ControlleurAuthentification.php';
+require '../Controlleur/BackEnd/ControlleurProfil.php';
 require '../Controlleur/ControlleurError.php';
 require '../Controlleur/Routeur/Routeur.php';
 

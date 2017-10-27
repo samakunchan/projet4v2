@@ -1,6 +1,6 @@
 <?php
 session_start();
-\Controlleur\ControlleurAuthentification::controlSession(true);
+\Controlleur\BackEnd\ControlleurAuthentification::controlSession(true);
 ?>
 <div class="row accueil">
     <div class="col-lg-8">

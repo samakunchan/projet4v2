@@ -1,6 +1,6 @@
 <?php
 session_start();
-\Controlleur\ControlleurAuthentification::controlSession();
+\Controlleur\BackEnd\ControlleurAuthentification::controlSession();
 ?>
 <div class="row chapitres">
     <h1>Liste de tout les chapitres</h1>

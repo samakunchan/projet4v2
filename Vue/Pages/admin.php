@@ -1,5 +1,5 @@
 <?php
-\Controlleur\ControlleurAuthentification::controlSession()
+\Controlleur\BackEnd\ControlleurAuthentification::controlSession();
 ?>
 <section id="sectionAdmin">
     <nav id="bord" class="row bord">

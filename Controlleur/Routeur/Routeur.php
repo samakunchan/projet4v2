@@ -10,16 +10,16 @@ namespace Controlleur\Routeur;
 
 
 use Controlleur\ControlleurAccueil;
-use Controlleur\ControlleurAuthentification;
 use Controlleur\ControlleurBiographie;
 use Controlleur\ControlleurChapitres;
 use Controlleur\ControlleurForm;
 use Controlleur\ControlleurArticles;
 use Controlleur\ControlleurCommentaires;
 use Controlleur\ControlleurContact;
-use Controlleur\ControlleurAdmin;
-use Controlleur\ControlleurUsers;
-use Controlleur\ControlleurUtilisateur;
+use Controlleur\BackEnd\ControlleurAuthentification;
+use Controlleur\BackEnd\ControlleurAdmin;
+use Controlleur\BackEnd\ControlleurUsers;
+use Controlleur\BackEnd\ControlleurProfil;
 use Controlleur\ControlleurError;
 
 class Routeur
@@ -33,7 +33,7 @@ class Routeur
     private $admin;
     private $errors;
     private $users;
-   // private $
+    private $profil;
    // private $
 
     public function __construct()
@@ -47,6 +47,7 @@ class Routeur
         $this->admin = new ControlleurAdmin();
         $this->errors = new ControlleurError();
         $this->users = new ControlleurUsers();
+        $this->profil = new ControlleurProfil();
     }
 
     public function start()
@@ -85,6 +86,8 @@ class Routeur
             $this->admin->administration();
         }elseif ($pages=== 'users'){
             $this->users->administration();
+        }elseif ($pages=== 'profil'){
+            $this->profil->gestionDonnees();
         }elseif ($pages=== 'deco'){
             session_start();
             session_destroy();

@@ -6,7 +6,7 @@
  * Time: 12:06
  */
 
-namespace Controlleur;
+namespace Controlleur\BackEnd;
 
 
 use Controlleur\Routeur\Routeur;

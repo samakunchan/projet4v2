@@ -1,6 +1,6 @@
 <?php
 session_start();
-\Controlleur\ControlleurAuthentification::controlSession();
+\Controlleur\BackEnd\ControlleurAuthentification::controlSession();
 ?>
 <div class="row articles">
     <div class="col-lg-12">
