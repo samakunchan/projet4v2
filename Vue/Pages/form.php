@@ -1,4 +1,4 @@
-<?php session_start(); var_dump($_POST); ?>
+<?php session_start(); var_dump(empty($_POST['pseudo'])); ?>
 <aside class="row">
     <nav class="col-lg-offset-4 col-lg-8">
         <button id="connection" class="col-lg-2">Connection</button>
