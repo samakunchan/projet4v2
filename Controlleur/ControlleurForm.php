@@ -34,13 +34,22 @@ class ControlleurForm
     public function controlDesDonnees()
     {
         if ($_POST){
-            if ($_GET['action']=== 'connection'){
-                $this->control->login($_POST['pseudo'], $_POST['password']);
-                return $this->control;
-            }elseif ($_GET['action']=== 'inscription'){
-                //echo 'good';
-                $this->control->inscription($_POST['pseudo'], $_POST['email'], sha1($_POST['password']), sha1($_POST['passwordConf']));
-                return $this->control;
+            if ($_POST['pseudo']===''){
+                return false;
+            }elseif ($_POST['password']===''){
+                return false;
+            }else{
+                if ($_GET['action']=== 'connection'){
+                    $this->control->login($_POST['pseudo'], $_POST['password']);
+                    return $this->control;
+                }elseif ($_GET['action']=== 'inscription'){
+                    if ($_POST['email']===''){
+                        return false;
+                    }else{
+                        $this->control->inscription($_POST['pseudo'], $_POST['email'], sha1($_POST['password']), sha1($_POST['passwordConf']));
+                        return $this->control;
+                    }
+                }
             }
         }
     }

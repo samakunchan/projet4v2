@@ -2,7 +2,7 @@
 \Controlleur\BackEnd\ControlleurAuthentification::controlSession();
 foreach ($donnees as $donnee):
 ?>
-
+    <div class="col-lg-12"><?php echo \Controlleur\ControlleurError::messageErreur();?></div>
 <section class="row">
     <h2 class="col-lg-12">Modifier votre profil</h2>
     <form method="post">

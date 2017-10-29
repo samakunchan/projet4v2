@@ -11,8 +11,9 @@ if ($donnees){
     $titre = '';
     $contenu = '';
 }
-
+var_dump($_POST);
 ?>
+<div><?php echo \Controlleur\ControlleurError::messageErreur();?></div>
 <div class="row articles">
     <div class="col-lg-12">
         <form method="post">

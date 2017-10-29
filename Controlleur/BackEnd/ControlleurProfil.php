@@ -37,13 +37,12 @@ class ControlleurProfil
             if (sha1($_POST['password'])===sha1($_POST['passwordConf'])){
                 $this->membres->setPassword(sha1($_POST['password']));
             }else{
-                echo 'Les mots de passe doivent etre identique';
                 return false;
             }
             if ($_POST['pseudo']!=='' && $_POST['email']!=='' && $_POST['password']!=='' && $_POST['passwordConf']!==''){
                 $this->manager->update($this->membres);
             }else{
-                echo 'Tout les champs doivent etre remplis';
+                return false;
             }
 
         }

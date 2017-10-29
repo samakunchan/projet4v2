@@ -48,27 +48,20 @@ class ControlleurAuthentification
 
     public function inscription($pseudo, $email, $password, $passwordConf)
     {
-        if(empty($pseudo) && empty($password) && empty($email) ){
+        $newbie = $this->manager->read($pseudo);
+        if ($newbie){
             Routeur::redirection('form');
-            var_dump(empty($pseudo));
             return false;
         }else{
-            $newbie = $this->manager->read($pseudo);
-            if ($newbie){
-                Routeur::redirection('form');
-                return false;
+            $this->membres->setPseudo($pseudo);
+            $this->membres->setEmail($email);
+            if ($password === $passwordConf){
+                $this->membres->setPassword($password);
             }else{
-                $this->membres->setPseudo($pseudo);
-                $this->membres->setEmail($email);
-                if ($password === $passwordConf){
-                    $this->membres->setPassword($password);
-                }else{
-                    echo 'Les mots de passe doivent etre identiques';
-                    return false;
-                }
-                $this->manager->create($this->membres);
-                return $this->manager;
+                echo 'Les mots de passe doivent etre identiques';
+                return false;
             }
+            $this->manager->create($this->membres);
         }
     }
 
