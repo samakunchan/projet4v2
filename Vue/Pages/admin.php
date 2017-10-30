@@ -1,10 +1,12 @@
 <?php
 \Controlleur\BackEnd\ControlleurAuthentification::controlSession();
+use Controlleur\ControlleurChapitres;
 ?>
+
 <section id="sectionAdmin">
     <nav id="bord" class="row bord">
         <h2 class="col-lg-12">Résumé</h2>
-        <p class="col-lg-3">Nombres d'articles créé : <?php \Controlleur\ControlleurChapitres::total()?></p>
+        <p class="col-lg-3">Nombres d'articles créé : <?php echo ControlleurChapitres::total()?></p>
         <p class="col-lg-3">Signalement reçut : </p>
         <p class="col-lg-3">Message reçut : <?php \Controlleur\ControlleurContact::total() ?> </p>
     </nav>
@@ -30,6 +32,10 @@
             </div>
 
             <table class=" panel-default">
+                <?php
+                for ($j=1; $j<=ControlleurChapitres::nombreArticlesParPages(); $j++){
+                    echo '<span> <a href="index.php?page=admin&action&p='.$j.'">Page'. $j .'</a> </span>';
+                } ?>
                 <tr class="panel">
                     <td>
                         <h3 class="col-lg-offset-5">Liste des articles</h3>

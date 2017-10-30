@@ -23,7 +23,7 @@ ControlleurAuthentification::controlSession();
         </ol>
         <?php
         for ($i=1; $i<=ControlleurChapitres::nombreArticlesParPages(); $i++){
-            echo '<span> <a href="index.php?page=chapitres&p='.$i.'">'. $i .'</a> </span>';
+            echo '<span> <a href="index.php?page=chapitres&p='.$i.'">Page'. $i .'</a> </span>';
         } ?>
     </div>
 </div>

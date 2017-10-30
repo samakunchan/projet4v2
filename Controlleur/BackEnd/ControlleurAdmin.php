@@ -9,6 +9,7 @@
 namespace Controlleur\BackEnd;
 
 
+use Controlleur\ControlleurChapitres;
 use Controlleur\ControlleurError;
 use Controlleur\Routeur\Routeur;
 use Modele\App\App;
@@ -38,7 +39,12 @@ class ControlleurAdmin
             if ($_SESSION['pseudo'] !=='admin'){
                 ControlleurError::accesInterdit();
             }else{
-                $donnees = $this->manager->readAll();
+                if (isset($_GET['p']) && $_GET['p']>0 && $_GET['p']<= ControlleurChapitres::nombreArticlesParPages()){
+                    $pageActuel = $_GET['p'];
+                }else{
+                    $pageActuel= 1;
+                }
+                $donnees = $this->manager->readAll($pageActuel, ControlleurChapitres::articlesParPages() );
                 if ($_POST){
                     if ($_POST['art']==='art'){
                         $this->creerArticles();
