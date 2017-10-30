@@ -23,14 +23,33 @@ class ControlleurChapitres
 
     public function listeChaptitres()
     {
-        $donnees = $this->chapitres->readAll();
+        if (isset($_GET['p']) && $_GET['p']>0 && $_GET['p']<self::nombreArticlesParPages()){
+            $pageActuel = $_GET['p'];
+        }else{
+            $pageActuel= 1;
+        }
+        $donnees = $this->chapitres->readAll($pageActuel, self::articlesParPages());
         $this->vue->genererPages($donnees);
     }
 
     public static function total()
     {
         $donnees = new ManagerArticles();
-        $res = $donnees->readAll();
-        echo count($res);
+        $res = $donnees->getTotal();
+        if ($_GET['page']==='admin'){
+            echo $res[0]->getNbArt();
+        }
+        return $res[0]->getNbArt();
     }
+
+    public static function articlesParPages($nb= 5)
+    {
+        return $nb;
+    }
+
+    public static function nombreArticlesParPages()
+    {
+        return ceil(self::total()/self::articlesParPages());
+    }
+
 }

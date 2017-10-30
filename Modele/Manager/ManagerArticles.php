@@ -36,10 +36,16 @@ class ManagerArticles extends ManagerDonnees
         return $lecture;
     }
 
-    public function readAll()
+    public function readAll($pageActuel = false ,$articlesParPages= false)
     {
-        $lecture = $this->query('SELECT * FROM articles ORDER BY id DESC', 'Modele\Entity\Articles');
-        return $lecture;
+        if ($pageActuel && $articlesParPages){
+            $lecture = $this->query('SELECT * FROM articles ORDER BY id DESC LIMIT '.
+                (($pageActuel-1)*$articlesParPages).','.$articlesParPages.' ', 'Modele\Entity\Articles');
+            return $lecture;
+        }else{
+            $lecture = $this->query('SELECT * FROM articles ORDER BY id DESC ', 'Modele\Entity\Articles');
+            return $lecture;
+        }
     }
 
     public function update($valeurs)
@@ -61,5 +67,11 @@ class ManagerArticles extends ManagerDonnees
                 'id' => $id
             ],
             'Modele\Entity\Articles', true);
+    }
+
+    public function getTotal()
+    {
+        $donnees = $this->query('SELECT COUNT(*) as nbArt FROM articles','Modele\Entity\Articles');
+        return $donnees;
     }
 }

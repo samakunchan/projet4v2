@@ -1,6 +1,8 @@
 <?php
 session_start();
-\Controlleur\BackEnd\ControlleurAuthentification::controlSession();
+use Controlleur\BackEnd\ControlleurAuthentification;
+use Controlleur\ControlleurChapitres;
+ControlleurAuthentification::controlSession();
 ?>
 <div class="row chapitres">
     <h1>Liste de tout les chapitres</h1>
@@ -16,10 +18,12 @@ session_start();
                             Articles créé le : <?php echo $donnee->getDateCreation()?>
                         </span>
                     </p>
-
                 </li>
-
             <?php endforeach; ?>
         </ol>
+        <?php
+        for ($i=1; $i<=ControlleurChapitres::nombreArticlesParPages(); $i++){
+            echo '<span> <a href="index.php?page=chapitres&p='.$i.'">'. $i .'</a> </span>';
+        } ?>
     </div>
 </div>

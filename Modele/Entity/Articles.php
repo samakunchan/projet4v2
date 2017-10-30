@@ -17,6 +17,7 @@ class Articles
     private $date_creation;
     private $extrait;
     private $com_id;
+    private $nbArt;
 
 
     /**
@@ -44,6 +45,7 @@ class Articles
         $this->contenu = $contenu;
         return $this;
     }
+
 
 
     /**
@@ -92,5 +94,15 @@ class Articles
         $this->extrait = substr($this->contenu, 0,150);
         return $this->extrait.'...';
     }
+
+    /**
+     * @return mixed
+     */
+    public function getNbArt()
+    {
+        return (int) $this->nbArt;
+    }
+
+
 
 }
