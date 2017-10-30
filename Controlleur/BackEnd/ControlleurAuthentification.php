@@ -34,7 +34,7 @@ class ControlleurAuthentification
                 $_SESSION['pseudo']= $users->getPseudo();
                 $_SESSION['email']= $users->getEmail();
                 if($users->getPseudo()=== 'admin'){
-                    Routeur::redirection('admin&action&id='.$users->getId());
+                    Routeur::redirection('admin&action=tb&id='.$users->getId());
                 }elseif ($users->getPseudo()!== 'admin'){
                     Routeur::redirection('users&action');
                 }

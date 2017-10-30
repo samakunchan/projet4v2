@@ -53,7 +53,6 @@ class ControlleurArticles
             $this->articles->setTitre($_POST['titre']);
             $this->articles->setContenu($_POST['contenu']);
             $this->manager->update($this->articles);
-            Routeur::redirection('admin');
         }
     }
     public function creerArticles()
@@ -69,22 +68,7 @@ class ControlleurArticles
 
     public function delete()
     {
-            $this->manager->delete($_GET['id']);
-            Routeur::redirection('admin');
-    }
-
-    public static function createOrModif($donnees)
-    {
-        if ($donnees){
-            foreach ($donnees as $donnee){
-                $titre = $donnee->getTitre();
-                $contenu = $donnee->getContenu();
-            return $titre;
-            }
-        }else{
-            $titre = '';
-            $contenu = '';
-
-        }
+        $this->manager->delete($_GET['id']);
+        Routeur::redirection('admin');
     }
 }

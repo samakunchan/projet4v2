@@ -1,6 +1,7 @@
 <?php
 session_start();
 \Controlleur\BackEnd\ControlleurAuthentification::controlSession();
+var_dump($donnees);
 ?>
 <div class="row articles">
     <div class="col-lg-12">

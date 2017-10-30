@@ -71,6 +71,14 @@ class ControlleurError
                 }elseif ($_POST['pseudo']!=='' && $_POST['email']!=='' && $_POST['password']!=='' && $_POST['passwordConf']!==''){
                     return '<div class="alert alert-success">Les données ont bien été mis à jour</div>';
                 }
+            }elseif ($_GET['page']==='article'){
+                if ($_GET['action']==='delete'){
+                    return '<div class="alert alert-success">L\'article '.$donnee->getTitre().' a bien été supprimé </div>';
+                }
+            }elseif ($_GET['action']==='modif'){
+                if ($_POST['titre']!=='' && $_POST['contenu']!==''){
+                    return '<div class="alert alert-success">Les données ont bien été mis à jour</div>';
+                }
             }
         }
     }

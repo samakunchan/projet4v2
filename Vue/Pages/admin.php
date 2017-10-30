@@ -2,7 +2,7 @@
 \Controlleur\BackEnd\ControlleurAuthentification::controlSession();
 use Controlleur\ControlleurChapitres;
 ?>
-
+<div class="col-lg-12"><?php echo \Controlleur\ControlleurError::messageErreur();?></div>
 <section id="sectionAdmin">
     <nav id="bord" class="row bord">
         <h2 class="col-lg-12">Résumé</h2>
