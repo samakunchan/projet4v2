@@ -10,12 +10,14 @@ namespace Controlleur;
 
 use Controlleur\Routeur\Routeur;
 use Modele\Entity\Articles;
+use Modele\Entity\Commentaires;
 use Modele\Manager\ManagerArticles;
 use Vue\Core\Vue;
 
 class ControlleurArticles
 {
     private $articles;
+    private $commentaires;
     private $manager;
     private $vue;
     private $traitement;
@@ -23,6 +25,7 @@ class ControlleurArticles
     public function __construct()
     {
         $this->articles = new Articles();
+        $this->commentaires = new Commentaires();
         $this->manager = new ManagerArticles();
         $this->vue = new Vue('articles');
         $this->traitement = new Vue('traitement');
