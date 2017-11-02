@@ -31,7 +31,7 @@ class ControlleurArticles
     public function publicationArticles()
     {
         $donnees = $this->manager->read($_GET['id']);
-        $this->vue->genererPages([$donnees]);
+        $this->vue->genererPages([$donnees, $this->manager]);
     }
 
     public function traitement($action)
