@@ -61,7 +61,7 @@ class Commentaires
      */
     public function getAuteur()
     {
-        return $this->auteur;
+        return (string) $this->auteur;
     }
 
     /**
@@ -69,7 +69,7 @@ class Commentaires
      */
     public function getEmail()
     {
-        return $this->email;
+        return (string) $this->email;
     }
 
     /**
@@ -77,7 +77,7 @@ class Commentaires
      */
     public function getContenu()
     {
-        return $this->contenu;
+        return (string) $this->contenu;
     }
 
     /**

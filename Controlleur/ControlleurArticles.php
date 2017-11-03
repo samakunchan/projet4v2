@@ -12,13 +12,15 @@ use Controlleur\Routeur\Routeur;
 use Modele\Entity\Articles;
 use Modele\Entity\Commentaires;
 use Modele\Manager\ManagerArticles;
+use Modele\Manager\ManagerCommentaires;
 use Vue\Core\Vue;
 
 class ControlleurArticles
 {
     private $articles;
     private $commentaires;
-    private $manager;
+    private $managerArt;
+    private $managerCom;
     private $vue;
     private $traitement;
 
@@ -26,15 +28,17 @@ class ControlleurArticles
     {
         $this->articles = new Articles();
         $this->commentaires = new Commentaires();
-        $this->manager = new ManagerArticles();
+        $this->managerArt = new ManagerArticles();
+        $this->managerCom = new ManagerCommentaires();
         $this->vue = new Vue('articles');
         $this->traitement = new Vue('traitement');
     }
 
     public function publicationArticles()
     {
-        $donnees = $this->manager->read($_GET['id']);
-        $this->vue->genererPages([$donnees, $this->manager]);
+        $donnees = $this->managerArt->read($_GET['id']);
+        $donneesCom = $this->managerCom->readAll($_GET['id']);
+        $this->vue->genererPages([$donnees, $donneesCom]);
     }
 
     public function traitement($action)
@@ -42,7 +46,7 @@ class ControlleurArticles
         if ($action==='create'){
             $this->creerArticles();
         }elseif ($action==='modif'){
-            $donnees = $this->manager->read($_GET['id']);
+            $donnees = $this->managerArt->read($_GET['id']);
             $this->majArticles($donnees);
         }elseif ($action==='delete'){
             $this->delete();
@@ -55,7 +59,7 @@ class ControlleurArticles
         if ($_POST){
             $this->articles->setTitre($_POST['titre']);
             $this->articles->setContenu($_POST['contenu']);
-            $this->manager->update($this->articles);
+            $this->managerArt->update($this->articles);
         }
     }
     public function creerArticles()
@@ -64,7 +68,7 @@ class ControlleurArticles
         if ($_POST){
             $this->articles->setTitre($_POST['titre']);
             $this->articles->setContenu($_POST['contenu']);
-            $this->manager->create($this->articles);
+            $this->managerArt->create($this->articles);
             Routeur::redirection('admin');
         }
     }

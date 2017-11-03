@@ -9,7 +9,7 @@
 namespace Modele\Manager;
 
 
-class ManagerCommentaires
+class ManagerCommentaires extends ManagerDonnees
 {
     public function create($valeurs)
     {
@@ -25,7 +25,7 @@ class ManagerCommentaires
 
     public function read($id)
     {
-        $lecture = $this->prepare('SELECT * FROM commentaires WHERE id=?',[$id],
+        $lecture = $this->prepare('SELECT * FROM commentaires WHERE art_id=?',[$id],
             'Modele\Entity\Commentaires', true, true);
         return $lecture;
     }
@@ -37,16 +37,11 @@ class ManagerCommentaires
         return $lecture;
     }
 
-    public function readAll($pageActuel = false ,$articlesParPages= false)
+    public function readAll($id)
     {
-        if ($pageActuel && $articlesParPages){
-            $lecture = $this->query('SELECT * FROM commentaires ORDER BY id DESC LIMIT '.
-                (($pageActuel-1)*$articlesParPages).','.$articlesParPages.' ', 'Modele\Entity\Commentaires');
-            return $lecture;
-        }else{
-            $lecture = $this->query('SELECT * FROM commentaires ORDER BY id DESC ', 'Modele\Entity\Commentaires');
-            return $lecture;
-        }
+        $lecture = $this->prepare('SELECT * FROM commentaires WHERE art_id=?',[$id],
+            'Modele\Entity\Commentaires', false, true);
+        return $lecture;
     }
 
     public function update($valeurs)
