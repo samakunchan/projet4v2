@@ -11,7 +11,7 @@ ControlleurAuthentification::controlSession();
             <?php foreach ($donnees as $donnee) :; ?>
                 <li>
                     <p>
-                        <a href="index.php?page=articles&action&id=<?php echo $donnee->getId();?>">
+                        <a href="index.php?page=articles&id=<?php echo $donnee->getId();?>">
                             <?php echo $donnee->getTitre();?>
                         </a>
                         <span class="col-lg-offset-1">

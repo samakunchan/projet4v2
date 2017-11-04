@@ -11,10 +11,22 @@ namespace Modele\Entity;
 
 class Commentaires
 {
+    private $id;
     private $auteur;
-    private $email;
     private $contenu;
     private $date_creation;
+    private $art_id;
+
+    /**
+     * @param mixed $art_id
+     * @return Commentaires
+     */
+    public function setArtId($art_id)
+    {
+        $this->art_id = $art_id;
+        return $this;
+    }
+
 
     /**
      * @param mixed $auteur
@@ -23,16 +35,6 @@ class Commentaires
     public function setAuteur($auteur)
     {
         $this->auteur = $auteur;
-        return $this;
-    }
-
-    /**
-     * @param mixed $email
-     * @return Commentaires
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
         return $this;
     }
 
@@ -59,17 +61,26 @@ class Commentaires
     /**
      * @return mixed
      */
-    public function getAuteur()
+    public function getId()
     {
-        return (string) $this->auteur;
+        return $this->id;
     }
 
     /**
      * @return mixed
      */
-    public function getEmail()
+    public function getArtId()
     {
-        return (string) $this->email;
+        return $this->art_id;
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getAuteur()
+    {
+        return (string) $this->auteur;
     }
 
     /**

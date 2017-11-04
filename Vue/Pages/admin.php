@@ -27,10 +27,6 @@ use Controlleur\ControlleurChapitres;
         </div>
         <div class="col-lg-12">
 
-            <div class="panel-body">
-
-            </div>
-
             <table class=" panel-default">
                 <?php
                 for ($j=1; $j<=ControlleurChapitres::nombreArticlesParPages(); $j++){
@@ -41,25 +37,25 @@ use Controlleur\ControlleurChapitres;
                         <h3 class="col-lg-offset-5">Liste des articles</h3>
                     </td>
                     <td colspan="2">
-                        <a href="index.php?page=articles&action=create" class="col-lg-offset-2">Créer un article</a>
+                        <a href="index.php?page=articles&action=create&control=art" class="col-lg-offset-2">Créer un article</a>
                     </td>
                 </tr>
             <?php foreach ($donnees as $donnee) :; ?>
 
                 <tr >
                     <td class="col-lg-10">
-                        <a href="index.php?page=articles&action&id=<?php echo $donnee->getId();?>">
+                        <a href="index.php?page=articles&control=art&id=<?php echo $donnee->getId();?>">
                             <?php echo substr($donnee->getTitre(), 0, 150).'...';?>
                         </a>
                     </td>
                     <td>
                         <span>
-                            <a href="index.php?page=articles&action=modif&id=<?php echo $donnee->getId()?>">Modifier</a>
+                            <a href="index.php?page=articles&control=art&action=modif&id=<?php echo $donnee->getId()?>">Modifier</a>
                         </span>
                     </td>
                     <td>
                         <span>
-                            <a href="index.php?page=articles&action=delete&id=<?php echo $donnee->getId()?>">Supprimer</a>
+                            <a href="index.php?page=articles&control=art&action=delete&id=<?php echo $donnee->getId()?>">Supprimer</a>
                         </span>
                     </td>
                 </tr>

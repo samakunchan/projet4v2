@@ -10,35 +10,22 @@ namespace Controlleur;
 
 use Controlleur\Routeur\Routeur;
 use Modele\Entity\Articles;
-use Modele\Entity\Commentaires;
 use Modele\Manager\ManagerArticles;
-use Modele\Manager\ManagerCommentaires;
 use Vue\Core\Vue;
 
 class ControlleurArticles
 {
     private $articles;
-    private $commentaires;
     private $managerArt;
-    private $managerCom;
     private $vue;
     private $traitement;
 
     public function __construct()
     {
         $this->articles = new Articles();
-        $this->commentaires = new Commentaires();
         $this->managerArt = new ManagerArticles();
-        $this->managerCom = new ManagerCommentaires();
         $this->vue = new Vue('articles');
         $this->traitement = new Vue('traitement');
-    }
-
-    public function publicationArticles()
-    {
-        $donnees = $this->managerArt->read($_GET['id']);
-        $donneesCom = $this->managerCom->readAll($_GET['id']);
-        $this->vue->genererPages([$donnees, $donneesCom]);
     }
 
     public function traitement($action)
@@ -75,7 +62,7 @@ class ControlleurArticles
 
     public function delete()
     {
-        $this->manager->delete($_GET['id']);
+        $this->managerArt->delete($_GET['id']);
         Routeur::redirection('admin');
     }
 }

@@ -21,6 +21,7 @@ use Controlleur\BackEnd\ControlleurAdmin;
 use Controlleur\BackEnd\ControlleurUsers;
 use Controlleur\BackEnd\ControlleurProfil;
 use Controlleur\ControlleurError;
+use Controlleur\ControlleurSingle;
 
 class Routeur
 {
@@ -34,7 +35,8 @@ class Routeur
     private $errors;
     private $users;
     private $profil;
-   // private $
+    private $single;
+    private $commentaires;
 
     public function __construct()
     {
@@ -44,6 +46,8 @@ class Routeur
         $this->chapitres = new ControlleurChapitres();
         $this->contact = new ControlleurContact();
         $this->articles = new ControlleurArticles();
+        $this->commentaires = new ControlleurCommentaires();
+        $this->single = new ControlleurSingle();
         $this->admin = new ControlleurAdmin();
         $this->errors = new ControlleurError();
         $this->users = new ControlleurUsers();
@@ -77,10 +81,18 @@ class Routeur
         }elseif ($pages=== 'contact'){
         $this->contact->formulaire();
         }elseif ($pages=== 'articles'){
-            if ($_GET['action']){
-                $this->articles->traitement($_GET['action']);
+            if (isset($_GET['action'])){
+                if (isset($_GET['control'])){
+                    if ($_GET['control']==='art'){
+                        $this->articles->traitement($_GET['action']);
+                    }elseif ($_GET['control']==='com'){
+                        //var_dump($_GET['action']);
+                        //var_dump($_GET['control']);
+                        $this->commentaires->traitement($_GET['action']);
+                    }
+                }
             }else{
-                $this->articles->publicationArticles();
+                $this->single->publicationArticles();
             }
         }elseif ($pages=== 'admin') {
             $this->admin->administration();

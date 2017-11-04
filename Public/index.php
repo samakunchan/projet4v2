@@ -30,6 +30,7 @@ require '../Controlleur/ControlleurChapitres.php';
 require '../Controlleur/ControlleurCommentaires.php';
 require '../Controlleur/ControlleurContact.php';
 require '../Controlleur/ControlleurForm.php';
+require '../Controlleur/ControlleurSingle.php';
 require '../Controlleur/BackEnd/ControlleurAdmin.php';
 require '../Controlleur/BackEnd/ControlleurUsers.php';
 require '../Controlleur/BackEnd/ControlleurAuthentification.php';
@@ -41,7 +42,6 @@ use Controlleur\Routeur\Routeur;
 
 $siteWeb = new Routeur();
 $siteWeb->start();
-//var_dump($_SESSION);
 
 
 

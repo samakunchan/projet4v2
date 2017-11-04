@@ -11,7 +11,7 @@ session_start();
                 </h1>
                 <p>
                     <?php echo $donnee->getExtrait();?>
-                    <a href="index.php?page=articles&action&id= <?php echo $donnee->getId(); ?>">Voir la suite</a>
+                    <a href="index.php?page=articles&id= <?php echo $donnee->getId(); ?>">Voir la suite</a>
                 </p>
             <?php endforeach; ?>
         </ul>

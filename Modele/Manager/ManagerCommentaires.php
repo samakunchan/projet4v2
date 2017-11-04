@@ -13,12 +13,12 @@ class ManagerCommentaires extends ManagerDonnees
 {
     public function create($valeurs)
     {
-        $this->prepare('INSERT INTO commentaires(auteur, email ,contenu,date_creation) 
-        VALUES (:titre,:email,:contenu, now() )',
+        $this->prepare('INSERT INTO commentaires(auteur ,contenu, art_id, date_creation) 
+        VALUES (:auteur,:contenu,:art_id, now() )',
             [
-                'titre' => $valeurs->getTitre(),
-                'email' => $valeurs->getEmail(),
-                'contenu' => $valeurs->getContenu()
+                'auteur' => $valeurs->getAuteur(),
+                'contenu' => $valeurs->getContenu(),
+                'art_id'=> $valeurs->getArtId()
             ],
             'Modele\Entity\Commentaires', true);
     }
@@ -46,12 +46,11 @@ class ManagerCommentaires extends ManagerDonnees
 
     public function update($valeurs)
     {
-        $this->prepare('UPDATE commentaires SET titre = :titre,email= :email contenu = :contenu, 
+        $this->prepare('UPDATE commentaires SET auteur = :auteur,contenu = :contenu, 
         date_creation = now() WHERE id= :id',
             [
                 'id' => $_GET['id'],
-                'titre' => $valeurs->getTitre(),
-                'email' => $valeurs->getEmail(),
+                'auteur' => $valeurs->getAuteur(),
                 'contenu' => $valeurs->getContenu()
             ],
             'Modele\Entity\Commentaires', true);
