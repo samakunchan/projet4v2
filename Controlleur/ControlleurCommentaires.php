@@ -19,14 +19,14 @@ class ControlleurCommentaires
     private $commentaires;
     private $managerCom;
     private $vue;
-    private $traitement;
+    private $vueCom;
 
     public function __construct()
     {
         $this->commentaires = new Commentaires();
         $this->managerCom = new ManagerCommentaires();
         $this->vue = new Vue('articles');
-        $this->traitement = new Vue('traitement');
+        $this->vueCom = new Vue('commentaires');
     }
 
     public function traitement($action)
@@ -38,21 +38,20 @@ class ControlleurCommentaires
             $donnees = $this->managerCom->read($_GET['id']);
             $this->majCommentaires($donnees);
         }elseif ($action==='deletecom'){
-            $this->delete();
+            $this->delete($_GET['id']);
         }
     }
 
     public function majCommentaires($donnees)
     {
-        $this->traitement->genererPages([$donnees]);
+        $this->vueCom->genererPages([$donnees]);
         if ($_POST){
-            var_dump($_POST);
             $this->commentaires->setAuteur($_POST['auteur']);
             $this->commentaires->setContenu($_POST['contenu']);
-            $this->commentaires->setArtId($_GET['id']);
             $this->managerCom->update($this->commentaires);
         }
     }
+
     public function creerCommentaires()
     {
         if ($_POST){
@@ -64,20 +63,19 @@ class ControlleurCommentaires
         }
     }
 
-    public function delete()
+    public function delete($id)
     {
-        $this->managerCom->delete($_GET['id']);
-        Routeur::redirection('admin');
+        $this->managerCom->delete($id);
     }
 
-    public static function gestionCommentaire($idcom, $idart)
+    public static function gestionCommentaire($idcom, $ref)
     {
         $manager = new ManagerMembres();
         $managerCom = new ManagerCommentaires();
         if ($_SESSION){
             $res= $manager->read($_SESSION['pseudo']);
             $rescom = $managerCom->read($idcom);
-            $donnees = $managerCom->readRefArticle($idart);
+            var_dump($ref);
             if ($res->getPseudo()=== $rescom->getAuteur() ):
                 ?>
                 <p>
