@@ -35,7 +35,7 @@ class ControlleurCommentaires
             echo 'salut';
             $this->creerCommentaires();
         }elseif ($action==='modifcom'){
-            $donnees = $this->managerCom->readRefArticle($_GET['id']);
+            $donnees = $this->managerCom->read($_GET['id']);
             $this->majCommentaires($donnees);
         }elseif ($action==='deletecom'){
             $this->delete();
@@ -44,7 +44,7 @@ class ControlleurCommentaires
 
     public function majCommentaires($donnees)
     {
-        //$this->traitement->genererPages([$donnees]);
+        $this->traitement->genererPages([$donnees]);
         if ($_POST){
             var_dump($_POST);
             $this->commentaires->setAuteur($_POST['auteur']);
