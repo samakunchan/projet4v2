@@ -23,9 +23,16 @@ class ManagerCommentaires extends ManagerDonnees
             'Modele\Entity\Commentaires', true);
     }
 
-    public function read($id)
+    public function readRefArticle($id)
     {
         $lecture = $this->prepare('SELECT * FROM commentaires WHERE art_id=?',[$id],
+            'Modele\Entity\Commentaires', true, true);
+        return $lecture;
+    }
+
+    public function read($id)
+    {
+        $lecture = $this->prepare('SELECT * FROM commentaires WHERE id=?',[$id],
             'Modele\Entity\Commentaires', true, true);
         return $lecture;
     }

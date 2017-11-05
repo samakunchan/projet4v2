@@ -1,7 +1,6 @@
 <?php
 session_start();
 \Controlleur\BackEnd\ControlleurAuthentification::controlSession();
-var_dump($_POST);
 ?>
 <div class="row articles">
     <div class="col-lg-12">
@@ -19,21 +18,9 @@ var_dump($_POST);
             <div class="comment">
                 <p>Auteur : <?php echo $commentaire->getAuteur()?></p>
                 <br>
-                <p>Contenu : <?php echo $commentaire->getContenu()?> <span>Date de publication : <?php echo $commentaire->getDateCreation()?></span></p>
+                <p> <?php echo $commentaire->getContenu()?> <span>Date de publication : <?php echo $commentaire->getDateCreation()?></span></p>
                 <br>
-                <p>
-                    <span>
-                        <a href="index.php?page=articles&action=modifcom&control=com&id=<?php echo $commentaire->getId();?>">Modifier</a>
-                    </span>
-                    -
-                    <span>
-                        <a href="index.php?page=articles&action=deletecom&control=com&id=<?php echo $commentaire->getId();?>">Supprimer</a>
-                    </span>
-                    -
-                    <span>
-                        <a href="index.php?page=articles&action=sigcomcontrol=com&&id=<?php echo $commentaire->getId();?>">Signaler ce commentaire</a>
-                    </span>
-                </p>
+                <?php \Controlleur\ControlleurCommentaires::gestionCommentaire($commentaire->getId(), $donnees[0]->getId()); ?>
             </div>
         <?php endforeach; ?>
         <?php else: ?>
@@ -41,6 +28,7 @@ var_dump($_POST);
     <?php endif; ?>
     </div>
 </div>
+<hr>
 <?php if ($_SESSION): ?>
     <form action="index.php?page=articles&action=createcom&control=com&id=<?php echo $donnees[0]->getId() ?>" method="post">
         <p>
