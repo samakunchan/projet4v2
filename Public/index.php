@@ -6,7 +6,10 @@
  * Time: 13:42
  */
 
+//require '../Modele/App/Autoloader.php';
+//\App\Autoloader::register();
 
+/*
 require '../Vue/Core/Vue.php';
 require '../Modele/App/App.php';
 
@@ -37,7 +40,12 @@ require '../Controlleur/BackEnd/ControlleurAuthentification.php';
 require '../Controlleur/BackEnd/ControlleurProfil.php';
 require '../Controlleur/ControlleurError.php';
 require '../Controlleur/Routeur/Routeur.php';
+*/
 
+function __autoload($class){
+    var_dump($class);
+    require '../'.$class.'.php';
+}
 use Controlleur\Routeur\Routeur;
 
 $siteWeb = new Routeur();

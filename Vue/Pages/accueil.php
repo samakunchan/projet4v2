@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start();
 \Controlleur\BackEnd\ControlleurAuthentification::controlSession(true);
 ?>
 <div class="row accueil">
