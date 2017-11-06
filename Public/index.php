@@ -5,9 +5,15 @@
  * Date: 16/10/2017
  * Time: 13:42
  */
+require '../Modele/App/Autoloader.php';
+Modele\App\Autoloader::register();
 
-//require '../Modele/App/Autoloader.php';
-//\App\Autoloader::register();
+use Controlleur\Routeur\Routeur;
+
+$siteWeb = new Routeur();
+$siteWeb->start();
+
+
 
 /*
 require '../Vue/Core/Vue.php';
@@ -41,15 +47,11 @@ require '../Controlleur/BackEnd/ControlleurProfil.php';
 require '../Controlleur/ControlleurError.php';
 require '../Controlleur/Routeur/Routeur.php';
 */
-
-function __autoload($class){
-    var_dump($class);
+/*
+function mon_autoloader($class){
     require '../'.$class.'.php';
 }
-use Controlleur\Routeur\Routeur;
-
-$siteWeb = new Routeur();
-$siteWeb->start();
+spl_autoload_register('mon_autoloader');*/
 
 
 

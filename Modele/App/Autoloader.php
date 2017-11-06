@@ -6,7 +6,7 @@
  * Time: 17:07
  */
 
-namespace App;
+namespace Modele\App;
 
 
 /**
@@ -17,7 +17,7 @@ class Autoloader{
     /**
      * Enregistre notre autoloader
      */
-    static function register(){
+    public static function register(){
         spl_autoload_register(array(__CLASS__, 'autoload'));
     }
 
@@ -25,8 +25,8 @@ class Autoloader{
      * Inclue le fichier correspondant à notre classe
      * @param $class string Le nom de la classe à charger
      */
-    static function autoload($class){
-        require __DIR__.'/' . $class . '.php';
+    public static function autoload($class){
+        require '../'.$class.'.php';
     }
 
 }
