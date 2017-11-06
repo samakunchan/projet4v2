@@ -79,6 +79,14 @@ class ControlleurError
                 if ($_POST['titre']!=='' && $_POST['contenu']!==''){
                     return '<div class="alert alert-success">Les données ont bien été mis à jour</div>';
                 }
+            }elseif ($_GET['action']==='modifcom'){
+                if($_POST['auteur']===''){
+                    return '<div class="alert alert-danger">Veuillez remplir tout les champs</div>';
+                }elseif ($_POST['contenu']===''){
+                    return '<div class="alert alert-danger">Veuillez remplir tout les champs</div>';
+                }elseif ($_POST['auteur']!=='' && $_POST['contenu']!==''){
+                    return '<div class="alert alert-success">Les données ont bien été mis à jour</div>';
+                }
             }
         }
     }

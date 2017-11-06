@@ -1,7 +1,7 @@
 <?php
 session_start();
 \Controlleur\BackEnd\ControlleurAuthentification::controlSession();
-
+var_dump($_POST);
 if ($donnees){
     foreach ($donnees as $donnee){
         $titre = $donnee->getTitre();

@@ -32,63 +32,61 @@ class ControlleurCommentaires
     public function traitement($action)
     {
         if ($action==='createcom'){
-            echo 'salut';
             $this->creerCommentaires();
         }elseif ($action==='modifcom'){
-            $donnees = $this->managerCom->read($_GET['id']);
+            $donnees = $this->managerCom->read($_GET['idcom']);
+            var_dump($donnees);
             $this->majCommentaires($donnees);
         }elseif ($action==='deletecom'){
-            $this->delete($_GET['id']);
+            $this->delete($_GET['idcom']);
+        }
+    }
+
+    public function creerCommentaires()
+    {
+        if (!array(empty($_POST))){
+            $this->commentaires->setAuteur($_POST['auteur']);
+            $this->commentaires->setContenu($_POST['contenu']);
+            $this->commentaires->setArtId($_GET['id']);
+            $this->managerCom->create($this->commentaires);
+            Routeur::redirection('articles&control=art&id='.$_GET['id']);
+        }else{
+            echo '<div>Veuillez saisir un commentaire <span><a href="index.php?page=articles&control=art&id='.$_GET['id'].'">Retour</a></span></div>';
         }
     }
 
     public function majCommentaires($donnees)
     {
         $this->vueCom->genererPages([$donnees]);
-        if ($_POST){
+        if (!array(empty($_POST))){
             $this->commentaires->setAuteur($_POST['auteur']);
             $this->commentaires->setContenu($_POST['contenu']);
             $this->managerCom->update($this->commentaires);
         }
     }
 
-    public function creerCommentaires()
-    {
-        if ($_POST){
-            $this->commentaires->setAuteur($_POST['auteur']);
-            $this->commentaires->setContenu($_POST['contenu']);
-            $this->commentaires->setArtId($_GET['id']);
-            $this->managerCom->create($this->commentaires);
-            Routeur::redirection('articles&control=art&id='.$_GET['id']);
-        }
-    }
-
     public function delete($id)
     {
         $this->managerCom->delete($id);
+        Routeur::redirection('articles&control=art&id='.$_GET['id']);
     }
 
-    public static function gestionCommentaire($idcom, $ref)
+    public static function gestionCommentaire($idcom)
     {
         $manager = new ManagerMembres();
         $managerCom = new ManagerCommentaires();
         if ($_SESSION){
             $res= $manager->read($_SESSION['pseudo']);
             $rescom = $managerCom->read($idcom);
-            var_dump($ref);
             if ($res->getPseudo()=== $rescom->getAuteur() ):
                 ?>
                 <p>
                     <span>
-                        <a href="index.php?page=articles&action=modifcom&control=com&id=<?php echo $rescom->getId();?>">Modifier</a>
+                        <a href="index.php?page=articles&action=modifcom&control=com&id=<?php echo $_GET['id']?>&idcom=<?php echo $rescom->getId();?>">Editer</a>
                     </span>
             -
                     <span>
-                        <a href="index.php?page=articles&action=deletecom&control=com&id=<?php echo $rescom->getId();?>">Supprimer</a>
-                    </span>
-            -
-                    <span>
-                        <a href="index.php?page=articles&action=sigcomcontrol=com&&id=<?php echo $rescom->getId();?>">Signaler ce commentaire</a>
+                        <a href="index.php?page=articles&action=sigcomcontrol=com&id=<?php echo $_GET['id']?>&idcom=<?php echo $rescom->getId();?>">Signaler ce commentaire</a>
                     </span>
                 </p>
                 <?php endif;

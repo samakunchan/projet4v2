@@ -1,6 +1,7 @@
 <?php
 session_start();
 \Controlleur\BackEnd\ControlleurAuthentification::controlSession();
+var_dump($_POST);
 ?>
 <div class="row articles">
     <div class="col-lg-12">
@@ -20,7 +21,7 @@ session_start();
                 <br>
                 <p> <?php echo $commentaire->getContenu()?> <span>Date de publication : <?php echo $commentaire->getDateCreation()?></span></p>
                 <br>
-                <?php \Controlleur\ControlleurCommentaires::gestionCommentaire($commentaire->getId(), $donnees[0]->getId()); ?>
+                <?php \Controlleur\ControlleurCommentaires::gestionCommentaire($commentaire->getId()); ?>
             </div>
         <?php endforeach; ?>
         <?php else: ?>

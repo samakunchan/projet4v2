@@ -40,25 +40,41 @@ class ControlleurArticles
         }
     }
 
-    public function majArticles($donnees)
-    {
-        $this->traitement->genererPages([$donnees]);
-        if ($_POST){
-            $this->articles->setTitre($_POST['titre']);
-            $this->articles->setContenu($_POST['contenu']);
-            $this->managerArt->update($this->articles);
-        }
-    }
     public function creerArticles()
     {
         $this->traitement->genererPages();
         if ($_POST){
-            $this->articles->setTitre($_POST['titre']);
-            $this->articles->setContenu($_POST['contenu']);
-            $this->managerArt->create($this->articles);
-            Routeur::redirection('admin');
+            if ($_POST['titre']===''){
+                return false;
+            }elseif( $_POST['contenu'] ===''){
+                return false;
+            }else{
+                $this->articles->setTitre($_POST['titre']);
+                $this->articles->setContenu($_POST['contenu']);
+                $this->managerArt->create($this->articles);
+                Routeur::redirection('admin');
+            }
         }
+        return true;
     }
+
+    public function majArticles($donnees)
+    {
+        $this->traitement->genererPages([$donnees]);
+        if ($_POST){
+            if ($_POST['titre']===''){
+                return false;
+            }elseif( $_POST['contenu'] ===''){
+                return false;
+            }else{
+                $this->articles->setTitre($_POST['titre']);
+                $this->articles->setContenu($_POST['contenu']);
+                $this->managerArt->update($this->articles);
+            }
+        }
+        return true;
+    }
+
 
     public function delete()
     {

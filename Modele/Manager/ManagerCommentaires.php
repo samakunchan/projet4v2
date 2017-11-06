@@ -37,13 +37,6 @@ class ManagerCommentaires extends ManagerDonnees
         return $lecture;
     }
 
-    public function readLastOne()
-    {
-        $lecture =$this->query('SELECT * FROM commentaires ORDER BY id DESC LIMIT 1',
-            'Modele\Entity\Commentaires');
-        return $lecture;
-    }
-
     public function readAll($id)
     {
         $lecture = $this->prepare('SELECT * FROM commentaires WHERE art_id=?',[$id],
@@ -56,7 +49,7 @@ class ManagerCommentaires extends ManagerDonnees
         $this->prepare('UPDATE commentaires SET auteur = :auteur,contenu = :contenu, 
         date_creation = now() WHERE id= :id',
             [
-                'id' => $_GET['id'],
+                'id' => $_GET['idcom'],
                 'auteur' => $valeurs->getAuteur(),
                 'contenu' => $valeurs->getContenu()
             ],
