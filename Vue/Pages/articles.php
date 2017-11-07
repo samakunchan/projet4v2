@@ -1,10 +1,9 @@
 <?php
 session_start();
 \Controlleur\BackEnd\ControlleurAuthentification::controlSession();
-var_dump($_POST);
 ?>
 <div class="row articles">
-    <div class="col-lg-12">
+    <div class="col-lg-12 texte">
         <h2 class="col-lg-offset-4">
             <?php echo $donnees[0]->getTitre(); ?> <span>Publié le : <?php echo $donnees[0]->getDateCreation()?></span>
         </h2>
@@ -16,10 +15,10 @@ var_dump($_POST);
     <div class="col-lg-12">
     <?php if ($donnees[1]): ?>
         <?php foreach ($donnees[1] as $commentaire):;?>
-            <div class="comment">
-                <p>Auteur : <?php echo $commentaire->getAuteur()?></p>
+            <div class="comment row">
+                <p class="col-lg-3">Auteur : <?php echo $commentaire->getAuteur()?></p>
                 <br>
-                <p> <?php echo $commentaire->getContenu()?> <span>Date de publication : <?php echo $commentaire->getDateCreation()?></span></p>
+                <p class="col-lg-12"> <?php echo $commentaire->getContenu()?> <span>Date de publication : <?php echo $commentaire->getDateCreation()?></span></p>
                 <br>
                 <?php \Controlleur\ControlleurCommentaires::gestionCommentaire($commentaire->getId()); ?>
             </div>

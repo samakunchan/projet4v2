@@ -84,12 +84,12 @@ class ControlleurCommentaires
                     <span>
                         <a href="index.php?page=articles&action=modifcom&control=com&id=<?php echo $_GET['id']?>&idcom=<?php echo $rescom->getId();?>">Editer</a>
                     </span>
-            -
-                    <span>
+                <?php endif;?>
+                    <span class="col-lg-offset-9">
                         <a href="index.php?page=articles&action=sigcomcontrol=com&id=<?php echo $_GET['id']?>&idcom=<?php echo $rescom->getId();?>">Signaler ce commentaire</a>
                     </span>
                 </p>
-                <?php endif;
+<?php
         }
     }
 }

@@ -2,7 +2,7 @@ $(document).ready(function () {
     tinymce.init({
         selector : "textarea",
         theme: "modern",
-        height: 400,
+        height: 200,
         width: "100%",
         plugins: [  "advlist autolink link image lists charmap print preview hr anchor pagebreak" +
         " searchreplace wordcount visualblocks visualchars insertdatetime media nonbreaking table contextmenu" +

@@ -82,15 +82,16 @@ body{
 .accueil a{
     color: #2aabd2;
 }
-.articles{
-    margin-top: 50px;
-}
+
 .chapitres h1{
     margin-bottom: 0;
 }
+.articles .texte{
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
 table{
     background-color: rgba(255, 255, 255, 0.6);
-
 }
 td{
     padding: 15px;
@@ -107,12 +108,16 @@ footer{
 h1{
     font-size: 60px;
     text-align: center;
-    margin-bottom: 80px;
+    margin-bottom: 50px;
     margin-top: 20px;
 }
 h2{
     font-size: 30px;
     margin-left: 15px;
+    font-weight: bold;
+}
+h2 span{
+    font-size: 15px;
 }
 input{
     width: 100%;
@@ -180,10 +185,7 @@ article{
 .subco p{
     margin: 0;
 }
-.deco{
-color: black;
-    line-height: 50px;
-}
+
 .fa-sign-out{
     font-size: 20px;
 }
@@ -207,8 +209,20 @@ color: black;
     margin-left: 16px;
 }
 .comment{
-    background-color: rgba(255, 255, 255, 0.6) ;
+    background-color: rgb(255, 255, 255) ;
     box-shadow: 3px 3px 3px rgba(1, 1, 1, 0.6);
+    margin: 1px;
+    padding: 5px;
+}
+.extrait{
+    background-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 3px 3px 3px rgba(1, 1, 1, 0.6);
+    margin-top: 80px;
+}
+.tb, .deco{
+    line-height: 50px;
+    font-size: 25px;
+    background-color: rgba(50,147,111, 0.6) ;
 }
 
 

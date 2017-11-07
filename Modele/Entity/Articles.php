@@ -91,8 +91,8 @@ class Articles
      */
     public function getExtrait()
     {
-        $this->extrait = substr($this->contenu, 0,150);
-        return $this->extrait.'...';
+        $this->extrait = substr($this->contenu, 0,1050);
+        return $this->extrait;
     }
 
     /**
