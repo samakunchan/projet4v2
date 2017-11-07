@@ -83,7 +83,8 @@ class Articles
      */
     public function getDateCreation()
     {
-        return $this->date_creation;
+        $date = date_create($this->date_creation);
+        return date_format($date, 'd/m/Y à H:i:s');
     }
 
     /**

@@ -72,8 +72,8 @@ class ControlleurAuthentification
                 echo '<p class="col-lg-3 tb"> <a href="index.php?page=admin&action=tb">Tableau de bord</a></p>';
                 echo '<p class="col-lg-1 deco"> <a href="index.php?page=deco" title="Déconnection"><span class="glyphicon glyphicon-log-out"></span></a></p>';
             }elseif ($_SESSION['pseudo']!=='admin'){
-                echo '<p class="col-lg-3 tb"> <a href="index.php?page=users&action=tb" title="Déconnection"><span class="glyphicon glyphicon-log-out"></span></a></p>';
-                echo '<p class="col-lg-1 deco"> <a href="index.php?page=deco">Déconnection</a></p>';
+                echo '<p class="col-lg-3 tb"> <a href="index.php?page=users&action=tb">Tableau de bord</a></p>';
+                echo '<p class="col-lg-1 deco"> <a href="index.php?page=deco" title="Déconnection"><span class="glyphicon glyphicon-log-out"></span></a></p>';
             }
         }elseif ($acceuil){
             echo '<p class="col-lg-4 tb"><a href="index.php?page=form">S\'inscrire/Se connecter</a></p>';

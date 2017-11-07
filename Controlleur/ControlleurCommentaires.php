@@ -35,7 +35,6 @@ class ControlleurCommentaires
             $this->creerCommentaires();
         }elseif ($action==='modifcom'){
             $donnees = $this->managerCom->read($_GET['idcom']);
-            var_dump($donnees);
             $this->majCommentaires($donnees);
         }elseif ($action==='deletecom'){
             $this->delete($_GET['idcom']);
@@ -44,24 +43,28 @@ class ControlleurCommentaires
 
     public function creerCommentaires()
     {
-        if (!array(empty($_POST))){
-            $this->commentaires->setAuteur($_POST['auteur']);
-            $this->commentaires->setContenu($_POST['contenu']);
-            $this->commentaires->setArtId($_GET['id']);
-            $this->managerCom->create($this->commentaires);
-            Routeur::redirection('articles&control=art&id='.$_GET['id']);
-        }else{
-            echo '<div>Veuillez saisir un commentaire <span><a href="index.php?page=articles&control=art&id='.$_GET['id'].'">Retour</a></span></div>';
+        if ($_POST){
+            if ($_POST['contenu']!==''){
+                $this->commentaires->setAuteur($_POST['auteur']);
+                $this->commentaires->setContenu($_POST['contenu']);
+                $this->commentaires->setArtId($_GET['id']);
+                $this->managerCom->create($this->commentaires);
+                Routeur::redirection('articles&control=art&id='.$_GET['id']);
+            }else{
+                echo '<div>Veuillez saisir un commentaire <span><a href="index.php?page=articles&control=art&id='.$_GET['id'].'">Retour</a></span></div>';
+            }
         }
     }
 
     public function majCommentaires($donnees)
     {
         $this->vueCom->genererPages([$donnees]);
-        if (!array(empty($_POST))){
-            $this->commentaires->setAuteur($_POST['auteur']);
-            $this->commentaires->setContenu($_POST['contenu']);
-            $this->managerCom->update($this->commentaires);
+        if ($_POST) {
+            if (isset($_POST['contenu']) !== '') {
+                $this->commentaires->setAuteur($_POST['auteur']);
+                $this->commentaires->setContenu($_POST['contenu']);
+                $this->managerCom->update($this->commentaires);
+            }
         }
     }
 

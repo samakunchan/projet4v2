@@ -27,7 +27,6 @@ class Commentaires
         return $this;
     }
 
-
     /**
      * @param mixed $auteur
      * @return Commentaires
@@ -49,16 +48,6 @@ class Commentaires
     }
 
     /**
-     * @param mixed $date_creation
-     * @return Commentaires
-     */
-    public function setDateCreation($date_creation)
-    {
-        $this->date_creation = $date_creation;
-        return $this;
-    }
-
-    /**
      * @return mixed
      */
     public function getId()
@@ -73,7 +62,6 @@ class Commentaires
     {
         return $this->art_id;
     }
-
 
     /**
      * @return mixed
@@ -96,7 +84,8 @@ class Commentaires
      */
     public function getDateCreation()
     {
-        return $this->date_creation;
+        $date = date_create($this->date_creation);
+        return date_format($date, 'd/m/Y à H:i:s');
     }
 
 
