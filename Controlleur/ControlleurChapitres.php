@@ -50,4 +50,22 @@ class ControlleurChapitres
         return ceil(self::total()/self::articlesParPages());
     }
 
+    public static function suivante()
+    {
+        if ($_GET['p']<self::nombreArticlesParPages()){
+            $p = $_GET['p']+1;
+            return '<span class="col-lg-offset-8"><a href="index.php?page=chapitres&p='.$p.'"> Suivante</a></span>';
+        }
+    }
+    public static function precedente()
+    {
+        if ($_GET['p']<=0){
+            $p = 1;
+            return '<span class="col-lg-3"><a href="index.php?page=chapitres&p='.$p.'">Précédente </a></span>';
+        }elseif ($_GET['p']<=self::nombreArticlesParPages()){
+            $p = $_GET['p']-1;
+            return '<span class="col-lg-3"><a href="index.php?page=chapitres&p='.$p.'"> Précédente</a></span>';
+        }
+    }
+
 }

@@ -21,9 +21,8 @@ ControlleurAuthentification::controlSession();
                 </li>
             <?php endforeach; ?>
         </ol>
-        <?php
-        for ($i=1; $i<=ControlleurChapitres::nombreArticlesParPages(); $i++){
-            echo '<span> <a href="index.php?page=chapitres&p='.$i.'">Page'. $i .'</a> </span>';
-        } ?>
+        <div class="col-lg-12 pagination">
+            <?php echo ControlleurChapitres::precedente(); echo ControlleurChapitres::suivante();?>
+        </div>
     </div>
 </div>
