@@ -5,8 +5,8 @@ use Controlleur\ControlleurChapitres;
 ControlleurAuthentification::controlSession();
 ?>
 <div class="row chapitres">
-    <h1>Liste de tout les chapitres</h1>
-    <div class="col-lg-12">
+    <h1 class="col-lg-12">Liste de tout les chapitres</h1>
+    <div class="col-lg-12 chap">
         <ol>
             <?php foreach ($donnees as $donnee) :; ?>
                 <li>

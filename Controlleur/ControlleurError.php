@@ -62,14 +62,24 @@ class ControlleurError
                     return '<div class="alert alert-danger">Veuillez remplir tout les champs</div>';
                 }
             }elseif ($_GET['action']==='edit'){
-                if($_POST['pseudo']===''){
-                    return '<div class="alert alert-danger">Veuillez remplir tout les champs</div>';
-                }elseif ($_POST['password']===''){
-                    return '<div class="alert alert-danger">Veuillez remplir tout les champs</div>';
-                }elseif ($_POST['email']===''){
-                    return '<div class="alert alert-danger">Veuillez remplir tout les champs</div>';
-                }elseif ($_POST['pseudo']!=='' && $_POST['email']!=='' && $_POST['password']!=='' && $_POST['passwordConf']!==''){
-                    return '<div class="alert alert-success">Les données ont bien été mis à jour</div>';
+                if ($_GET['page']==='articles'){
+                    if($_POST['pseudo']===''){
+                        return '<div class="alert alert-danger">Veuillez remplir tout les champs</div>';
+                    }elseif ($_POST['password']===''){
+                        return '<div class="alert alert-danger">Veuillez remplir tout les champs</div>';
+                    }elseif ($_POST['email']===''){
+                        return '<div class="alert alert-danger">Veuillez remplir tout les champs</div>';
+                    }elseif ($_POST['pseudo']!=='' && $_POST['email']!=='' && $_POST['password']!=='' && $_POST['passwordConf']!==''){
+                        return '<div class="alert alert-success">Les données ont bien été mis à jour</div>';
+                    }
+                }elseif ($_GET['page']=== 'biographie') {
+                    if ($_POST['titre'] === '') {
+                        return '<div class="alert alert-danger">Veuillez remplir tout les champs</div>';
+                    } elseif ($_POST['contenu'] === '') {
+                        return '<div class="alert alert-danger">Veuillez remplir tout les champs</div>';
+                    }elseif ($_POST['titre']!=='' && $_POST['contenu']!==''){
+                        return '<div class="alert alert-success">Les données ont bien été mis à jour</div>';
+                    }
                 }
             }elseif ($_GET['page']==='article'){
                 if ($_GET['action']==='delete'){

@@ -95,7 +95,7 @@ $config = array(
 	| DO NOT put inside upload folder
 	|
 	*/
-	'thumbs_base_path' => '../projet4v2/Public/src/thumbs/',
+	'thumbs_base_path' => '../thumbs/',
 
 
 	/*

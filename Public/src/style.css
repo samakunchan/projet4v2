@@ -83,10 +83,7 @@ body{
     color: #2aabd2;
 }
 
-.chapitres h1{
-    margin-bottom: 0;
-}
-.articles .texte{
+.articles .texte, .bio, .chap{
     background-color: rgba(255, 255, 255, 0.6);
 }
 
@@ -224,6 +221,13 @@ article{
     font-size: 25px;
     background-color: rgba(50,147,111, 0.6) ;
 }
-
+.chap p{
+    font-size: 20px;
+    padding: 5px;
+    box-shadow: 3px 3px 3px rgba(1, 1, 1, 0.6);
+}
+ol{
+    padding-left: 10px;
+}
 
 
