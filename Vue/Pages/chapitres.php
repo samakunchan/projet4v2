@@ -7,22 +7,51 @@ ControlleurAuthentification::controlSession();
 <div class="row chapitres">
     <h1 class="col-lg-12">Liste de tout les chapitres</h1>
     <div class="col-lg-12 chap">
-        <ol>
+
+        <table class=" panel-default col-lg-12">
+            <tr class="panel">
+                <td class="col-lg-8 tdart">
+                    <h3>
+                        Articles
+                    </h3>
+                </td>
+                <td class="col-lg-4 tdcreate">
+                    <h3>
+                        Date de création
+                    </h3>
+                </td>
+            </tr>
             <?php foreach ($donnees as $donnee) :; ?>
-                <li>
+            <tr class="panel" >
+                <td class="col-lg-8">
                     <p>
                         <a href="index.php?page=articles&id=<?php echo $donnee->getId();?>">
                             <?php echo $donnee->getTitre();?>
                         </a>
-                        <span class="col-lg-offset-1">
-                            Articles créé le : <?php echo $donnee->getDateCreation()?>
+                    </p>
+                </td>
+                <td class="col-lg-4">
+                    <p>
+                        <span class="">
+                             <?php echo $donnee->getDateCreation()?>
                         </span>
                     </p>
-                </li>
+                </td>
+            </tr>
             <?php endforeach; ?>
-        </ol>
-        <div class="col-lg-12 pagination">
-            <?php echo ControlleurChapitres::precedente(); echo ControlleurChapitres::suivante();?>
+        </table>
+        <div class="row pagination">
+            <table class="col-lg-12">
+                <tr >
+                    <td class="col-lg-1 btn-primary">
+                        <?php echo ControlleurChapitres::precedente(); ?>
+                    </td>
+                    <td class="col-lg-1 btn-primary ">
+                        <?php  echo ControlleurChapitres::suivante();?>
+                    </td>
+                </tr>
+            </table>
+
         </div>
     </div>
 </div>
