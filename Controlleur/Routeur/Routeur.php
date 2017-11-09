@@ -86,8 +86,6 @@ class Routeur
                     if ($_GET['control']==='art'){
                         $this->articles->traitement($_GET['action']);
                     }elseif ($_GET['control']==='com'){
-                        //var_dump($_GET['action']);
-                        //var_dump($_GET['control']);
                         $this->commentaires->traitement($_GET['action']);
                     }
                 }

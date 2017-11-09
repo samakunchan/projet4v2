@@ -45,9 +45,7 @@ class Vue
     {
         if ($donnees){
             ob_start();
-            require $this->fichier;
             $contenu = ob_get_clean();
-            require $this->gabarit;
         }
     }
 

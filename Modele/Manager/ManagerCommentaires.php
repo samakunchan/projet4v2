@@ -38,10 +38,16 @@ class ManagerCommentaires extends ManagerDonnees
         return $lecture;
     }
 
-    public function readAll($id)
+    public function readAll($id=false)
     {
         $lecture = $this->prepare('SELECT * FROM commentaires WHERE art_id=?',[$id],
             'Modele\Entity\Commentaires', false, true);
+        return $lecture;
+    }
+
+    public function readAllSignalement()
+    {
+        $lecture = $this->query('SELECT * FROM commentaires WHERE signaler=1 ORDER BY id DESC ', 'Modele\Entity\Commentaires');
         return $lecture;
     }
 

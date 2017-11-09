@@ -28,6 +28,7 @@ use Controlleur\ControlleurContact;
                 <a href="index.php?page=profil&action=edit">Voir/Editer le profil</a>
             </div>
         </div>
+        <hr class="col-lg-12">
         <div class="col-lg-12">
 
             <table class=" panel-default">
@@ -43,7 +44,7 @@ use Controlleur\ControlleurContact;
                         <a href="index.php?page=articles&action=create&control=art" class="col-lg-offset-2">Créer un article</a>
                     </td>
                 </tr>
-            <?php foreach ($donnees as $donnee) :; ?>
+            <?php foreach ($donnees[0] as $donnee) :; ?>
 
                 <tr >
                     <td class="col-lg-10">
@@ -63,8 +64,33 @@ use Controlleur\ControlleurContact;
                     </td>
                 </tr>
 
-            <?php endforeach; ?>
+            <?php endforeach;  ?>
             </table>
         </div>
+        <hr class="col-lg-12">
     </nav>
+    <?php if ($donnees[1]) :?>
+    <nav class="row">
+        <div class="col-lg-12" id="signal">
+            <h2>Article signaler</h2>
+            <?php if ($donnees[1]): ?>
+                <?php foreach ($donnees[1] as $commentaire):;?>
+                    <div class="comment row">
+                        <p class="col-lg-3">Auteur : <?php echo $commentaire->getAuteur()?></p>
+                        <br>
+                        <p class="col-lg-12"> <?php echo $commentaire->getContenu()?> <span>Date de publication : <?php echo $commentaire->getDateCreation()?></span></p>
+                        <br>
+                        <p>
+                            <a href="index.php?page=articles&action=deletecom&control=com&id=admin&idcom=<?php echo $commentaire->getId();?>">Supprimer</a>
+                            <?php ControlleurCommentaires::boutonSignale($commentaire->getId(),$commentaire->getSignaler());?>
+                        </p>
+
+                    </div>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <p>Il n'y a pas de commentaire pour cet article...</p>
+            <?php endif; ?>
+        </div>
+    </nav>
+    <?php endif; ?>
 </section>

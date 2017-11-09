@@ -79,8 +79,15 @@ class ControlleurCommentaires
     public function delete($id)
     {
         self::$managerCom->delete($id);
-        Routeur::redirection('articles&control=art&id='.$_GET['id']);
-        exit();
+        if (isset($_GET['id'])){
+            if ($_GET['id']==='admin'){
+                Routeur::redirection('admin');
+                exit();
+            }else{
+                Routeur::redirection('articles&control=art&id='.$_GET['id']);
+                exit();
+            }
+        }
     }
 
 
@@ -128,14 +135,12 @@ class ControlleurCommentaires
     public static function totalSignalement()
     {
         $res = self::$managerCom->getTotalSigalement();
-        //var_dump($res[0]->getnbCom());
         if ($res[0]->getnbCom()!=='0'){
             echo $res[0]->getnbCom();
-            echo '<br><span><a href="#">Voir</a></span>';
-            return true;
+            echo '<br><span><a href="#signal">Voir</a></span>';
+            return null;
         }else{
-            echo $res[0]->getnbCom();
-            return true;
+            return $res[0]->getnbCom();
         }
     }
 }

@@ -16,20 +16,23 @@ use Modele\App\App;
 use Modele\Entity\Articles;
 use Modele\Manager\ManagerArticles;
 use Modele\Manager\ManagerBiographie;
+use Modele\Manager\ManagerCommentaires;
 use Vue\Core\Vue;
 class ControlleurAdmin
 {
     private $vue;
-    private $manager;
+    private $managerArt;
     private $articles;
     private $managerBio;
+    private $managerCom;
 
     public function __construct()
     {
         $this->vue = new Vue('admin');
         $this->articles =new Articles();
-        $this->manager = new ManagerArticles();
+        $this->managerArt = new ManagerArticles();
         $this->managerBio = new ManagerBiographie();
+        $this->managerCom = new ManagerCommentaires();
     }
 
     public function administration()
@@ -44,25 +47,13 @@ class ControlleurAdmin
                 }else{
                     $pageActuel= 1;
                 }
-                $donnees = $this->manager->readAll($pageActuel, ControlleurChapitres::articlesParPages() );
-                if ($_POST){
-                    if ($_POST['art']==='art'){
-                        $this->creerArticles();
-                    }elseif ($_POST['bio']==='bio'){
-                        $this->gererBiographie();
-                    }
-                }
+                $donnees = $this->managerArt->readAll($pageActuel, ControlleurChapitres::articlesParPages());
             }
-            $this->vue->genererPages($donnees);
+            $donneesCom = $this->managerCom->readAllSignalement();
+            $this->vue->genererPages([$donnees, $donneesCom]);
         }else{
             ControlleurError::accesInterdit();
         }
     }
 
-    public function creerArticles()
-    {
-        $this->articles->setTitre($_POST['titre']);
-        $this->articles->setContenu($_POST['contenu']);
-        $this->manager->create($this->articles);
-    }
 }
