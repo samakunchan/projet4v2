@@ -1,4 +1,3 @@
-<?php session_start();  ?>
 <article class="row contact">
     <form id="formContact" action="index.php?page=contact" method="post" class="col-lg-12 ">
         <label for="pseudo"> Nom</label>

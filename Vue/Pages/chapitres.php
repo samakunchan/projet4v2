@@ -1,5 +1,4 @@
 <?php
-session_start();
 use Controlleur\BackEnd\ControlleurAuthentification;
 use Controlleur\ControlleurChapitres;
 ControlleurAuthentification::controlSession();

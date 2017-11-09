@@ -1,5 +1,4 @@
 <?php
-session_start();
 \Controlleur\BackEnd\ControlleurAuthentification::controlSession();
 foreach ($donnees as $donnee): ?>
 <div class="col-lg-12"><?php echo \Controlleur\ControlleurError::messageErreur();?></div>

@@ -1,5 +1,4 @@
 <?php
-session_start();
 use Controlleur\ControlleurCommentaires;
 use Controlleur\BackEnd\ControlleurAuthentification;
 ControlleurAuthentification::controlSession();

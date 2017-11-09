@@ -1,10 +1,3 @@
-<?php session_start();
-//var_dump($_POST);
-//var_dump(empty($_POST['pseudo']));
-//var_dump(empty($_POST['password']));
-//var_dump(empty($_POST['email']));
-//var_dump(empty($_POST['email']));
-?>
 <div><?php echo \Controlleur\ControlleurError::messageErreur();?></div>
 <aside class="row">
     <nav class="col-lg-offset-4 col-lg-8">

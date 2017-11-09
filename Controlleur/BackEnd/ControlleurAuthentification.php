@@ -32,7 +32,6 @@ class ControlleurAuthentification
             if ($users->getPassword()=== sha1($password)){
                 session_start();
                 $_SESSION['pseudo']= $users->getPseudo();
-                $_SESSION['email']= $users->getEmail();
                 if($users->getPseudo()=== 'admin'){
                     Routeur::redirection('admin&action=tb&id='.$users->getId());
                 }elseif ($users->getPseudo()!== 'admin'){
@@ -67,16 +66,34 @@ class ControlleurAuthentification
 
     public static function controlSession($acceuil = false)
     {
-        if ($_SESSION){
-            if($_SESSION['pseudo']==='admin'){
-                echo '<p class="col-lg-3 tb"> <a href="index.php?page=admin&action=tb">Tableau de bord</a></p>';
-                echo '<p class="col-lg-1 deco"> <a href="index.php?page=deco" title="Déconnection"><span class="glyphicon glyphicon-log-out"></span></a></p>';
-            }elseif ($_SESSION['pseudo']!=='admin'){
-                echo '<p class="col-lg-3 tb"> <a href="index.php?page=users&action=tb">Tableau de bord</a></p>';
-                echo '<p class="col-lg-1 deco"> <a href="index.php?page=deco" title="Déconnection"><span class="glyphicon glyphicon-log-out"></span></a></p>';
+        if (isset($_GET['page'])){
+            if ($_GET['page']!=='admin' && $_GET['page']!=='profil'){
+                session_start();
+                if ($_SESSION){
+                    if($_SESSION['pseudo']==='admin'){
+                        echo '<p class="col-lg-3 tb"> <a href="index.php?page=admin&action=tb">Tableau de bord</a></p>';
+                        echo '<p class="col-lg-1 deco"> <a href="index.php?page=deco" title="Déconnection"><span class="glyphicon glyphicon-log-out"></span></a></p>';
+                    }elseif ($_SESSION['pseudo']!=='admin'){
+                        echo '<p class="col-lg-3 tb"> <a href="index.php?page=users&action=tb">Tableau de bord</a></p>';
+                        echo '<p class="col-lg-1 deco"> <a href="index.php?page=deco" title="Déconnection"><span class="glyphicon glyphicon-log-out"></span></a></p>';
+                    }
+                }elseif ($acceuil){
+                    echo '<p class="col-lg-4 tb"><a href="index.php?page=form">S\'inscrire/Se connecter</a></p>';
+                }
+            }else{
+                if ($_SESSION){
+                    if($_SESSION['pseudo']==='admin'){
+                        echo '<p class="col-lg-3 tb"> <a href="index.php?page=admin&action=tb">Tableau de bord</a></p>';
+                        echo '<p class="col-lg-1 deco"> <a href="index.php?page=deco" title="Déconnection"><span class="glyphicon glyphicon-log-out"></span></a></p>';
+                    }elseif ($_SESSION['pseudo']!=='admin'){
+                        echo '<p class="col-lg-3 tb"> <a href="index.php?page=users&action=tb">Tableau de bord</a></p>';
+                        echo '<p class="col-lg-1 deco"> <a href="index.php?page=deco" title="Déconnection"><span class="glyphicon glyphicon-log-out"></span></a></p>';
+                    }
+                }elseif ($acceuil){
+                    echo '<p class="col-lg-4 tb"><a href="index.php?page=form">S\'inscrire/Se connecter</a></p>';
+                }
             }
-        }elseif ($acceuil){
-            echo '<p class="col-lg-4 tb"><a href="index.php?page=form">S\'inscrire/Se connecter</a></p>';
         }
+
     }
 }

@@ -1,5 +1,4 @@
 <?php
-session_start();
 \Controlleur\BackEnd\ControlleurAuthentification::controlSession();
 var_dump($_POST);
 if ($donnees){
