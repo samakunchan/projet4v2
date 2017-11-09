@@ -1,14 +1,17 @@
 <?php
 \Controlleur\BackEnd\ControlleurAuthentification::controlSession();
 use Controlleur\ControlleurChapitres;
+use Controlleur\ControlleurCommentaires;
+use Controlleur\ControlleurContact;
+
 ?>
 <div class="col-lg-12"><?php echo \Controlleur\ControlleurError::messageErreur();?></div>
 <section id="sectionAdmin">
     <nav id="bord" class="row bord">
         <h2 class="col-lg-12">Résumé</h2>
-        <p class="col-lg-3">Nombres d'articles créé : <?php echo ControlleurChapitres::total()?></p>
-        <p class="col-lg-3">Signalement reçut : </p>
-        <p class="col-lg-3">Message reçut : <?php \Controlleur\ControlleurContact::total() ?> </p>
+        <p class="col-lg-3">Nombres d'articles créé : <?php echo ControlleurChapitres::total();?></p>
+        <p class="col-lg-3">Signalement reçut : <?php echo ControlleurCommentaires::totalSignalement();?> </p>
+        <p class="col-lg-3">Message reçut : <?php ControlleurContact::total(); ?> </p>
     </nav>
     <nav id="voir" class="row">
         <div class="col-lg-5">

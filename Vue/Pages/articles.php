@@ -1,6 +1,9 @@
 <?php
 session_start();
-\Controlleur\BackEnd\ControlleurAuthentification::controlSession();
+use Controlleur\ControlleurCommentaires;
+use Controlleur\BackEnd\ControlleurAuthentification;
+ControlleurAuthentification::controlSession();
+
 ?>
 <div class="row articles">
     <div class="col-lg-12 texte">
@@ -20,7 +23,14 @@ session_start();
                 <br>
                 <p class="col-lg-12"> <?php echo $commentaire->getContenu()?> <span>Date de publication : <?php echo $commentaire->getDateCreation()?></span></p>
                 <br>
-                <?php \Controlleur\ControlleurCommentaires::gestionCommentaire($commentaire->getId()); ?>
+                <p>
+                    <?php
+                    ControlleurCommentaires::gestionCommentaire($commentaire->getId());
+                    ControlleurCommentaires::boutonSignale($commentaire->getId(),$commentaire->getSignaler());
+                    var_dump($commentaire->getSignaler());
+                    ?>
+                </p>
+
             </div>
         <?php endforeach; ?>
         <?php else: ?>

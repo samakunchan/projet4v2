@@ -16,6 +16,8 @@ class Commentaires
     private $contenu;
     private $date_creation;
     private $art_id;
+    private $signaler;
+    private $nbCom;
 
     /**
      * @param mixed $art_id
@@ -88,6 +90,30 @@ class Commentaires
         return date_format($date, 'd/m/Y à H:i:s');
     }
 
+    /**
+     * @return mixed
+     */
+    public function getSignaler()
+    {
+        return (int) $this->signaler;
+    }
 
+    /**
+     * @param mixed $signaler
+     * @return Commentaires
+     */
+    public function setSignaler($signaler)
+    {
+        $this->signaler = $signaler;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNbCom()
+    {
+        return $this->nbCom;
+    }
 
 }

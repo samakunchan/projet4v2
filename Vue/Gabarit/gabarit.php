@@ -23,7 +23,7 @@
             rel="stylesheet"
             href="src/style.css">
     <script
-            src="../Public/src/js/formulaire/outils.js">
+            src="src/js/formulaire/outils.js">
 
     </script>
     <title>JFR2</title>
@@ -49,8 +49,8 @@
 
 </div>
 
-<script type="text/javascript" src='../Public/src/js/tinymce/tinymce.min.js'></script>
-<script type="text/javascript" src="../Public/src/js/global.js"></script>
+<script type="text/javascript" src='src/js/tinymce/tinymce.min.js'></script>
+<script type="text/javascript" src="src/js/global.js"></script>
 
 </body>
 </html>

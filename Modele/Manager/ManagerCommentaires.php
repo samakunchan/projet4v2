@@ -13,12 +13,13 @@ class ManagerCommentaires extends ManagerDonnees
 {
     public function create($valeurs)
     {
-        $this->prepare('INSERT INTO commentaires(auteur ,contenu, art_id, date_creation) 
-        VALUES (:auteur,:contenu,:art_id, now() )',
+        $this->prepare('INSERT INTO commentaires(auteur ,contenu,art_id ,signaler ,date_creation ) 
+        VALUES (:auteur, :contenu, :art_id, :signaler, now())',
             [
                 'auteur' => $valeurs->getAuteur(),
                 'contenu' => $valeurs->getContenu(),
-                'art_id'=> $valeurs->getArtId()
+                'art_id'=> $valeurs->getArtId(),
+                'signaler' => $valeurs->getSignaler()
             ],
             'Modele\Entity\Commentaires', true);
     }
@@ -47,11 +48,12 @@ class ManagerCommentaires extends ManagerDonnees
     public function update($valeurs)
     {
         $this->prepare('UPDATE commentaires SET auteur = :auteur,contenu = :contenu, 
-        date_creation = now() WHERE id= :id',
+        date_creation = now(), signaler= :signaler WHERE id= :id',
             [
                 'id' => $_GET['idcom'],
                 'auteur' => $valeurs->getAuteur(),
-                'contenu' => $valeurs->getContenu()
+                'contenu' => $valeurs->getContenu(),
+                'signaler' => $valeurs->getSignaler()
             ],
             'Modele\Entity\Commentaires', true);
     }
@@ -65,9 +67,19 @@ class ManagerCommentaires extends ManagerDonnees
             'Modele\Entity\Commentaires', true);
     }
 
-    public function getTotal()
+    public function updateSignaler($valeurs)
     {
-        $donnees = $this->query('SELECT COUNT(*) as nbArt FROM articles','Modele\Entity\Commentaires');
+        $this->prepare('UPDATE commentaires SET signaler = :signaler WHERE id= :id',
+            [
+                'id' => $_GET['idcom'],
+                'signaler' => $valeurs->getSignaler()
+            ],
+            'Modele\Entity\Commentaires', true);
+    }
+
+    public function getTotalSigalement()
+    {
+        $donnees = $this->query('SELECT COUNT(signaler) as nbCom FROM commentaires WHERE signaler=1','Modele\Entity\Commentaires');
         return $donnees;
     }
 }
