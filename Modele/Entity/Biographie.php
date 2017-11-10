@@ -17,7 +17,6 @@ class Biographie
     private $titre;
     private $contenu;
     private $date_creation;
-    private $extrait;
 
 
     /**

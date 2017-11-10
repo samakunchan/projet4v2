@@ -35,7 +35,6 @@ class ControlleurProfil
      * Appeler par :  Routeur
      * Page non autorisé sans une session active et être admin
      * Permet la modification des données de l'utilisateur
-     * @return true
      */
     public function gestionDonnees()
     {
@@ -56,6 +55,5 @@ class ControlleurProfil
                 return false;
             }
         }
-        return true;
     }
 }

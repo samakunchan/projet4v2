@@ -20,7 +20,7 @@ class ManagerDonnees extends App
      * Nouvelle méthode query() qui recoit des paramètres supplémentaire pour simplifier le code
      * @param $phraseSql
      * @param $nomClass
-     * @return mixed
+     * @return array
     */
     public function query($phraseSql, $nomClass)
     {

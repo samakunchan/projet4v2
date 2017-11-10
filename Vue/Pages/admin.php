@@ -1,11 +1,14 @@
 <?php
-\Controlleur\BackEnd\ControlleurAuthentification::controlSession();
 use Controlleur\ControlleurChapitres;
 use Controlleur\ControlleurCommentaires;
 use Controlleur\ControlleurContact;
+use Controlleur\BackEnd\ControlleurAuthentification;
 
 ?>
-<div class="col-lg-12"><?php echo \Controlleur\ControlleurError::messageErreur();?></div>
+<div>
+    <p class="col-lg-3 tb"> <a href="index.php?page=admin&action=tb">Tableau de bord</a></p>
+    <p class="col-lg-1 deco"> <a href="index.php?page=deco" title="Déconnection"><span class="glyphicon glyphicon-log-out"></span></a></p>
+</div>
 <section id="sectionAdmin">
     <nav id="bord" class="row bord">
         <div class="panneau col-lg-12">
@@ -85,16 +88,16 @@ use Controlleur\ControlleurContact;
         <div class="col-lg-12" id="signal">
             <h2>Article signaler</h2>
             <?php if ($donnees[1]): ?>
-                <?php foreach ($donnees[1] as $commentaire):;?>
+                <?php foreach ($donnees[1] as $commentaire):; var_dump($commentaire);?>
                     <div class="comment row">
                         <p class="col-lg-3">Auteur : <?php echo $commentaire->getAuteur()?></p>
                         <br>
                         <p class="col-lg-12"> <?php echo $commentaire->getContenu()?> <span>Date de publication : <?php echo $commentaire->getDateCreation()?></span></p>
                         <br>
-                        <p>
+                        <span>
                             <a href="index.php?page=articles&action=deletecom&control=com&id=admin&idcom=<?php echo $commentaire->getId();?>">Supprimer</a>
-                            <?php ControlleurCommentaires::boutonSignale($commentaire->getId(),$commentaire->getSignaler());?>
-                        </p>
+                            <a href="index.php?page=articles&action=sigcom&control=com&id=<?php echo $commentaire->getArtId()?>&idcom=<?php echo $commentaire->getId();?>&recup">Conserver</a>
+                        </span>
 
                     </div>
                 <?php endforeach; ?>

@@ -5,8 +5,8 @@
  * Date: 16/10/2017
  * Time: 13:42
  */
-require '../Modele/App/Autoloader.php';
-Modele\App\Autoloader::register();
+require '../Autoloading/Autoloader.php';
+\Autoloading\Autoloader::register();
 
 use Controlleur\Routeur\Routeur;
 

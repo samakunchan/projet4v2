@@ -36,6 +36,8 @@ class ControlleurForm
     public function formulaire()
     {
         $this->controlDesDonnees();
+        session_start();
+        session_destroy();
         $this->vue->genererPages();
     }
     /**

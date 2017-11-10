@@ -77,7 +77,6 @@ class ControlleurCommentaires
                 $this->commentaires->setContenu($contenu);
                 $this->commentaires->setArtId($id);
                 $this->commentaires->setSignaler(0);
-                var_dump($this->commentaires);
                 self::$managerCom->create($this->commentaires);
                 Routeur::redirection('articles&control=art&id='.$_GET['id']);
             }else{
@@ -145,10 +144,18 @@ class ControlleurCommentaires
      */
     public function signalement()
     {
-        $this->commentaires->setSignaler(1);
-        self::$managerCom->updateSignaler($this->commentaires);
-        Routeur::redirection('articles&control=art&id='.$_GET['id']);
-        exit();
+        if (isset($_GET['recup'])){
+            $this->commentaires->setSignaler(0);
+            self::$managerCom->updateSignaler($this->commentaires);
+            Routeur::redirection('admin&action=tb');
+            exit();
+        }else{
+            $this->commentaires->setSignaler(1);
+            self::$managerCom->updateSignaler($this->commentaires);
+            Routeur::redirection('articles&control=art&id='.$_GET['id']);
+            exit();
+        }
+
     }
 
     /**

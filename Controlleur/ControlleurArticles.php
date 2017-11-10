@@ -52,7 +52,6 @@ class ControlleurArticles
 
     /**
      * Méthode qui reçoit les données pour créé un article
-     * @return boolean
     */
     public function creerArticles()
     {
