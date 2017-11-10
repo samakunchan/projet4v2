@@ -7,13 +7,15 @@
  */
 
 namespace Controlleur;
-
-
 use Modele\Entity\Commentaires;
 use Controlleur\Routeur\Routeur;
 use Modele\Manager\ManagerCommentaires;
 use Modele\Manager\ManagerMembres;
 use Vue\Core\Vue;
+
+/**
+ * Class ControlleurArticles utilisé pour la création de la page d'article
+ */
 class ControlleurCommentaires
 {
     private $commentaires;
@@ -22,6 +24,9 @@ class ControlleurCommentaires
     private $vueCom;
     private static $membres;
 
+    /**
+     * Constructeur pour instancier les outils CRUD
+     */
     public function __construct()
     {
         $this->commentaires = new Commentaires();
@@ -31,26 +36,39 @@ class ControlleurCommentaires
         self::$membres = new ManagerMembres();
     }
 
+    /**
+     * Appeler par :  Routeur
+     * Méthode qui détecte l'action utilisé et redirige vers la méthode approprié
+     * @param $action
+     * @return boolean
+     */
     public function traitement($action)
     {
-        if ($action==='createcom'){
-            $this->creerCommentaires($_POST['auteur'], $_POST['contenu'], $_GET['id']);
-        }elseif ($action==='modifcom'){
-            $donnees = self::$managerCom->read($_GET['idcom']);
-            $this->vueCom->genererPages([$donnees]);
-            if ($_POST) {
-                if (isset($_POST['contenu']) !== '') {
-                    $this->majCommentaires($_POST['auteur'], $_POST['contenu'], 0);
+        if (isset($action)){
+            if ($action==='createcom'){
+                $this->creerCommentaires($_POST['auteur'], $_POST['contenu'], $_GET['id']);
+            }elseif ($action==='modifcom'){
+                $donnees = self::$managerCom->read($_GET['idcom']);
+                $this->vueCom->genererPages([$donnees]);
+                if ($_POST) {
+                    if (isset($_POST['contenu']) !== '') {
+                        $this->majCommentaires($_POST['auteur'], $_POST['contenu'], 0);
+                    }
+                    return true;
                 }
-                return true;
+            }elseif ($action==='deletecom'){
+                $this->delete($_GET['idcom']);
+            }elseif ($action==='sigcom'){
+                $this->signalement();
             }
-        }elseif ($action==='deletecom'){
-            $this->delete($_GET['idcom']);
-        }elseif ($action==='sigcom'){
-            $this->signalement();
         }
+        return true;
     }
 
+    /**
+     * Méthode qui reçoit les données pour créé un commentaire
+     * @return boolean
+     */
     public function creerCommentaires($auteur, $contenu, $id)
     {
         if ($_POST){
@@ -66,16 +84,27 @@ class ControlleurCommentaires
                 echo '<div>Veuillez saisir un commentaire <span><a href="index.php?page=articles&control=art&id='.$_GET['id'].'">Retour</a></span></div>';
             }
         }
+        return true;
     }
 
+    /**
+     * Méthode qui reçoit les données pour modifier un commentaire
+     * @return boolean
+     */
     public function majCommentaires($auteur, $contenu, $signal)
     {
         $this->commentaires->setAuteur($auteur);
         $this->commentaires->setContenu($contenu);
         $this->commentaires->setSignaler($signal);
         self::$managerCom->update($this->commentaires);
+        return true;
     }
 
+    /**
+     * Méthode qui reçoit les données pour supprimer un article
+     * @param $id
+     * @return boolean
+     */
     public function delete($id)
     {
         self::$managerCom->delete($id);
@@ -88,29 +117,47 @@ class ControlleurCommentaires
                 exit();
             }
         }
+        return true;
     }
 
-
+    /**
+     * Méthode static qui affiche le bouton d'edition en fonction de l'auteur du commentaire
+     * afin que l'auteur du commentaire puisse gérer son message
+     * @param $idcom
+     * @return boolean
+    */
     public static function gestionCommentaire($idcom)
     {
-        $rescom = self::$managerCom->read($idcom);
-        if ($_SESSION){
-            $res= self::$membres->read($_SESSION['pseudo']);
-            if ($res->getPseudo()=== $rescom->getAuteur() ):
-               echo ''.self::boutonEdition($idcom);
+        if (isset($idcom)){
+            $rescom = self::$managerCom->read($idcom);
+            if ($_SESSION){
+                $res= self::$membres->read($_SESSION['pseudo']);
+                if ($res->getPseudo()=== $rescom->getAuteur() ):
+                    echo ''.self::boutonEdition($idcom);
                 endif;
+            }
         }
+        return true;
     }
 
+    /**
+     * Méthode static qui met à jour le signalement d'un commentaire
+     */
     public function signalement()
     {
         $this->commentaires->setSignaler(1);
-        var_dump($this->commentaires);
         self::$managerCom->updateSignaler($this->commentaires);
         Routeur::redirection('articles&control=art&id='.$_GET['id']);
         exit();
     }
 
+    /**
+     * Méthode static qui affiche le bouton "signaler" dans le commentaire
+     * Visible pour tout le monde
+     * Reçoit l'id du commentaire et l'id du signal provenant dans la page articles
+     * @param $id
+     * @param $signal
+    */
     public static function boutonSignale($id,$signal)
     {
         if ($signal=== 0){
@@ -124,6 +171,9 @@ class ControlleurCommentaires
         }
     }
 
+    /**
+     * Méthode static qui affiche le bouton "edition" dans le commentaire
+    */
     public static function boutonEdition($idcom)
     {
         $rescom = self::$managerCom->read($idcom);
@@ -132,6 +182,9 @@ class ControlleurCommentaires
                    </span>';
     }
 
+    /**
+     * Méthode static qui affiche le total de signalement dans la page admin
+     */
     public static function totalSignalement()
     {
         $res = self::$managerCom->getTotalSigalement();

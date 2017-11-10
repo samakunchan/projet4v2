@@ -8,26 +8,41 @@
 
 namespace Controlleur;
 
-
+/**
+ * Class ControlleurArticles utilisé pour la création de la page d'article
+ */
 class ControlleurError
 {
+    /**
+     * Méthode static qui interdit l'accès à la page
+     */
     public static function accesInterdit()
     {
         header('HTTP/1.0 403 Forbidden');
         die('<p class="introuvable">Accès interdit</p>');
     }
 
+    /**
+     * Méthode static qui indique que la page est introuvable
+     */
     public static function pageIntrouvable()
     {
         header('HTTP/1.0 404 Not Found');
         die('<p class="introuvable">Page introuvable</p>');
     }
 
+    /**
+     * Méthode static que l'identifiant est incorrect
+     */
     public static function identifiantIncorrect()
     {
         echo '<div class="alert alert-danger">'. 'Identifiant incorrect' .'</div>';
     }
 
+    /**
+     * Méthode static qui affiche des messages d'alert
+     * Concerne le formulaire d'inscription
+     */
     public static function donneesMAJ()
     {
         if ($_POST){
@@ -44,6 +59,9 @@ class ControlleurError
         }
     }
 
+    /**
+     * Méthode static qui affiche des messages d'erreur ou de succès générale
+     */
     public static function messageErreur()
     {
         if ($_POST){

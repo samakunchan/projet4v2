@@ -26,6 +26,10 @@ class ControlleurSingle
         $this->traitement = new Vue('traitement');
     }
 
+    /**
+     * Appeler par :  Routeur
+     * Méthode qui génère les articles et les commentaires ensembles
+     */
     public function publicationArticles()
     {
         $donnees = $this->managerArt->read($_GET['id']);

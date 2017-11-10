@@ -12,6 +12,9 @@ use Controlleur\Routeur\Routeur;
 use Modele\Manager\ManagerBiographie;
 use Modele\Entity\Biographie;
 use Vue\Core\Vue;
+/**
+ * Class ControlleurBiographie utilisé pour la création de la page biographie
+ */
 class ControlleurBiographie
 {
     private $biographie;
@@ -19,6 +22,9 @@ class ControlleurBiographie
     private $vue;
     private $traitement;
 
+    /**
+     * Constructeur pour instancier les outils CRUD
+     */
     public function __construct()
     {
         $this->biographie = new Biographie();
@@ -27,22 +33,36 @@ class ControlleurBiographie
         $this->traitement = new Vue('traitement');
     }
 
+    /**
+     * Appeler par :  Routeur
+     * Méthode qui génère la page biographie en publiant les données
+     */
     public function publicationBiographie()
     {
         $donnees = $this->manager->read();
         $this->vue->genererPages($donnees);
     }
 
+    /**
+     * Méthode qui reçoit les données pour créé un article
+     * Control l'action utilisé
+     * @param $action
+     */
     public function edit($action)
     {
-        if ($action==='edit'){
-            $donnees = $this->manager->read();
-            $this->majBio($donnees);
-        }elseif ($action==='delete'){
-            $this->delete();
+        if (isset($action)){
+            if ($action==='edit'){
+                $donnees = $this->manager->read();
+                $this->majBio($donnees);
+            }
         }
     }
 
+    /**
+     * Méthode qui reçoit les données pour mettre à jour la biographie
+     * Control l'action utilisé
+     * @param $donnees
+     */
     public function majBio($donnees)
     {
         $this->traitement->genererPages($donnees);
@@ -52,6 +72,11 @@ class ControlleurBiographie
             $this->manager->update($this->biographie);
         }
     }
+
+    /**
+     * Méthode qui reçoit les données pour créé une biographie
+     * Control l'action utilisé
+     */
     public function creerBio()
     {
         $this->traitement->genererPages();
@@ -61,11 +86,5 @@ class ControlleurBiographie
             $this->manager->create($this->biographie);
             Routeur::redirection('admin');
         }
-    }
-
-    public function delete()
-    {
-        $this->manager->delete();
-        Routeur::redirection('admin');
     }
 }

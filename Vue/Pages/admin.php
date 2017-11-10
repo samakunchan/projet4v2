@@ -8,19 +8,19 @@ use Controlleur\ControlleurContact;
 <div class="col-lg-12"><?php echo \Controlleur\ControlleurError::messageErreur();?></div>
 <section id="sectionAdmin">
     <nav id="bord" class="row bord">
-        <h2 class="col-lg-12">Résumé</h2>
-        <p class="col-lg-3">Nombres d'articles créé : <?php echo ControlleurChapitres::total();?></p>
-        <p class="col-lg-3">Signalement reçut : <?php echo ControlleurCommentaires::totalSignalement();?> </p>
-        <p class="col-lg-3">Message reçut : <?php ControlleurContact::total(); ?> </p>
-    </nav>
-    <nav id="voir" class="row">
-        <div class="col-lg-5">
+        <div class="panneau col-lg-12">
+            <h2 class="col-lg-12">Résumé</h2>
+            <p class="col-lg-3">Nombres d'articles créé : <?php echo ControlleurChapitres::total();?></p>
+            <p class="col-lg-3">Signalement reçut : <?php echo ControlleurCommentaires::totalSignalement();?> </p>
+            <p class="col-lg-3">Message reçut : <?php ControlleurContact::total(); ?> </p>
+        </div>
+        <div class="col-lg-5 panneau">
             <h2>Biographie</h2>
             <div>
                 <a href="index.php?page=biographie&action=edit">Voir/Editer la biographie</a>
             </div>
         </div>
-        <div class="col-lg-5">
+        <div class="col-lg-5 panneau">
             <h2>Profil</h2>
             <div>
                 <p>Vous êtes connectés en tant que <?php echo $_SESSION['pseudo'];?></p>
@@ -28,6 +28,10 @@ use Controlleur\ControlleurContact;
                 <a href="index.php?page=profil&action=edit">Voir/Editer le profil</a>
             </div>
         </div>
+    </nav>
+    <nav id="voir" class="row">
+
+
         <hr class="col-lg-12">
         <div class="col-lg-12">
 
