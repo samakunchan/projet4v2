@@ -8,18 +8,30 @@
 
 namespace Vue\Core;
 
-
+    /**
+     * Class Vue utilisé pour la construction des pages du site
+     */
 class Vue
 {
     private $fichier;
     private $gabarit;
 
+    /**
+     * Constructeur qui instancie le chemin de chaque page
+     * Constructeur qui instancie le chemin du gabarit
+     * @param $page
+    */
     public function __construct($page)
     {
         $this->fichier = '../Vue/Pages/'. $page .'.php';
         $this->gabarit = '../Vue/Gabarit/gabarit.php';
     }
 
+    /**
+     * Méthode qui génère la page
+     * @param $donnees
+     * Données est false par défaut si on ne reçoit pas de tableau de données
+    */
     public function genererPages($donnees = false)
     {
         if ($donnees){
@@ -40,14 +52,5 @@ class Vue
             require $this->gabarit;
         }
     }
-
-    public function sousPage($donnees = false)
-    {
-        if ($donnees){
-            ob_start();
-            $contenu = ob_get_clean();
-        }
-    }
-
 
 }

@@ -9,10 +9,16 @@
 namespace Modele\App;
 
 use PDO;
+/**
+ * Class App utilisé pour généré la connection de la base de donnée
+ */
 class App
 {
     private $pdo;
 
+    /**
+     * Méthode qui génère la connection de la base de donnée
+    */
     public function connection()
     {
         if($this->pdo === null){
