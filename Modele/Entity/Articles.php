@@ -8,7 +8,9 @@
 
 namespace Modele\Entity;
 
-
+/**
+ * Class Article utilisé pour la création des articles
+*/
 class Articles
 {
     private $id;
@@ -21,34 +23,36 @@ class Articles
 
 
     /**
+     * Insertion du titre, il ne doit pas être vide et doit être un string
      * @param mixed $titre
      * @return Articles
      */
     public function setTitre($titre)
     {
-        if(!isset($titre)){
+        if(!isset($titre) && !is_string($titre)){
             echo 'Le titre n\'est pas définie';
+        }else{
+            $this->titre = htmlspecialchars($titre);
         }
-        $this->titre = $titre;
         return $this;
     }
 
     /**
+     * Insertion du contenu, il ne doit pas être vide et doit être un string
      * @param mixed $contenu
      * @return Articles
      */
     public function setContenu($contenu)
     {
-        if (!isset($contenu)){
+        if (!isset($contenu)&& !is_string($contenu)){
             echo 'Le contenu n\'est pas définie';
         }
         $this->contenu = $contenu;
         return $this;
     }
 
-
-
     /**
+     * Récupère l'id de l'article
      * @return mixed
      */
     public function getId()
@@ -57,6 +61,7 @@ class Articles
     }
 
     /**
+     * Récupère le titre de l'article
      * @return mixed
      */
     public function getTitre()
@@ -68,6 +73,7 @@ class Articles
     }
 
     /**
+     * Récupère le contenu de l'article
      * @return mixed
      */
     public function getContenu()
@@ -79,6 +85,7 @@ class Articles
     }
 
     /**
+     * Récupère la date de création de l'article
      * @return mixed
      */
     public function getDateCreation()
@@ -88,6 +95,7 @@ class Articles
     }
 
     /**
+     * Récupère l'extrait de l'article
      * @return mixed
      */
     public function getExtrait()
@@ -97,6 +105,7 @@ class Articles
     }
 
     /**
+     * Récupère le nombre d'article
      * @return mixed
      */
     public function getNbArt()

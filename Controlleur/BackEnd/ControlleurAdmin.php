@@ -18,6 +18,9 @@ use Modele\Manager\ManagerArticles;
 use Modele\Manager\ManagerBiographie;
 use Modele\Manager\ManagerCommentaires;
 use Vue\Core\Vue;
+/**
+ * Class ControlleurAdmin utilisé pour la construction de la page d'administration
+ */
 class ControlleurAdmin
 {
     private $vue;
@@ -26,6 +29,9 @@ class ControlleurAdmin
     private $managerBio;
     private $managerCom;
 
+    /**
+     * Contructeur qui instancie les outils de contruction CRUD
+    */
     public function __construct()
     {
         $this->vue = new Vue('admin');
@@ -35,6 +41,11 @@ class ControlleurAdmin
         $this->managerCom = new ManagerCommentaires();
     }
 
+    /**
+     * Appeler par :  Routeur
+     * Page non autorisé sans une session active et être admin
+     * La vue reçoit un tableau d'article et de commentaire
+     */
     public function administration()
     {
         session_start();

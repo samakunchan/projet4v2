@@ -8,7 +8,9 @@
 
 namespace Modele\Entity;
 
-
+/**
+ * Class Article utilisé pour la création des articles
+ */
 class Contact
 {
     private $id;

@@ -58,7 +58,7 @@ class ControlleurAuthentification
             if ($password === $passwordConf){
                 $this->membres->setPassword($password);
             }else{
-                return false;//echo 'Les mots de passe doivent etre identiques';
+                return false;
             }
             $this->manager->create($this->membres);
         }

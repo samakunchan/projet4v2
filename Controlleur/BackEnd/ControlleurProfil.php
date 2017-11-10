@@ -12,13 +12,18 @@ namespace Controlleur\BackEnd;
 use Modele\Entity\Membres;
 use Modele\Manager\ManagerMembres;
 use Vue\Core\Vue;
-
+/**
+ * Class ControlleurProfil utilisé pour la construction de la page profil
+ */
 class ControlleurProfil
 {
     private $vue;
     private $manager;
     private $membres;
 
+    /**
+     * Contructeur qui instancie les outils de contruction CRUD
+     */
     public function __construct()
     {
         $this->vue = new Vue('profil');
@@ -26,6 +31,12 @@ class ControlleurProfil
         $this->membres = new Membres();
     }
 
+    /**
+     * Appeler par :  Routeur
+     * Page non autorisé sans une session active et être admin
+     * Permet la modification des données de l'utilisateur
+     * @return true
+     */
     public function gestionDonnees()
     {
         session_start();
@@ -44,7 +55,7 @@ class ControlleurProfil
             }else{
                 return false;
             }
-
         }
+        return true;
     }
 }

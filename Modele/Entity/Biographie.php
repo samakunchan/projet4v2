@@ -8,7 +8,9 @@
 
 namespace Modele\Entity;
 
-
+/**
+ * Class Article utilisé pour la création des articles
+ */
 class Biographie
 {
     private $id;
@@ -16,29 +18,31 @@ class Biographie
     private $contenu;
     private $date_creation;
     private $extrait;
-    private $com_id;
 
 
     /**
+     * Insertion du titre, il ne doit pas être vide et doit être un string
      * @param mixed $titre
      * @return Biographie
      */
     public function setTitre($titre)
     {
-        if(!isset($titre)){
+        if(!isset($titre) && !is_string($titre)){
             echo 'Le titre n\'est pas définie';
+        }else{
+            $this->titre = htmlspecialchars($titre);
         }
-        $this->titre = $titre;
         return $this;
     }
 
     /**
+     * Insertion du contenu, il ne doit pas être vide et doit être un string
      * @param mixed $contenu
      * @return Biographie
      */
     public function setContenu($contenu)
     {
-        if (!isset($contenu)){
+        if (!isset($contenu)&& !is_string($contenu)){
             echo 'Le contenu n\'est pas définie';
         }
         $this->contenu = $contenu;
@@ -47,6 +51,7 @@ class Biographie
 
 
     /**
+     * Récupère l'id de la biograhie
      * @return mixed
      */
     public function getId()
@@ -55,6 +60,7 @@ class Biographie
     }
 
     /**
+     * Récupère le titre de la biograhie
      * @return mixed
      */
     public function getTitre()
@@ -66,6 +72,7 @@ class Biographie
     }
 
     /**
+     * Récupère le contenu de la biograhie
      * @return mixed
      */
     public function getContenu()
@@ -77,6 +84,7 @@ class Biographie
     }
 
     /**
+     * Récupère la date de création de la biograhie
      * @return mixed
      */
     public function getDateCreation()
@@ -84,12 +92,4 @@ class Biographie
         return $this->date_creation;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getExtrait()
-    {
-        $this->extrait = substr($this->contenu, 0,150);
-        return $this->extrait.'...';
-    }
 }
