@@ -13,40 +13,41 @@ ControlleurAuthentification::controlSession();
     </div>
 </div>
 <hr>
-<div class="row commentaires">
+<div class="row commentaires ">
     <div class="col-lg-12">
     <?php if ($donnees[1]): ?>
         <?php foreach ($donnees[1] as $commentaire):;?>
             <div class="comment row">
-                <p class="col-lg-3">Auteur : <?php echo $commentaire->getAuteur()?></p>
-                <br>
+                <p class="col-lg-12">Auteur : <?php echo $commentaire->getAuteur()?></p>
+
                 <p class="col-lg-12"> <?php echo $commentaire->getContenu()?> <span>Date de publication : <?php echo $commentaire->getDateCreation()?></span></p>
-                <br>
+
                 <p>
                     <?php
                     ControlleurCommentaires::gestionCommentaire($commentaire->getId());
                     ControlleurCommentaires::boutonSignale($commentaire->getId(),$commentaire->getSignaler());
-                    var_dump($commentaire->getSignaler());
                     ?>
                 </p>
 
             </div>
         <?php endforeach; ?>
         <?php else: ?>
-        <p>Il n'y a pas de commentaire pour cet article...</p>
+        <p class="nope">Il n'y a pas de commentaire pour cet article...</p>
     <?php endif; ?>
+        <hr>
     </div>
-</div>
+
 <hr>
 <?php if ($_SESSION): ?>
     <form action="index.php?page=articles&action=createcom&control=com&id=<?php echo $donnees[0]->getId() ?>" method="post">
         <p>
             <span id="auteur"> Auteur : <?php echo $_SESSION['pseudo'] ?></span>
         </p>
-        <label for="contenu">Contenu</label>
+        <label for="contenu"></label>
         <textarea type="text" name="contenu" id="contenu"></textarea>
         <input type="hidden" name="auteur" value="<?php echo $_SESSION['pseudo'] ?>">
         <input type="hidden" name="art_id" value="<?php echo $_GET['id'] ?>">
         <input type="submit" value="Publier">
     </form>
 <?php endif; ?>
+</div>

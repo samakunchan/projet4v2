@@ -29,7 +29,7 @@ ControlleurAuthentification::controlSession();
                         </a>
                     </p>
                 </td>
-                <td class="col-lg-4">
+                <td class="col-lg-4 tdcreate">
                     <p>
                         <span class="">
                              <?php echo $donnee->getDateCreation()?>
@@ -39,18 +39,8 @@ ControlleurAuthentification::controlSession();
             </tr>
             <?php endforeach; ?>
         </table>
-        <div class="row pagination">
-            <table class="col-lg-12">
-                <tr >
-                    <td class="col-lg-1 btn-primary">
-                        <?php echo ControlleurChapitres::precedente(); ?>
-                    </td>
-                    <td class="col-lg-1 btn-primary ">
-                        <?php  echo ControlleurChapitres::suivante();?>
-                    </td>
-                </tr>
-            </table>
-
+        <div class="row pagination col-lg-12">
+            <p><?php echo ControlleurChapitres::precedente(); echo ControlleurChapitres::pageActuel() ;echo ControlleurChapitres::suivante();?></p>
         </div>
     </div>
 </div>

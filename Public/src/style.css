@@ -57,7 +57,7 @@ table {
 }
 @media (min-width: 1200px) {
     .container {
-        width: 1170px;
+        width: 100%;
     }
 }
 /*-----------------------------------------------*/
@@ -210,6 +210,9 @@ article{
 #sectionAdmin li span{
     margin-left: 16px;
 }
+.commentaires{
+    background-color: grey;
+}
 .comment{
     background-color: rgb(255, 255, 255) ;
     box-shadow: 3px 3px 3px rgba(1, 1, 1, 0.6);
@@ -239,11 +242,29 @@ ol{
 .tdart, .tdcreate{
     text-align: center;
 }
+
 .chapitres td{
     padding: 0;
 }
 .chapitres td:hover{
     background-color: transparent;
+}
+.pagination{
+    background-color: grey;
+    height: 50px;
+}
+.pagination p{
+    text-align: center;
+}
+.pagination span{
+    padding: 10px;
+}
+form p, .nope{
+    padding: 10px;
+    margin: 10px;
+}
+.commentaires form{
+    margin: 10px;
 }
 
 

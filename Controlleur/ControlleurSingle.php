@@ -30,7 +30,11 @@ class ControlleurSingle
     {
         $donnees = $this->managerArt->read($_GET['id']);
         $donneesCom = $this->managerCom->readAll($_GET['id']);
-        $this->vue->genererPages([$donnees, $donneesCom]);
+        if ($donnees){
+            $this->vue->genererPages([$donnees, $donneesCom]);
+        }else{
+            echo '<p class="introuvable">Article introuvable</p>';
+        }
     }
 
 }

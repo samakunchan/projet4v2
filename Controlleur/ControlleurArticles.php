@@ -17,14 +17,12 @@ class ControlleurArticles
 {
     private $articles;
     private $managerArt;
-    private $vue;
     private $traitement;
 
     public function __construct()
     {
         $this->articles = new Articles();
         $this->managerArt = new ManagerArticles();
-        $this->vue = new Vue('articles');
         $this->traitement = new Vue('traitement');
     }
 

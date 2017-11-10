@@ -55,21 +55,32 @@ class ControlleurChapitres
         if (isset($_GET['p'])){
             if ($_GET['p']<self::nombreArticlesParPages()){
                 $p = $_GET['p']+1;
-                return '<span class="col-lg-offset-8"><a href="index.php?page=chapitres&p='.$p.'"> Suivante</a></span>';
+                return '<span class="col-lg-offset-2 col-lg-3 btn-primary"><a href="index.php?page=chapitres&p='.$p.'"> Suivante</a></span>';
             }
         }
-        return true;
+        return null;
     }
     public static function precedente()
     {
         if (isset($_GET['p'])){
-            if ($_GET['p']<=0){
+            if ($_GET['p']<=1){
                 $p = 1;
-                return '<span class="col-lg-3"><a href="index.php?page=chapitres&p='.$p.'">Précédente </a></span>';
+                return '<span class="col-lg-3 btn-primary"><a href="index.php?page=chapitres&p='.$p.'">Précédente </a></span>';
             }elseif ($_GET['p']<=self::nombreArticlesParPages()){
                 $p = $_GET['p']-1;
-                return '<span class="col-lg-3"><a href="index.php?page=chapitres&p='.$p.'"> Précédente</a></span>';
+                return '<span class="col-lg-3 btn-primary"><a href="index.php?page=chapitres&p='.$p.'"> Précédente</a></span>';
             }
+        }
+        return true;
+    }
+
+    public static function pageActuel()
+    {
+        if (isset($_GET['p'])){
+            if ($_GET['p']>self::nombreArticlesParPages()){
+                return '<span class=" col-lg-offset-2 col-lg-8 btn-primary pageActuel">Cette page n\'existe pas </span>';
+            }
+            return '<span class=" col-lg-offset-2 col-lg-2 btn-primary pageActuel">'.$_GET['p'].'/'.self::nombreArticlesParPages().' </span>';
         }
         return true;
     }

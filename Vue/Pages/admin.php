@@ -31,20 +31,27 @@ use Controlleur\ControlleurContact;
         <hr class="col-lg-12">
         <div class="col-lg-12">
 
-            <table class=" panel-default">
+            <table class=" panel-default col-lg-12">
                 <?php
                 for ($j=1; $j<=ControlleurChapitres::nombreArticlesParPages(); $j++){
                     echo '<span> <a href="index.php?page=admin&action&p='.$j.'">Page'. $j .'</a> </span>';
                 } ?>
                 <tr class="panel">
-                    <td>
+                    <td class="col-lg-10">
                         <h3 class="col-lg-offset-5">Liste des articles</h3>
                     </td>
-                    <td colspan="2">
+                    <td colspan="2" class="col-lg-2">
                         <a href="index.php?page=articles&action=create&control=art" class="col-lg-offset-2">Créer un article</a>
                     </td>
                 </tr>
-            <?php foreach ($donnees[0] as $donnee) :; ?>
+            <?php if (!$donnees[0]): ?>
+                <tr>
+                    <td colspan="2">
+                        Il n'y a pas d'articles
+                    </td>
+                </tr>
+            <?php else :
+            foreach ($donnees[0] as $donnee) :; ?>
 
                 <tr >
                     <td class="col-lg-10">
@@ -64,7 +71,7 @@ use Controlleur\ControlleurContact;
                     </td>
                 </tr>
 
-            <?php endforeach;  ?>
+            <?php endforeach; endif; ?>
             </table>
         </div>
         <hr class="col-lg-12">

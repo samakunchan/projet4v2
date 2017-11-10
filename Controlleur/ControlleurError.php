@@ -14,13 +14,13 @@ class ControlleurError
     public static function accesInterdit()
     {
         header('HTTP/1.0 403 Forbidden');
-        die('Accès Interdit');
+        die('<p class="introuvable">Accès interdit</p>');
     }
 
     public static function pageIntrouvable()
     {
         header('HTTP/1.0 404 Not Found');
-        die('Page introuvable');
+        die('<p class="introuvable">Page introuvable</p>');
     }
 
     public static function identifiantIncorrect()
@@ -57,6 +57,8 @@ class ControlleurError
                 if($_POST['pseudo']===''){
                     return '<div class="alert alert-danger">Veuillez remplir tout les champs</div>';
                 }elseif ($_POST['password']===''){
+                    return '<div class="alert alert-danger">Veuillez remplir tout les champs</div>';
+                }elseif ($_POST['passwordConf']===''){
                     return '<div class="alert alert-danger">Veuillez remplir tout les champs</div>';
                 }elseif ($_POST['email']===''){
                     return '<div class="alert alert-danger">Veuillez remplir tout les champs</div>';
