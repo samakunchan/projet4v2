@@ -8,9 +8,15 @@
 
 namespace Modele\Manager;
 
-
+    /**
+     * Class ManagerCommentaires utilisé pour créer le CRUD pour les commentaires
+     */
 class ManagerCommentaires extends ManagerDonnees
 {
+    /**
+     * Méthode utilisé pour créer des articles
+     * @param $valeurs
+     */
     public function create($valeurs)
     {
         $this->prepare('INSERT INTO commentaires(auteur ,contenu,art_id ,signaler ,date_creation ) 
@@ -24,6 +30,11 @@ class ManagerCommentaires extends ManagerDonnees
             'Modele\Entity\Commentaires', true);
     }
 
+    /**
+     * Méthode utilisé pour lire la référence de l'article du commentaire
+     * @param $id
+     * @return array
+     */
     public function readRefArticle($id)
     {
         $lecture = $this->prepare('SELECT * FROM commentaires WHERE art_id=?',[$id],
@@ -31,6 +42,11 @@ class ManagerCommentaires extends ManagerDonnees
         return $lecture;
     }
 
+    /**
+     * Méthode utilisé pour lire l'article du commentaire
+     * @param $id
+     * @return array
+     */
     public function read($id)
     {
         $lecture = $this->prepare('SELECT * FROM commentaires WHERE id=?',[$id],
@@ -38,6 +54,11 @@ class ManagerCommentaires extends ManagerDonnees
         return $lecture;
     }
 
+    /**
+     * Méthode utilisé pour lire tout les commentaires
+     * @param $id
+     * @return array
+     */
     public function readAll($id=false)
     {
         $lecture = $this->prepare('SELECT * FROM commentaires WHERE art_id=?',[$id],
@@ -45,12 +66,20 @@ class ManagerCommentaires extends ManagerDonnees
         return $lecture;
     }
 
+    /**
+     * Méthode utilisé pour lire tout les signalements de commentaire
+     * @return array
+     */
     public function readAllSignalement()
     {
         $lecture = $this->query('SELECT * FROM commentaires WHERE signaler=1 ORDER BY id DESC ', 'Modele\Entity\Commentaires');
         return $lecture;
     }
 
+    /**
+     * Méthode utilisé pour mettre à jour un commentaire
+     * @param $valeurs
+     */
     public function update($valeurs)
     {
         $this->prepare('UPDATE commentaires SET auteur = :auteur,contenu = :contenu, 
@@ -64,6 +93,10 @@ class ManagerCommentaires extends ManagerDonnees
             'Modele\Entity\Commentaires', true);
     }
 
+    /**
+     * Méthode utilisé pour supprimer un commentaire
+     * @param $id
+     */
     public function delete($id)
     {
         $this->prepare('DELETE FROM commentaires WHERE id = :id',
@@ -73,6 +106,10 @@ class ManagerCommentaires extends ManagerDonnees
             'Modele\Entity\Commentaires', true);
     }
 
+    /**
+     * Méthode utilisé pour mettre à jour le marqueur du signalement (0 ou 1)
+     * @param $valeurs
+     */
     public function updateSignaler($valeurs)
     {
         $this->prepare('UPDATE commentaires SET signaler = :signaler WHERE id= :id',
@@ -83,6 +120,9 @@ class ManagerCommentaires extends ManagerDonnees
             'Modele\Entity\Commentaires', true);
     }
 
+    /**
+     * Méthode utilisé pour mettre à jour un article
+     */
     public function getTotalSigalement()
     {
         $donnees = $this->query('SELECT COUNT(signaler) as nbCom FROM commentaires WHERE signaler=1','Modele\Entity\Commentaires');

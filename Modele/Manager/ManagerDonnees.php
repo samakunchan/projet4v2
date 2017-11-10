@@ -10,10 +10,18 @@ namespace Modele\Manager;
 
 use Modele\App\App;
 use PDO;
-
+    /**
+     * Class ManagerDonnees utilisé pour réadapter les méthodes query() et prepare() de PDO
+     */
 
 class ManagerDonnees extends App
 {
+    /**
+     * Nouvelle méthode query() qui recoit des paramètres supplémentaire pour simplifier le code
+     * @param $phraseSql
+     * @param $nomClass
+     * @return mixed
+    */
     public function query($phraseSql, $nomClass)
     {
         $rep = $this->connection()->query($phraseSql);
@@ -21,6 +29,15 @@ class ManagerDonnees extends App
         return $donnees;
     }
 
+    /**
+     * Nouvelle méthode prepare() qui recoit des paramètres supplémentaire pour simplifier le code
+     * @param $phraseSql
+     * @param $nomClass
+     * @param $selectionDeId
+     * @param $one
+     * @param $read
+     * @return array
+     */
     public function prepare($phraseSql, $selectionDeId, $nomClass, $one = false, $read = false)
     {
         if($read){

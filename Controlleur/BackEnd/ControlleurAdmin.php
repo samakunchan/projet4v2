@@ -11,16 +11,14 @@ namespace Controlleur\BackEnd;
 
 use Controlleur\ControlleurChapitres;
 use Controlleur\ControlleurError;
-use Controlleur\Routeur\Routeur;
-use Modele\App\App;
 use Modele\Entity\Articles;
 use Modele\Manager\ManagerArticles;
 use Modele\Manager\ManagerBiographie;
 use Modele\Manager\ManagerCommentaires;
 use Vue\Core\Vue;
-/**
- * Class ControlleurAdmin utilisé pour la construction de la page d'administration
- */
+    /**
+     * Class ControlleurAdmin utilisé pour la construction de la page d'administration
+     */
 class ControlleurAdmin
 {
     private $vue;

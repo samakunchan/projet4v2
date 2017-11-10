@@ -8,9 +8,15 @@
 
 namespace Modele\Manager;
 
-
+    /**
+     * Class ManagerBiographie utilisé pour créer le CRUD pour la biographie
+     */
 class ManagerBiographie extends ManagerDonnees
 {
+    /**
+     * Méthode utilisé pour créer des biographie
+     * @param $valeurs
+     */
     public function create($valeurs)
     {
         $this->prepare('INSERT INTO biographie(titre, contenu, date_creation) 
@@ -22,12 +28,20 @@ class ManagerBiographie extends ManagerDonnees
             'Modele\Entity\Articles', true);
     }
 
+    /**
+     * Méthode utilisé pour lire un seul biographie
+     * @return array
+     */
     public function read()
     {
         $lecture = $this->query('SELECT * FROM biographie', 'Modele\Entity\Biographie');
         return $lecture;
     }
 
+    /**
+     * Méthode utilisé pour mettre à jour un biographie
+     * @param $valeurs
+     */
     public function update($valeurs)
     {
         $this->prepare('UPDATE biographie SET titre = :titre, contenu = :contenu, 
@@ -39,12 +53,4 @@ class ManagerBiographie extends ManagerDonnees
             'Modele\Entity\Biographie', true);
     }
 
-    public function delete()
-    {
-        $this->prepare('DELETE FROM biographie WHERE id = :id',
-            [
-                'id' => $_GET['id']
-            ],
-            'Modele\Entity\Biographie', true);
-    }
 }
