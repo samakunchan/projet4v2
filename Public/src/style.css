@@ -251,12 +251,10 @@ ol{
 }
 .pagination{
     background-color: grey;
-    height: 50px;
 }
-.pagination p{
-    text-align: center;
-}
+
 .pagination span{
+    text-align: center;
     padding: 10px;
 }
 form p, .nope{
@@ -283,7 +281,7 @@ form p, .nope{
     padding: 20px;
     margin: 20px;
 }
-.user button, .comment button, .bord button{
+.user button, .comment button, .bord button, .traitement button, .articles button, .profil button{
     padding: 5px;
     width: inherit;
     border-radius: 3px;
@@ -300,5 +298,17 @@ form p, .nope{
 }
 form button{
     background-color: white;
+}
+form label{
+    padding: 5px;
+    margin: 2px;
+    font-size: 20px;
+    background-color: rgba(255, 255, 255, 0.6);
+}
+form input{
+    margin: 2px;
+}
+.profil{
+    padding: 15px;
 }
 

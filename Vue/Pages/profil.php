@@ -1,12 +1,17 @@
 <?php
 foreach ($donnees as $donnee):
+    if ($donnee->getPseudo()==='admin'){
+        $retour = '<a href="index.php?page=admin&action=tb&p=1">Retour</a>';
+    }else{
+        $retour = '<a href="index.php?page=users">Retour</a>';
+    }
 ?>
-    <div class="col-lg-12">
-        <p class="col-lg-3 tb"> <a href="index.php?page=admin&action=tb">Tableau de bord</a></p>
-        <p class="col-lg-1 deco"> <a href="index.php?page=deco" title="Déconnection"><span class="glyphicon glyphicon-log-out"></span></a></p>
-    </div>
+
+<section class="row profil">
     <div class="col-lg-12"><?php echo \Controlleur\ControlleurError::messageErreur();?></div>
-<section class="row">
+    <button>
+        <?php echo $retour;?>
+    </button>
     <h2 class="col-lg-12">Modifier votre profil</h2>
     <form method="post">
         <label for="pseudo">Pseudo</label>
