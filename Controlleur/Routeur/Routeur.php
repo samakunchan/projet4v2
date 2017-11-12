@@ -60,6 +60,7 @@ class Routeur
             $pages = $_GET['page'];
         }else{
             $pages = 'accueil';
+            self::redirection('accueil');
         }
         $this->gestionPages($pages);
     }

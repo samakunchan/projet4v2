@@ -1,3 +1,4 @@
+<?php \Controlleur\BackEnd\ControlleurAuthentification::controlSession() ?>
 <div><?php echo \Controlleur\ControlleurError::messageErreur();?></div>
 <aside class="row">
     <nav class="col-lg-offset-4 col-lg-8">

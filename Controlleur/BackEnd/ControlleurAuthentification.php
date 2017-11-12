@@ -77,8 +77,6 @@ class ControlleurAuthentification
                         echo '<p class="col-lg-3 tb"> <a href="index.php?page=users&action=tb">Tableau de bord</a></p>';
                         echo '<p class="col-lg-1 deco"> <a href="index.php?page=deco" title="Déconnection"><span class="glyphicon glyphicon-log-out"></span></a></p>';
                     }
-                }elseif (!$_SESSION){
-                    echo '<p class="col-lg-4 tb"><a href="index.php?page=form">S\'inscrire/Se connecter</a></p>';
                 }
             }
             }
