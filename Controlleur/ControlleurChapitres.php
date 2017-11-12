@@ -76,9 +76,16 @@ class ControlleurChapitres
     public static function suivante()
     {
         if (isset($_GET['p'])){
-            if ($_GET['p']<self::nombreArticlesParPages()){
-                $p = $_GET['p']+1;
-                return '<span class="col-lg-offset-2 col-lg-3 btn-primary"><a href="index.php?page=chapitres&p='.$p.'"> Suivante</a></span>';
+            if (isset($_GET['page']) && $_GET['page']==='chapitres' ){
+                if ($_GET['p']<self::nombreArticlesParPages()){
+                    $p = $_GET['p']+1;
+                    return '<span class="col-lg-offset-2 col-lg-3 btn-primary"><a href="index.php?page=chapitres&p='.$p.'"> Suivante</a></span>';
+                }
+            }elseif (isset($_GET['page']) && $_GET['page']==='admin'){
+                if ($_GET['p']<self::nombreArticlesParPages()){
+                    $p = $_GET['p']+1;
+                    return '<span class="col-lg-offset-2 col-lg-3 btn-primary"><a href="index.php?page=admin&action=tb&p='.$p.'"> Suivante</a></span>';
+                }
             }
         }
         return null;
@@ -90,12 +97,22 @@ class ControlleurChapitres
     public static function precedente()
     {
         if (isset($_GET['p'])){
-            if ($_GET['p']<=1){
-                $p = 1;
-                return '<span class="col-lg-3 btn-primary"><a href="index.php?page=chapitres&p='.$p.'">Précédente </a></span>';
-            }elseif ($_GET['p']<=self::nombreArticlesParPages()){
-                $p = $_GET['p']-1;
-                return '<span class="col-lg-3 btn-primary"><a href="index.php?page=chapitres&p='.$p.'"> Précédente</a></span>';
+            if (isset($_GET['page']) && $_GET['page']==='chapitres'){
+                if ($_GET['p']<=1){
+                    $p = 1;
+                    return '<span class="col-lg-3 btn-primary"><a href="index.php?page=chapitres&p='.$p.'">Précédente </a></span>';
+                }elseif ($_GET['p']<=self::nombreArticlesParPages()){
+                    $p = $_GET['p']-1;
+                    return '<span class="col-lg-3 btn-primary"><a href="index.php?page=chapitres&p='.$p.'"> Précédente</a></span>';
+                }
+            }elseif (isset($_GET['page']) && $_GET['page']==='admin'){
+                if ($_GET['p']<=1){
+                    $p = 1;
+                    return '<span class="col-lg-3 btn-primary"><a href="index.php?page=admin&action=tb&p='.$p.'">Précédente </a></span>';
+                }elseif ($_GET['p']<=self::nombreArticlesParPages()){
+                    $p = $_GET['p']-1;
+                    return '<span class="col-lg-3 btn-primary"><a href="index.php?page=admin&action=tb&p='.$p.'"> Précédente</a></span>';
+                }
             }
         }
         return true;

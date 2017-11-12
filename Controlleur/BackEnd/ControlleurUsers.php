@@ -17,7 +17,6 @@ use Controlleur\ControlleurCommentaires;
 class ControlleurUsers
 {
     private $vue;
-    private $commentaires;
 
     /**
      * Contructeur qui instancie les outils de contruction CRUD
@@ -25,7 +24,6 @@ class ControlleurUsers
     public function __construct()
     {
         $this->vue = new Vue('users');
-        $this->commentaires = new ControlleurCommentaires();
     }
 
     /**

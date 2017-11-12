@@ -29,7 +29,6 @@ class Routeur
     private $form;
     private $biographie;
     private $chapitres;
-    private $contact;
     private $articles;
     private $admin;
     private $errors;
@@ -44,7 +43,6 @@ class Routeur
         $this->form = new ControlleurForm();
         $this->biographie= new ControlleurBiographie();
         $this->chapitres = new ControlleurChapitres();
-        $this->contact = new ControlleurContact();
         $this->articles = new ControlleurArticles();
         $this->commentaires = new ControlleurCommentaires();
         $this->single = new ControlleurSingle();
@@ -79,8 +77,6 @@ class Routeur
             }
         }elseif ($pages=== 'chapitres'){
         $this->chapitres->listeChaptitres();
-        }elseif ($pages=== 'contact'){
-        $this->contact->formulaire();
         }elseif ($pages=== 'articles'){
             if (isset($_GET['action'])){
                 if (isset($_GET['control'])){

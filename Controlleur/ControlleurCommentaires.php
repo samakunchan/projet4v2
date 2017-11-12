@@ -112,7 +112,7 @@ class ControlleurCommentaires
                 Routeur::redirection('admin');
                 exit();
             }else{
-                Routeur::redirection('articles&control=art&id='.$_GET['id']);
+                Routeur::redirection('articles&control=art&id='.$_GET['id'].'&p=1');
                 exit();
             }
         }
@@ -147,7 +147,7 @@ class ControlleurCommentaires
         if (isset($_GET['recup'])){
             $this->commentaires->setSignaler(0);
             self::$managerCom->updateSignaler($this->commentaires);
-            Routeur::redirection('admin&action=tb');
+            Routeur::redirection('admin&action=tb&p=1');
             exit();
         }else{
             $this->commentaires->setSignaler(1);
@@ -168,9 +168,9 @@ class ControlleurCommentaires
     public static function boutonSignale($id,$signal)
     {
         if ($signal=== 0){
-            echo '<span class="col-lg-offset-9">
+            echo '<button class="col-lg-offset-9">
                         <a href="index.php?page=articles&action=sigcom&control=com&id='.$_GET['id'].'&idcom='.$id.'">Signaler ce commentaire</a>
-                    </span>';
+                    </button>';
         }else{
             echo '<span class="col-lg-offset-9">
                         Ce commentaire a été signalé.
@@ -184,9 +184,9 @@ class ControlleurCommentaires
     public static function boutonEdition($idcom)
     {
         $rescom = self::$managerCom->read($idcom);
-        echo '<span>
+        echo '<button>
                     <a href="index.php?page=articles&action=modifcom&control=com&id='.$_GET['id'].'&idcom='.$rescom->getId().'">Editer</a>
-                   </span>';
+                   </button>';
     }
 
     /**
@@ -197,7 +197,7 @@ class ControlleurCommentaires
         $res = self::$managerCom->getTotalSigalement();
         if ($res[0]->getnbCom()!=='0'){
             echo $res[0]->getnbCom();
-            echo '<br><span><a href="#signal">Voir</a></span>';
+            echo '<br><button><a href="#signal">Voir</a></button>';//button
             return null;
         }else{
             return $res[0]->getnbCom();

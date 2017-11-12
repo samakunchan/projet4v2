@@ -6,7 +6,7 @@ use Controlleur\BackEnd\ControlleurAuthentification;
 
 ?>
 <div>
-    <p class="col-lg-3 tb"> <a href="index.php?page=admin&action=tb">Tableau de bord</a></p>
+    <p class="col-lg-3 tb"> <a href="index.php?page=admin&action=tb&p=1">Tableau de bord</a></p>
     <p class="col-lg-1 deco"> <a href="index.php?page=deco" title="Déconnection"><span class="glyphicon glyphicon-log-out"></span></a></p>
 </div>
 <section id="sectionAdmin">
@@ -14,13 +14,14 @@ use Controlleur\BackEnd\ControlleurAuthentification;
         <div class="panneau col-lg-12">
             <h2 class="col-lg-12">Résumé</h2>
             <p class="col-lg-3">Nombres d'articles créé : <?php echo ControlleurChapitres::total();?></p>
-            <p class="col-lg-3">Signalement reçut : <?php echo ControlleurCommentaires::totalSignalement();?> </p>
-            <p class="col-lg-3">Message reçut : <?php ControlleurContact::total(); ?> </p>
+            <p class="col-lg-3 ">Signalement reçut : <?php echo ControlleurCommentaires::totalSignalement();?> </p>
         </div>
         <div class="col-lg-5 panneau">
             <h2>Biographie</h2>
             <div>
-                <a href="index.php?page=biographie&action=edit">Voir/Editer la biographie</a>
+                <button>
+                    <a href="index.php?page=biographie&action=edit">Voir/Editer la biographie</a>
+                </button>
             </div>
         </div>
         <div class="col-lg-5 panneau">
@@ -28,21 +29,16 @@ use Controlleur\BackEnd\ControlleurAuthentification;
             <div>
                 <p>Vous êtes connectés en tant que <?php echo $_SESSION['pseudo'];?></p>
                 <p>Email :  <?php echo $_SESSION['email'];?></p>
-                <a href="index.php?page=profil&action=edit">Voir/Editer le profil</a>
+                <button>
+                    <a href="index.php?page=profil&action=edit">Voir/Editer le profil</a>
+                </button>
             </div>
         </div>
     </nav>
     <nav id="voir" class="row">
-
-
         <hr class="col-lg-12">
         <div class="col-lg-12">
-
             <table class=" panel-default col-lg-12">
-                <?php
-                for ($j=1; $j<=ControlleurChapitres::nombreArticlesParPages(); $j++){
-                    echo '<span> <a href="index.php?page=admin&action&p='.$j.'">Page'. $j .'</a> </span>';
-                } ?>
                 <tr class="panel">
                     <td class="col-lg-10">
                         <h3 class="col-lg-offset-5">Liste des articles</h3>
@@ -80,24 +76,29 @@ use Controlleur\BackEnd\ControlleurAuthentification;
 
             <?php endforeach; endif; ?>
             </table>
+            <div class="row pagination col-lg-12">
+                <p><?php echo ControlleurChapitres::precedente(); echo ControlleurChapitres::pageActuel() ;echo ControlleurChapitres::suivante();?></p>
+            </div>
         </div>
         <hr class="col-lg-12">
     </nav>
     <?php if ($donnees[1]) :?>
     <nav class="row">
         <div class="col-lg-12" id="signal">
-            <h2>Article signaler</h2>
+            <h2>Article signalé</h2>
             <?php if ($donnees[1]): ?>
-                <?php foreach ($donnees[1] as $commentaire):; var_dump($commentaire);?>
+                <?php foreach ($donnees[1] as $commentaire):; ?>
                     <div class="comment row">
                         <p class="col-lg-3">Auteur : <?php echo $commentaire->getAuteur()?></p>
                         <br>
                         <p class="col-lg-12"> <?php echo $commentaire->getContenu()?> <span>Date de publication : <?php echo $commentaire->getDateCreation()?></span></p>
                         <br>
-                        <span>
+                        <button>
                             <a href="index.php?page=articles&action=deletecom&control=com&id=admin&idcom=<?php echo $commentaire->getId();?>">Supprimer</a>
+                        </button>
+                        <button>
                             <a href="index.php?page=articles&action=sigcom&control=com&id=<?php echo $commentaire->getArtId()?>&idcom=<?php echo $commentaire->getId();?>&recup">Conserver</a>
-                        </span>
+                        </button>
 
                     </div>
                 <?php endforeach; ?>

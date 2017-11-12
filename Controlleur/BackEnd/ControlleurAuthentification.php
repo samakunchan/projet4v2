@@ -34,7 +34,7 @@ class ControlleurAuthentification
                 $_SESSION['pseudo']= $users->getPseudo();
                 $_SESSION['email']= $users->getEmail();
                 if($users->getPseudo()=== 'admin'){
-                    Routeur::redirection('admin&action=tb&id='.$users->getId());
+                    Routeur::redirection('admin&action=tb&id='.$users->getId().'&p=1');
                 }elseif ($users->getPseudo()!== 'admin'){
                     Routeur::redirection('users');
                 }
@@ -71,7 +71,7 @@ class ControlleurAuthentification
                 session_start();
                 if ($_SESSION){
                     if($_SESSION['pseudo']==='admin'){
-                        echo '<p class="col-lg-3 tb"> <a href="index.php?page=admin&action=tb">Tableau de bord</a></p>';
+                        echo '<p class="col-lg-3 tb"> <a href="index.php?page=admin&action=tb&p=1">Tableau de bord</a></p>';
                         echo '<p class="col-lg-1 deco"> <a href="index.php?page=deco" title="Déconnection"><span class="glyphicon glyphicon-log-out"></span></a></p>';
                     }elseif ($_SESSION['pseudo']!=='admin'){
                         echo '<p class="col-lg-3 tb"> <a href="index.php?page=users&action=tb">Tableau de bord</a></p>';
