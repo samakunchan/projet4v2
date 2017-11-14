@@ -114,6 +114,8 @@ class ControlleurChapitres
                     return '<span class="col-lg-3 btn-primary"><a href="index.php?page=admin&action=tb&p='.$p.'"> Précédente</a></span>';
                 }
             }
+        }else{
+            return '<span class="col-lg-3 btn-primary"><a href="index.php?page=chapitres&p=1">Précédente </a></span>';
         }
         return true;
     }

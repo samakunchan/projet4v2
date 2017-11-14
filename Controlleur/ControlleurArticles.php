@@ -65,7 +65,7 @@ class ControlleurArticles
                 $this->articles->setTitre($_POST['titre']);
                 $this->articles->setContenu($_POST['contenu']);
                 $this->managerArt->create($this->articles);
-                Routeur::redirection('admin');
+                Routeur::redirection('admin&action=tb&p=1');
             }
         }
         return true;
